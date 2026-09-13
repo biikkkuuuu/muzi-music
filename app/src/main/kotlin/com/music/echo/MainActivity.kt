@@ -624,6 +624,67 @@ class MainActivity : ComponentActivity() {
                     mutableStateOf(TextFieldValue())
                 }
 
+                // Check for update on app startup
+                var showStartupUpdateDialog by remember { mutableStateOf(false) }
+                var startupUpdateVersion by remember { mutableStateOf("") }
+                var startupChangelog by remember { mutableStateOf<List<com.biikkkuuuu.muzi.echomusic.updater.ChangelogSection>>(emptyList()) }
+
+                LaunchedEffect(Unit) {
+                    delay(2000L) // smooth launch
+                    com.biikkkuuuu.muzi.echomusic.updater.checkForUpdate(
+                        context = this@MainActivity,
+                        onSuccess = { tag, isAvailable, changelog, _, _, _, _, _ ->
+                            com.biikkkuuuu.muzi.echomusic.updater.saveUpdateAvailableState(this@MainActivity, isAvailable)
+                            if (isAvailable) {
+                                startupUpdateVersion = tag
+                                startupChangelog = changelog
+                                showStartupUpdateDialog = true
+                            }
+                        },
+                        onError = {}
+                    )
+                }
+
+                if (showStartupUpdateDialog) {
+                    com.biikkkuuuu.muzi.ui.component.DefaultDialog(
+                        onDismiss = { showStartupUpdateDialog = false },
+                        icon = {
+                            Icon(
+                                painter = painterResource(R.drawable.update),
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.size(32.dp)
+                            )
+                        },
+                        title = {
+                            Text(
+                                text = "New Version $startupUpdateVersion Available!",
+                                fontWeight = FontWeight.Bold,
+                                style = MaterialTheme.typography.titleLarge
+                            )
+                        },
+                        buttons = {
+                            TextButton(onClick = { showStartupUpdateDialog = false }) {
+                                Text(stringResource(R.string.later))
+                            }
+                            Button(onClick = {
+                                showStartupUpdateDialog = false
+                                navController.navigate("settings/update")
+                            }) {
+                                Text(stringResource(R.string.update_available))
+                            }
+                        }
+                    ) {
+                        Column(modifier = Modifier.padding(top = 8.dp)) {
+                            Text(
+                                text = "A new update of Muzi Music is ready to install with latest features and bug fixes.",
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    }
+                }
+
                 val onSearch: (String) -> Unit = remember {
                     { searchQuery ->
                         if (searchQuery.isNotEmpty()) {
@@ -640,7 +701,6 @@ class MainActivity : ComponentActivity() {
                     }
                 }
 
-                
                 val currentRoute by remember {
                     derivedStateOf { navBackStackEntry?.destination?.route }
                 }

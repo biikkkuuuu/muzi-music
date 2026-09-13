@@ -287,7 +287,7 @@ highlightKey: String? = null) {
                                     color = MaterialTheme.colorScheme.error
                                 )
                             } else {
-                                Text(updatesDesc)
+                                Text(stringResource(R.string.app_up_to_date))
                             }
                         },
                         onClick = { navController.navigate("settings/update") }
