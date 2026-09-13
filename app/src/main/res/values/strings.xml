@@ -140,8 +140,11 @@
     <!-- Import Playlist -->
     <string name="import_from_spotify">Import from Spotify</string>
     <string name="import_from_youtube_music">Import from YouTube Music</string>
-    <string name="import_youtube_music_playlist_title">Import playlist from YouTube Music</string>
-    <string name="import_youtube_music_playlist_desc">Paste the public YouTube Music playlist link below</string>
+    <string name="import_youtube_music_playlist_title">Import playlist</string>
+    <string name="import_youtube_music_playlist_desc">Paste any public Spotify or YouTube Music playlist link</string>
+    <string name="import_playlist_hint">Spotify or YouTube link</string>
+    <string name="importing_playlist">Importing playlist…</string>
+    <string name="playlist_imported_success">Imported %1$d songs to %2$s</string>
     <string name="invalid_playlist_url">Invalid playlist URL</string>
 
     <!-- Sort menu -->

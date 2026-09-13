@@ -164,22 +164,40 @@ class SpotifyImportRepository @Inject constructor(
         withContext(Dispatchers.IO) {
             val playlistId = parsePlaylistId(url)
                 ?: throw IllegalArgumentException(context.getString(R.string.spotify_invalid_playlist_link))
-            ensureAuthenticated()
 
-            val playlist = spotifyCallWithTokenRetry {
-                Spotify.playlist(playlistId).getOrThrow()
+            // Try authenticated client first if session is available
+            val authPlaylist = runCatching {
+                ensureAuthenticated()
+                val playlist = spotifyCallWithTokenRetry {
+                    Spotify.playlist(playlistId).getOrThrow()
+                }
+                val resolved =
+                    if (playlist.tracks?.total != null) {
+                        playlist
+                    } else {
+                        playlistTrackCount(playlist.id)
+                            ?.let { count -> playlist.copy(tracks = SpotifyPlaylistTracksRef(total = count)) }
+                            ?: playlist
+                    }
+                SpotifyImportSource.Playlist(resolved)
+            }.getOrNull()
+
+            if (authPlaylist != null) {
+                return@withContext authPlaylist
             }
 
-            val resolved =
-                if (playlist.tracks?.total != null) {
-                    playlist
-                } else {
-                    playlistTrackCount(playlist.id)
-                        ?.let { count -> playlist.copy(tracks = SpotifyPlaylistTracksRef(total = count)) }
-                        ?: playlist
-                }
+            // Fallback to anonymous public embed scraper (no login or cookies needed!)
+            val publicResult = SpotifyPublicPlaylistScraper.fetchPlaylist(playlistId).getOrElse { error ->
+                if (error is CancellationException) throw error
+                throw IllegalArgumentException(
+                    error.message ?: context.getString(R.string.spotify_invalid_playlist_link)
+                )
+            }
 
-            SpotifyImportSource.Playlist(resolved)
+            SpotifyImportSource.Playlist(
+                playlist = publicResult.playlist,
+                preloadedTracks = publicResult.tracks,
+            )
         }
 
     suspend fun importSources(
@@ -187,7 +205,10 @@ class SpotifyImportRepository @Inject constructor(
         onProgress: (SpotifyImportProgressUi) -> Unit,
     ): SpotifyImportSummaryUi =
         withContext(Dispatchers.IO) {
-            ensureAuthenticated()
+            val hasNonPreloaded = sources.any { it !is SpotifyImportSource.Playlist || it.preloadedTracks == null }
+            if (hasNonPreloaded) {
+                runCatching { ensureAuthenticated() }
+            }
             val summaries = ArrayList<SpotifyImportSourceSummaryUi>(sources.size)
 
             sources.forEachIndexed { sourceIndex, source ->
@@ -353,6 +374,9 @@ class SpotifyImportRepository @Inject constructor(
         }
 
     private suspend fun fetchAllTracks(source: SpotifyImportSource): List<SpotifyTrack> {
+        if (source is SpotifyImportSource.Playlist && !source.preloadedTracks.isNullOrEmpty()) {
+            return source.preloadedTracks
+        }
         val tracks = ArrayList<SpotifyTrack>()
         var offset = 0
         val limit = 100
@@ -601,13 +625,14 @@ sealed interface SpotifyImportSource {
 
     data class Playlist(
         val playlist: SpotifyPlaylist,
+        val preloadedTracks: List<SpotifyTrack>? = null,
     ) : SpotifyImportSource {
         val spotifyId: String = playlist.id
         override val id: String = "playlist:${playlist.id}"
         override val title: String = playlist.name
         override val subtitle: String = playlist.owner?.displayName.orEmpty()
         override val thumbnailUrl: String? = SpotifyMapper.getPlaylistThumbnail(playlist)
-        override val trackCount: Int? = playlist.tracks?.total
+        override val trackCount: Int? = playlist.tracks?.total ?: preloadedTracks?.size
         override val localPlaylistId: String = "SPOTIFY_PLAYLIST_${playlist.id}"
         override val type: SpotifyImportSourceType = SpotifyImportSourceType.PLAYLIST
     }

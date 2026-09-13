@@ -51,8 +51,16 @@ import com.biikkkuuuu.muzi.constants.FloatingToolbarBottomPadding
 import com.biikkkuuuu.muzi.constants.MiniPlayerBottomSpacing
 import com.biikkkuuuu.muzi.constants.MiniPlayerHeight
 import com.biikkkuuuu.muzi.constants.NavigationBarHeight
-import com.biikkkuuuu.muzi.ui.component.DefaultDialog
-import com.biikkkuuuu.muzi.ui.component.TextFieldDialog
+import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.rememberCoroutineScope
+import com.biikkkuuuu.muzi.spotifyimport.PlaylistImportProgress
+import com.biikkkuuuu.muzi.spotifyimport.PlaylistImportResult
+import com.biikkkuuuu.muzi.spotifyimport.UniversalPlaylistImporter
+import com.biikkkuuuu.muzi.di.PlaylistImporterEntryPoint
+import dagger.hilt.android.EntryPointAccessors
+import kotlinx.coroutines.launch
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.border
 import androidx.compose.foundation.shape.CircleShape
@@ -62,18 +70,27 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.ui.text.style.TextAlign
+import com.biikkkuuuu.muzi.ui.component.DefaultDialog
+import android.widget.Toast
 
 @Composable
 fun LibraryScreen(navController: NavController) {
     var filterType by rememberEnumPreference(ChipSortTypeKey, LibraryFilter.LIBRARY)
     var showFabMenu by remember { mutableStateOf(false) }
     var showImportMenu by remember { mutableStateOf(false) }
-    var showYoutubeImportDialog by remember { mutableStateOf(false) }
+    var showUniversalImportDialog by remember { mutableStateOf(false) }
+    var importProgress by remember { mutableStateOf<PlaylistImportProgress?>(null) }
     var showCreatePlaylistDialog by rememberSaveable { mutableStateOf(false) }
     var showCreatePlaylistOptionsDialog by rememberSaveable { mutableStateOf(false) }
     var showAiPlaylistDialog by rememberSaveable { mutableStateOf(false) }
     val context = LocalContext.current
+    val coroutineScope = rememberCoroutineScope()
+    val universalImporter = remember(context) {
+        EntryPointAccessors.fromApplication(
+            context.applicationContext,
+            PlaylistImporterEntryPoint::class.java
+        ).playlistImporter()
+    }
 
     BackHandler(enabled = filterType != LibraryFilter.LIBRARY) {
         filterType = LibraryFilter.LIBRARY
@@ -189,17 +206,19 @@ fun LibraryScreen(navController: NavController) {
                         onDismissRequest = { showImportMenu = false }
                     ) {
                         DropdownMenuItem(
-                            text = { Text(stringResource(R.string.import_from_spotify)) },
+                            text = { Text(stringResource(R.string.import_playlist)) },
+                            leadingIcon = { Icon(painter = painterResource(R.drawable.link), contentDescription = null) },
                             onClick = {
                                 showImportMenu = false
-                                navController.navigate("settings/spotify_import")
+                                showUniversalImportDialog = true
                             }
                         )
                         DropdownMenuItem(
-                            text = { Text(stringResource(R.string.import_from_youtube_music)) },
+                            text = { Text(stringResource(R.string.import_from_spotify)) },
+                            leadingIcon = { Icon(painter = painterResource(R.drawable.ic_spotify), contentDescription = null) },
                             onClick = {
                                 showImportMenu = false
-                                showYoutubeImportDialog = true
+                                navController.navigate("settings/spotify_import")
                             }
                         )
                     }
@@ -208,7 +227,7 @@ fun LibraryScreen(navController: NavController) {
         }
     }
 
-    if (showYoutubeImportDialog) {
+    if (showUniversalImportDialog) {
         var url by remember { mutableStateOf(TextFieldValue("")) }
         val invalidUrlMessage = stringResource(R.string.invalid_playlist_url)
         com.biikkkuuuu.muzi.ui.component.TextFieldDialog(
@@ -224,19 +243,73 @@ fun LibraryScreen(navController: NavController) {
                     )
                 }
             },
+            placeholder = { Text(stringResource(R.string.import_playlist_hint)) },
             initialTextFieldValue = url,
             autoFocus = true,
-            onDismiss = { showYoutubeImportDialog = false },
+            onDismiss = { showUniversalImportDialog = false },
             onDone = { finalUrl ->
-                val listId = Regex("[?&]list=([a-zA-Z0-9_-]+)").find(finalUrl)?.groupValues?.get(1)
-                if (listId != null) {
-                    navController.navigate("online_playlist/$listId")
+                val trimmed = finalUrl.trim()
+                if (trimmed.isNotBlank()) {
+                    showUniversalImportDialog = false
+                    importProgress = PlaylistImportProgress("Playlist", 0, 0, context.getString(R.string.loading))
+                    coroutineScope.launch {
+                        val result = universalImporter.importPlaylist(trimmed) { progress ->
+                            importProgress = progress
+                        }
+                        importProgress = null
+                        when (result) {
+                            is PlaylistImportResult.Success -> {
+                                Toast.makeText(
+                                    context,
+                                    context.getString(R.string.playlist_imported_success, result.trackCount, result.title),
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                navController.navigate("local_playlist/${result.localPlaylistId}")
+                            }
+                            is PlaylistImportResult.Error -> {
+                                Toast.makeText(context, result.message, Toast.LENGTH_LONG).show()
+                            }
+                        }
+                    }
                 } else {
-                    android.widget.Toast.makeText(context, invalidUrlMessage, android.widget.Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, invalidUrlMessage, Toast.LENGTH_SHORT).show()
+                    showUniversalImportDialog = false
                 }
-                showYoutubeImportDialog = false
             }
         )
+    }
+
+    importProgress?.let { progress ->
+        DefaultDialog(
+            onDismiss = { /* Non-dismissible while importing */ },
+            title = { Text(stringResource(R.string.importing_playlist)) }
+        ) {
+            Column(
+                modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                Text(
+                    text = progress.title,
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = progress.message,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                if (progress.total > 0) {
+                    LinearProgressIndicator(
+                        progress = { (progress.current.toFloat() / progress.total.toFloat()).coerceIn(0f, 1f) },
+                        modifier = Modifier.fillMaxWidth().clip(CircleShape)
+                    )
+                } else {
+                    LinearProgressIndicator(
+                        modifier = Modifier.fillMaxWidth().clip(CircleShape)
+                    )
+                }
+            }
+        }
     }
 
     if (showCreatePlaylistDialog) {
