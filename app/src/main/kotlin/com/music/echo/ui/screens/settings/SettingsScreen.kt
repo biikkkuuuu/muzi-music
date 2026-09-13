@@ -271,6 +271,44 @@ highlightKey: String? = null) {
                     )
                 }
             }
+            val updatesText = stringResource(R.string.app_updates_title)
+            val updatesDesc = stringResource(R.string.check_for_update)
+            val isUpdateAvailable = com.biikkkuuuu.muzi.echomusic.updater.getUpdateAvailableState(context)
+            if (updatesText.lowercase().contains(searchLower) || updatesDesc.lowercase().contains(searchLower) || "update".contains(searchLower)) {
+                add(
+                    Material3SettingsItem(
+                        isHighlighted = (highlightKey == updatesText),
+                        icon = painterResource(R.drawable.update),
+                        title = { Text(updatesText) },
+                        description = {
+                            if (isUpdateAvailable) {
+                                Text(
+                                    text = stringResource(R.string.update_available),
+                                    color = MaterialTheme.colorScheme.error
+                                )
+                            } else {
+                                Text(updatesDesc)
+                            }
+                        },
+                        onClick = { navController.navigate("settings/update") }
+                    )
+                )
+            }
+
+            val changelogText = stringResource(R.string.whats_new)
+            val changelogDesc = stringResource(R.string.changelog)
+            if (changelogText.lowercase().contains(searchLower) || changelogDesc.lowercase().contains(searchLower)) {
+                add(
+                    Material3SettingsItem(
+                        isHighlighted = (highlightKey == changelogText),
+                        icon = painterResource(R.drawable.history),
+                        title = { Text(changelogText) },
+                        description = { Text(changelogDesc) },
+                        onClick = { navController.navigate("settings/changelog") }
+                    )
+                )
+            }
+
             if (aboutText.lowercase().contains(searchLower) || aboutDesc.lowercase().contains(searchLower)) {
                 add(
                     Material3SettingsItem(

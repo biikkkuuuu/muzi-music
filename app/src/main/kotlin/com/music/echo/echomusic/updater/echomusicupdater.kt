@@ -666,27 +666,34 @@ suspend fun checkForUpdate(
 ) {
     withContext(Dispatchers.IO) {
         try {
-            val url = URL("https://api.github.com/repos/biikkkuuuu/muzo-music/releases/latest")
-            val json = url.openStream().bufferedReader().use { it.readText() }
+            val url = URL("https://api.github.com/repos/biikkkuuuu/muzi-music/releases/latest")
+            val connection = (url.openConnection() as java.net.HttpURLConnection).apply {
+                requestMethod = "GET"
+                setRequestProperty("User-Agent", "Muzi-App")
+                connectTimeout = 10000
+                readTimeout = 10000
+            }
+            if (connection.responseCode !in 200..299) {
+                withContext(Dispatchers.Main) { onError() }
+                return@withContext
+            }
+            val json = connection.inputStream.bufferedReader().use { it.readText() }
             val targetRelease = JSONObject(json)
             
             val currentVersion = BuildConfig.VERSION_NAME
             val targetTagName = targetRelease.getString("tag_name")
-            val currentClean = currentVersion.removePrefix("b").removePrefix("v").trim()
-            val targetClean = targetTagName.removePrefix("b").removePrefix("v").trim()
-            val shouldShow = currentClean != targetClean
+            val isAvailable = isNewerVersion(targetTagName, currentVersion)
 
-            if (shouldShow) {
-                val tagWithPrefix = targetRelease.getString("tag_name")
+            if (isAvailable) {
+                val tagWithPrefix = targetTagName
                 val displayTag = tagWithPrefix
 
-                
                 val changelogList = mutableListOf<ChangelogSection>()
                 var description: String? = null
                 var imageUrl: String? = null
                 try {
                     val changelogUrl =
-                        URL("https://github.com/biikkkuuuu/muzo-music/releases/download/$tagWithPrefix/changelog.json")
+                        URL("https://github.com/biikkkuuuu/muzi-music/releases/download/$tagWithPrefix/changelog.json")
                     val changelogJson = changelogUrl.openStream().bufferedReader().use { it.readText() }
                     val changelogData = JSONObject(changelogJson)
 
@@ -716,9 +723,9 @@ suspend fun checkForUpdate(
                     description = body
                 }
 
-                val publishedAt = targetRelease.getString("published_at")
-                val formattedReleaseDate = formatGitHubDate(publishedAt)
-                val assets = targetRelease.getJSONArray("assets")
+                val publishedAt = targetRelease.optString("published_at", "")
+                val formattedReleaseDate = if (publishedAt.isNotEmpty()) formatGitHubDate(publishedAt) else ""
+                val assets = targetRelease.optJSONArray("assets") ?: org.json.JSONArray()
 
                 var apkSizeInMB = ""
                 var apkDownloadUrl = ""
@@ -733,15 +740,16 @@ suspend fun checkForUpdate(
                     }
                 }
 
-                if (apkDownloadUrl.isNotEmpty()) {
-                    withContext(Dispatchers.Main) {
-                        onSuccess(displayTag, true, changelogList, apkSizeInMB, formattedReleaseDate, description, imageUrl, apkDownloadUrl)
-                    }
-                    return@withContext
+                if (apkDownloadUrl.isEmpty()) {
+                    apkDownloadUrl = targetRelease.optString("html_url", "https://github.com/biikkkuuuu/muzi-music/releases/latest")
                 }
+
+                withContext(Dispatchers.Main) {
+                    onSuccess(displayTag, true, changelogList, apkSizeInMB, formattedReleaseDate, description, imageUrl, apkDownloadUrl)
+                }
+                return@withContext
             }
 
-            
             withContext(Dispatchers.Main) {
                 onSuccess(currentVersion, false, emptyList(), "", "", null, null, null)
             }

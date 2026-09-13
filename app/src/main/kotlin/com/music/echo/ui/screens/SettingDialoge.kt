@@ -77,6 +77,15 @@ fun SettingDialoge(
                         }
                     ),
                     Material3SettingsItem(
+                        title = { Text(androidx.compose.ui.res.stringResource(R.string.app_updates_title)) },
+                        description = { Text(androidx.compose.ui.res.stringResource(R.string.check_for_update)) },
+                        icon = painterResource(R.drawable.update),
+                        onClick = {
+                            onDismissRequest()
+                            onNavigate("settings/update")
+                        }
+                    ),
+                    Material3SettingsItem(
                         title = { Text("About") },
                         icon = painterResource(R.drawable.info),
                         trailingContent = { 

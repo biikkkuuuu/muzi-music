@@ -449,4 +449,10 @@ fun NavGraphBuilder.navigationBuilder(
     composable("settings/commits") {
         CommitScreen(navController, scrollBehavior)
     }
+    composable("settings/update") {
+        com.biikkkuuuu.muzi.echomusic.updater.UpdateScreen(navController)
+    }
+    composable("settings/update_settings") {
+        com.biikkkuuuu.muzi.ui.screens.settings.UpdateSettings(navController, scrollBehavior)
+    }
 }
