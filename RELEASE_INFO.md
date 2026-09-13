@@ -2,7 +2,22 @@
 
 This document tracks all available releases for Muzi Music. 
 
-## [v1.2.2] - 2026-08-28 (Latest)
+## [v1.2.6] - 2026-09-13 (Latest)
+[Download on GitHub](https://github.com/biikkkuuuu/muzi-music/releases/tag/v1.2.6)
+
+**New Features**
+- Added **Universal Playlist Importer**: Seamlessly import playlists from Spotify and YouTube Music without requiring any Spotify login or account authentication.
+- Added **In-App Updater & What\'s New**: Direct update checking and changelog viewing available right from the Home menu and Settings.
+
+**Bug Fixes**
+- Fixed `JsonNull is not a JsonObject` crash when scraping public playlists with missing or null metadata attributes.
+- Fixed update checker pointing to the official `biikkkuuuu/muzi-music` repository.
+
+**Improvements**
+- Added live progress indicator and automatic fallback for playlist imports.
+- Enhanced stability and UI responsiveness across dialogs.
+
+## [v1.2.2] - 2026-08-28
 [Download on GitHub](https://github.com/biikkkuuuu/muzi-music/releases/tag/v1.2.2)
 
 **Bug Fixes**
