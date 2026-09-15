@@ -343,7 +343,7 @@
     <string name="backup_create_failed">Nepavyko sukurti atsarginės kopijos</string>
     <string name="restore_failed">Nepavyko atkurti atsarginės kopijos</string>
     <string name="discord_integration">„Discord“ integracija</string>
-    <string name="discord_information">„echomusic“ naudoja „KizzyRPC“ biblioteką jūsų „Discord“ paskyros būsenai nustatyti. Tam naudojamas „Discord Gateway“ ryšys, kuris gali būti laikomas „Discord“ naudojimo sąlygų pažeidimu. Tačiau nėra žinoma atvejų, kai dėl šios priežasties būtų sustabdytos naudotojų paskyros. Naudokite savo rizika.\n„chomusic“ išgaus tik jūsų prieigos raktą, o visa kita bus saugoma vietoje.</string>
+    <string name="discord_information">„Muzi“ naudoja „KizzyRPC“ biblioteką jūsų „Discord“ paskyros būsenai nustatyti. Tam naudojamas „Discord Gateway“ ryšys, kuris gali būti laikomas „Discord“ naudojimo sąlygų pažeidimu. Tačiau nėra žinoma atvejų, kai dėl šios priežasties būtų sustabdytos naudotojų paskyros. Naudokite savo rizika.\n„chomusic“ išgaus tik jūsų prieigos raktą, o visa kita bus saugoma vietoje.</string>
     <string name="dismiss">Uždaryti</string>
     <string name="options">Parinktys</string>
     <string name="preview">Peržiūra</string>
@@ -369,7 +369,7 @@
     <string name="listen_together_smart_resync">Išmanusis tinklo sinchronizavimas</string>
     <string name="listen_together_smart_resync_desc">Nutrūkus ryšiui automatiškai susilyginti su vedėju</string>
     <string name="spotify_import_title">Importuoti iš „Spotify“</string>
-    <string name="spotify_import_desc">Prijunkite „Spotify“, pasirinkite grojaraščius ir nukopijuokite juos į vietinius „Echo Music“ grojaraščius.</string>
+    <string name="spotify_import_desc">Prijunkite „Spotify“, pasirinkite grojaraščius ir nukopijuokite juos į vietinius „Muzi“ grojaraščius.</string>
     <string name="spotify_connect">Prijungti „Spotify“</string>
     <string name="spotify_refresh">Atnaujinti „Spotify“ biblioteką</string>
     <string name="spotify_select_sources">Pasirinkti „Spotify“ grojaraščius</string>
@@ -413,10 +413,10 @@
     <string name="recognition_notification_processing">Atpažįstama…</string>
     <string name="recognition_notification_no_match">Atitikmenų nerasta</string>
     <string name="recognition_notification_failed">Atpažinti nepavyko</string>
-    <string name="listen_on_echo_music">Klausytis per „Echo Music“</string>
+    <string name="listen_on_echo_music">Klausytis per „Muzi“</string>
     <string name="qs_tile_music_recognizer">Atpažinti muziką</string>
-    <string name="echo_brain_beta">„Echo Brain“ (beta versija)</string>
-    <string name="echo_brain_enable">Įjungti „Echo Brain“</string>
+    <string name="echo_brain_beta">„Muzi Brain“ (beta versija)</string>
+    <string name="echo_brain_enable">Įjungti „Muzi Brain“</string>
     <string name="echo_brain_enable_desc">Automatiškai įtraukti DI rekomendacijas pagal jūsų klausymosi įpročius</string>
     <string name="echo_brain_profile_statistics">Profilio statistika</string>
     <string name="echo_brain_learning_level">Mokymosi lygis</string>
@@ -443,9 +443,9 @@
     <string name="listenbrainz_scrobbling">„ListenBrainz“ klausymų registravimas</string>
     <string name="listenbrainz_scrobbling_description">Automatiškai siųsti klausytus kūrinius į „ListenBrainz“</string>
     <string name="set_listenbrainz_token">Nustatyti „ListenBrainz“ prieigos raktą</string>
-    <string name="youtube_decryption_settings">„Echo Extractor“</string>
+    <string name="youtube_decryption_settings">„Muzi Extractor“</string>
     <string name="youtube_decryption_desc">Konfigūruoti išskleidimo priemonės nustatymus</string>
-    <string name="youtube_decryption_support">„Echo Extractor“</string>
+    <string name="youtube_decryption_support">„Muzi Extractor“</string>
     <string name="youtube_decryption_support_desc">Automatiškai išskleidžia „YouTube“ atkūrimo konfigūracijas. Visada įjungta.</string>
     <string name="force_update_cipher">Priverstinai atnaujinti konfigūracijas</string>
     <string name="force_update_cipher_desc">Atsisiųsti naujausias išskleidimo priemonės perrašymo atitiktis. Leidžiami 3 naujinimai per dieną.</string>

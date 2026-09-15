@@ -25,7 +25,7 @@ class AxionEqViewModel @Inject constructor(
     private val eqProfileRepository: EQProfileRepository
 ) : ViewModel() {
 
-    private val prefs = context.getSharedPreferences("echo_eq_prefs", Context.MODE_PRIVATE)
+    private val prefs = context.getSharedPreferences("muzi_eq_prefs", Context.MODE_PRIVATE)
 
     private val _enabled = MutableStateFlow(prefs.getBoolean("enabled", false))
     val enabled = _enabled.asStateFlow()
@@ -44,7 +44,7 @@ class AxionEqViewModel @Inject constructor(
     val isDirty = _isDirty.asStateFlow()
 
     val customProfiles = eqProfileRepository.profiles.map { profiles ->
-        profiles.filter { it.isCustom && it.id != "echo_tuning" }
+        profiles.filter { it.isCustom && it.id != "muzi_tuning" && it.id != "echo_tuning" }
     }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
     init {
@@ -149,8 +149,8 @@ class AxionEqViewModel @Inject constructor(
             }
             
             val profile = SavedEQProfile(
-                id = "echo_tuning",
-                name = "Echo Tuning",
+                id = "muzi_tuning",
+                name = "Muzi Tuning",
                 deviceModel = "Equalizer",
                 bands = bands,
                 preamp = 0.0,

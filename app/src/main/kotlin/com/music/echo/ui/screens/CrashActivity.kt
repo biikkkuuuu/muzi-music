@@ -40,7 +40,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.FileProvider
 import com.biikkkuuuu.muzi.R
-import com.biikkkuuuu.muzi.ui.theme.echomusicTheme
+import com.biikkkuuuu.muzi.ui.theme.MuziTheme
 import com.biikkkuuuu.muzi.utils.CrashHandler
 import java.io.File
 import java.text.SimpleDateFormat
@@ -57,7 +57,7 @@ class CrashActivity : ComponentActivity() {
         
         setContent {
             val darkTheme = isSystemInDarkTheme()
-            echomusicTheme(darkTheme = darkTheme) {
+            MuziTheme(darkTheme = darkTheme) {
                 CrashScreen(
                     crashLog = crashLog,
                     onClose = { finishAffinity() },

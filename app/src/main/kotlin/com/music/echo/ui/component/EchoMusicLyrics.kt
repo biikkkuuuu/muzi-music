@@ -49,7 +49,7 @@ import com.biikkkuuuu.muzi.utils.rememberPreference
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun echomusicLyricsLine(
+fun muziLyricsLine(
     entry: LyricsEntry,
     nextEntryTime: Long?,
     effectivePlaybackPosition: Long,

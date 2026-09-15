@@ -322,7 +322,7 @@
     <string name="backup_create_failed">Pa finn kapav kree sovgard</string>
     <string name="restore_failed">Restorasion sovgard finn fel</string>
     <string name="discord_integration">Integrasion Discord</string>
-    <string name="discord_information">echomusic servi bibliotek KizzyRPC pou definir stati ou kont Discord. Sa inplik itilizasion koneksion Discord Gateway, ki kapav konsidere kouma enn violasion bann kondision itilizasion Discord. Selman, pena okenn ka kone kot kont itilizater finn sispann pou sa rezon-la. Servi li lor ou prop risk.\nchomusic pou zis extrer ou zeton, ek tou lezot kitsoz pou stoke lokalman.</string>
+    <string name="discord_information">Muzi servi bibliotek KizzyRPC pou definir stati ou kont Discord. Sa inplik itilizasion koneksion Discord Gateway, ki kapav konsidere kouma enn violasion bann kondision itilizasion Discord. Selman, pena okenn ka kone kot kont itilizater finn sispann pou sa rezon-la. Servi li lor ou prop risk.\nchomusic pou zis extrer ou zeton, ek tou lezot kitsoz pou stoke lokalman.</string>
     <string name="dismiss">Fer disparet</string>
     <string name="options">Opsion</string>
     <string name="preview">Aperse</string>
@@ -348,7 +348,7 @@
     <string name="listen_together_smart_resync">Resinkronizasion intelizan rezo</string>
     <string name="listen_together_smart_resync_desc">Ratrap lot otomatikman apre enn koupir koneksion</string>
     <string name="spotify_import_title">Inporte depi Spotify</string>
-    <string name="spotify_import_desc">Konekte Spotify, swazir bann list lekout ek kopi zot dan bann list lekout lokal Echo Music.</string>
+    <string name="spotify_import_desc">Konekte Spotify, swazir bann list lekout ek kopi zot dan bann list lekout lokal Muzi.</string>
     <string name="spotify_connect">Konekte Spotify</string>
     <string name="spotify_refresh">Rafresi bibliotek Spotify</string>
     <string name="spotify_select_sources">Seleksionn bann list lekout Spotify</string>
@@ -392,10 +392,10 @@
     <string name="recognition_notification_processing">Pe idantifie…</string>
     <string name="recognition_notification_no_match">Okenn korespondans pa finn trouve</string>
     <string name="recognition_notification_failed">Rekonesans finn fel</string>
-    <string name="listen_on_echo_music">Ekoute lor Echo Music</string>
+    <string name="listen_on_echo_music">Ekoute lor Muzi</string>
     <string name="qs_tile_music_recognizer">Rekonet mizik</string>
-    <string name="echo_brain_beta">Echo Brain (Beta)</string>
-    <string name="echo_brain_enable">Aktiv Echo Brain</string>
+    <string name="echo_brain_beta">Muzi Brain (Beta)</string>
+    <string name="echo_brain_enable">Aktiv Muzi Brain</string>
     <string name="echo_brain_enable_desc">Azout rekomandasion IA otomatikman dapre ou bann labitid lekout</string>
     <string name="echo_brain_profile_statistics">Statistik profil</string>
     <string name="echo_brain_learning_level">Nivo aprantisaz</string>
@@ -422,9 +422,9 @@
     <string name="listenbrainz_scrobbling">Scrobbling ListenBrainz</string>
     <string name="listenbrainz_scrobbling_description">Avoy otomatikman ou bann morso ekoute lor ListenBrainz</string>
     <string name="set_listenbrainz_token">Definir zeton ListenBrainz</string>
-    <string name="youtube_decryption_settings">Echo Extractor</string>
+    <string name="youtube_decryption_settings">Muzi Extractor</string>
     <string name="youtube_decryption_desc">Konfigir paramet extrakter</string>
-    <string name="youtube_decryption_support">Echo Extractor</string>
+    <string name="youtube_decryption_support">Muzi Extractor</string>
     <string name="youtube_decryption_support_desc">Extrer otomatikman bann konfigirasion lekout YouTube. Bloke lor Aktif.</string>
     <string name="force_update_cipher">Fors mizazour konfigirasion</string>
     <string name="force_update_cipher_desc">Telecharz dernie kart ranplasman extrakter. Limite a 3 mizazour par zour.</string>

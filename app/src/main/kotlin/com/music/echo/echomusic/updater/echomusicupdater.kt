@@ -339,7 +339,7 @@ fun UpdateScreen(navController: NavHostController) {
                                                 ContextCompat.startActivity(context, installIntent, null)
                                             }
                                         } else {
-                                            val urlToDownload = currentStatus.apkUrl ?: "https://github.com/biikkkuuuu/muzo-music/releases/download/${currentStatus.version}/echomusic.apk"
+                                            val urlToDownload = currentStatus.apkUrl ?: "https://github.com/biikkkuuuu/muzi-music/releases/download/${currentStatus.version}/muzi.apk"
                                             
                                             val constraints = Constraints.Builder()
                                                 .setRequiredNetworkType(NetworkType.CONNECTED)

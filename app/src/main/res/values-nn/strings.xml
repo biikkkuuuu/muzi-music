@@ -323,7 +323,7 @@
     <string name="backup_create_failed">Klarte ikkje å oppretta tryggleikskopi</string>
     <string name="restore_failed">Klarte ikkje å gjenoppretta tryggleikskopien</string>
     <string name="discord_integration">Discord-integrasjon</string>
-    <string name="discord_information">echomusic brukar KizzyRPC-biblioteket til å velja statusen for Discord-kontoen din. Dette inneber bruk av Discord Gateway-tilkoplinga, noko som kan reknast som eit brot på bruksvilkåra til Discord. Det finst likevel ingen kjende tilfelle der brukarkontoar har vorte suspenderte av denne grunnen. Bruk på eige ansvar.\nchomusic hentar berre tokenet ditt, og alt anna vert lagra lokalt.</string>
+    <string name="discord_information">Muzi brukar KizzyRPC-biblioteket til å velja statusen for Discord-kontoen din. Dette inneber bruk av Discord Gateway-tilkoplinga, noko som kan reknast som eit brot på bruksvilkåra til Discord. Det finst likevel ingen kjende tilfelle der brukarkontoar har vorte suspenderte av denne grunnen. Bruk på eige ansvar.\nchomusic hentar berre tokenet ditt, og alt anna vert lagra lokalt.</string>
     <string name="dismiss">Lukk</string>
     <string name="options">Val</string>
     <string name="preview">Førehandsvising</string>
@@ -349,7 +349,7 @@
     <string name="listen_together_smart_resync">Smart nettverkssynkronisering</string>
     <string name="listen_together_smart_resync_desc">Ta automatisk igjen verten etter at tilkoplinga fell ut</string>
     <string name="spotify_import_title">Importer frå Spotify</string>
-    <string name="spotify_import_desc">Kople til Spotify, vel spelelister og spegl dei til lokale Echo Music-spelelister.</string>
+    <string name="spotify_import_desc">Kople til Spotify, vel spelelister og spegl dei til lokale Muzi-spelelister.</string>
     <string name="spotify_connect">Kople til Spotify</string>
     <string name="spotify_refresh">Oppdater Spotify-biblioteket</string>
     <string name="spotify_select_sources">Vel Spotify-spelelister</string>
@@ -393,10 +393,10 @@
     <string name="recognition_notification_processing">Identifiserer…</string>
     <string name="recognition_notification_no_match">Fann ingen treff</string>
     <string name="recognition_notification_failed">Attkjenninga mislukkast</string>
-    <string name="listen_on_echo_music">Lytt på Echo Music</string>
+    <string name="listen_on_echo_music">Lytt på Muzi</string>
     <string name="qs_tile_music_recognizer">Kjenn att musikk</string>
-    <string name="echo_brain_beta">Echo Brain (beta)</string>
-    <string name="echo_brain_enable">Slå på Echo Brain</string>
+    <string name="echo_brain_beta">Muzi Brain (beta)</string>
+    <string name="echo_brain_enable">Slå på Muzi Brain</string>
     <string name="echo_brain_enable_desc">Legg automatisk til KI-tilrådingar baserte på lyttevanane dine</string>
     <string name="echo_brain_profile_statistics">Profilstatistikk</string>
     <string name="echo_brain_learning_level">Læringsnivå</string>
@@ -423,9 +423,9 @@
     <string name="listenbrainz_scrobbling">ListenBrainz-skrobbling</string>
     <string name="listenbrainz_scrobbling_description">Send automatisk spora du har lytta til, til ListenBrainz</string>
     <string name="set_listenbrainz_token">Vel ListenBrainz-token</string>
-    <string name="youtube_decryption_settings">Echo Extractor</string>
+    <string name="youtube_decryption_settings">Muzi Extractor</string>
     <string name="youtube_decryption_desc">Set opp innstillingane for uttrekkjaren</string>
-    <string name="youtube_decryption_support">Echo Extractor</string>
+    <string name="youtube_decryption_support">Muzi Extractor</string>
     <string name="youtube_decryption_support_desc">Hentar automatisk konfigurasjonar for YouTube-avspeling. Låst til aktiv.</string>
     <string name="force_update_cipher">Tving oppdatering av konfigurasjonane</string>
     <string name="force_update_cipher_desc">Last ned dei nyaste overstyringskartleggingane for uttrekkjaren. Avgrensa til tre oppdateringar per dag.</string>

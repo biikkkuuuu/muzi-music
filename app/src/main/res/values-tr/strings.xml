@@ -298,7 +298,7 @@
     <string name="backup_create_failed">Yedekleme oluşturulamadı</string>
     <string name="restore_failed">Yedekleme geri yüklenemedi</string>
     <string name="discord_integration">Discord Entegrasyonu</string>
-    <string name="discord_information">echomusic, Discord hesabınızın durumunu ayarlamak için KizzyRPC kütüphanesini kullanır. Bu, Discord\'un Hizmet Şartları\'nın ihlali olarak kabul edilebilecek Discord Geçit bağlantısının kullanılmasını gerektirir. Fakat kullanıcı hesaplarının bu nedenle askıya alındığı bilinen bir örnek yoktur. Riski size ait olmak üzere kullanın. \n \nechomusic yalnızca belirtecinizi çıkarır ve diğer her şey yerel olarak saklanır.</string>
+    <string name="discord_information">Muzi, Discord hesabınızın durumunu ayarlamak için KizzyRPC kütüphanesini kullanır. Bu, Discord\'un Hizmet Şartları\'nın ihlali olarak kabul edilebilecek Discord Geçit bağlantısının kullanılmasını gerektirir. Fakat kullanıcı hesaplarının bu nedenle askıya alındığı bilinen bir örnek yoktur. Riski size ait olmak üzere kullanın. \n \nMuzi yalnızca belirtecinizi çıkarır ve diğer her şey yerel olarak saklanır.</string>
     <string name="dismiss">İptal</string>
     <string name="options">Seçenekler</string>
     <string name="preview">Ön izleme</string>
@@ -362,7 +362,7 @@
     <string name="listen_together_smart_resync">Akıllı Ağ Yeniden Senkronizasyonu</string>
     <string name="listen_together_smart_resync_desc">Bağlantı kesildikten sonra sunucuyu otomatik olarak yakala</string>
     <string name="spotify_import_title">Spotify\'dan İçe Aktar</string>
-    <string name="spotify_import_desc">Spotify\'ı bağlayın, çalma listeleri seçin ve bunları yerel Echo Music çalma listelerine yansıtın.</string>
+    <string name="spotify_import_desc">Spotify\'ı bağlayın, çalma listeleri seçin ve bunları yerel Muzi çalma listelerine yansıtın.</string>
     <string name="spotify_connect">Spotify\'ı Bağla</string>
     <string name="spotify_refresh">Spotify kütüphanesini yenile</string>
     <string name="spotify_select_sources">Spotify çalma listelerini seç</string>
@@ -421,10 +421,10 @@
     <string name="recognition_notification_processing">Tanımlanıyor…</string>
     <string name="recognition_notification_no_match">Eşleşme bulunamadı</string>
     <string name="recognition_notification_failed">Tanıma başarısız oldu</string>
-    <string name="listen_on_echo_music">Echo Music\'te dinle</string>
+    <string name="listen_on_echo_music">Muzi\'te dinle</string>
     <string name="qs_tile_music_recognizer">Müziği tanı</string>
-    <string name="echo_brain_beta">Echo Brain (Beta)</string>
-    <string name="echo_brain_enable">Echo Brain\'i etkinleştir</string>
+    <string name="echo_brain_beta">Muzi Brain (Beta)</string>
+    <string name="echo_brain_enable">Muzi Brain\'i etkinleştir</string>
     <string name="echo_brain_enable_desc">Dinleme alışkanlıklarınıza göre yapay zekâ önerilerini otomatik olarak ekle</string>
     <string name="echo_brain_profile_statistics">Profil İstatistikleri</string>
     <string name="echo_brain_learning_level">Öğrenme Düzeyi</string>
@@ -451,9 +451,9 @@
     <string name="listenbrainz_scrobbling">ListenBrainz skroplama</string>
     <string name="listenbrainz_scrobbling_description">Dinlediğiniz parçaları ListenBrainz\'e otomatik olarak gönderin</string>
     <string name="set_listenbrainz_token">ListenBrainz Jetonunu Ayarla</string>
-    <string name="youtube_decryption_settings">Echo Extractor</string>
+    <string name="youtube_decryption_settings">Muzi Extractor</string>
     <string name="youtube_decryption_desc">Ayıklayıcı ayarlarını yapılandırın</string>
-    <string name="youtube_decryption_support">Echo Extractor</string>
+    <string name="youtube_decryption_support">Muzi Extractor</string>
     <string name="youtube_decryption_support_desc">YouTube oynatma yapılandırmalarını otomatik olarak ayıklar. Etkin durumda kilitlidir.</string>
     <string name="force_update_cipher">Yapılandırmaları Güncellemeye Zorla</string>
     <string name="force_update_cipher_desc">En son ayıklayıcı geçersiz kılma eşlemelerini indirin. Günde 3 güncellemeyle sınırlıdır.</string>

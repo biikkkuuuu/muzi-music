@@ -260,7 +260,7 @@
     <string name="your_youtube_playlists">Deine YouTube-Playlists</string>
     <string name="library_playlist_empty">Deine Playlists werden hier angezeigt</string>
     <string name="disable_screenshot_desc">Wenn diese Option aktiviert ist, sind Screenshots und die App-Vorschau in der Übersicht der zuletzt verwendeten Apps deaktiviert.</string>
-    <string name="discord_information">echomusic verwendet die KizzyRPC-Bibliothek, um den Status deines Discord-Kontos festzulegen. Dabei wird eine Verbindung zum Discord-Gateway verwendet, was als Verstoß gegen die Nutzungsbedingungen von Discord angesehen werden kann. Es sind jedoch keine Fälle bekannt, in denen Benutzerkonten aus diesem Grund gesperrt wurden. Die Verwendung erfolgt auf eigene Gefahr.\nchomusic liest lediglich dein Token aus. Alle anderen Daten werden lokal gespeichert.</string>
+    <string name="discord_information">Muzi verwendet die KizzyRPC-Bibliothek, um den Status deines Discord-Kontos festzulegen. Dabei wird eine Verbindung zum Discord-Gateway verwendet, was als Verstoß gegen die Nutzungsbedingungen von Discord angesehen werden kann. Es sind jedoch keine Fälle bekannt, in denen Benutzerkonten aus diesem Grund gesperrt wurden. Die Verwendung erfolgt auf eigene Gefahr.\nchomusic liest lediglich dein Token aus. Alle anderen Daten werden lokal gespeichert.</string>
     <string name="squiggly">Wellenförmig</string>
     <string name="grid_cell_size">Größe der Rasterzellen</string>
     <string name="search_history">Suchverlauf</string>
@@ -342,7 +342,7 @@
     <string name="listen_together_smart_resync">Intelligente Netzwerksynchronisierung</string>
     <string name="listen_together_smart_resync_desc">Nach einem Verbindungsabbruch automatisch mit dem Host synchronisieren</string>
     <string name="spotify_import_title">Aus Spotify importieren</string>
-    <string name="spotify_import_desc">Verbinde Spotify, wähle Playlists aus und übertrage sie in lokale Echo-Music-Playlists.</string>
+    <string name="spotify_import_desc">Verbinde Spotify, wähle Playlists aus und übertrage sie in lokale Muzi-Playlists.</string>
     <string name="spotify_connect">Spotify verbinden</string>
     <string name="spotify_refresh">Spotify-Bibliothek aktualisieren</string>
     <string name="spotify_select_sources">Spotify-Playlists auswählen</string>
@@ -402,10 +402,10 @@
     <string name="recognition_notification_processing">Wird erkannt…</string>
     <string name="recognition_notification_no_match">Keine Übereinstimmung gefunden</string>
     <string name="recognition_notification_failed">Erkennung fehlgeschlagen</string>
-    <string name="listen_on_echo_music">Auf Echo Music anhören</string>
+    <string name="listen_on_echo_music">Auf Muzi anhören</string>
     <string name="qs_tile_music_recognizer">Musik erkennen</string>
-    <string name="echo_brain_beta">Echo Brain (Beta)</string>
-    <string name="echo_brain_enable">Echo Brain aktivieren</string>
+    <string name="echo_brain_beta">Muzi Brain (Beta)</string>
+    <string name="echo_brain_enable">Muzi Brain aktivieren</string>
     <string name="echo_brain_enable_desc">Automatisch KI-Empfehlungen anhand deiner Hörgewohnheiten einfügen</string>
     <string name="echo_brain_profile_statistics">Profilstatistiken</string>
     <string name="echo_brain_learning_level">Lernstufe</string>
@@ -432,9 +432,9 @@
     <string name="listenbrainz_scrobbling">ListenBrainz-Scrobbling</string>
     <string name="listenbrainz_scrobbling_description">Gehörte Titel automatisch an ListenBrainz übermitteln</string>
     <string name="set_listenbrainz_token">ListenBrainz-Token festlegen</string>
-    <string name="youtube_decryption_settings">Echo Extractor</string>
+    <string name="youtube_decryption_settings">Muzi Extractor</string>
     <string name="youtube_decryption_desc">Extractor-Einstellungen konfigurieren</string>
-    <string name="youtube_decryption_support">Echo Extractor</string>
+    <string name="youtube_decryption_support">Muzi Extractor</string>
     <string name="youtube_decryption_support_desc">Extrahiert automatisch YouTube-Wiedergabekonfigurationen. Fest auf „Aktiv“ eingestellt.</string>
     <string name="force_update_cipher">Aktualisierung der Konfigurationen erzwingen</string>
     <string name="force_update_cipher_desc">Die neuesten Überschreibungszuordnungen für den Extractor herunterladen. Auf 3 Aktualisierungen pro Tag begrenzt.</string>

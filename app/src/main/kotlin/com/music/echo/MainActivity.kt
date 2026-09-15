@@ -208,7 +208,7 @@ import com.biikkkuuuu.muzi.ui.screens.settings.DarkMode
 import com.biikkkuuuu.muzi.ui.screens.settings.NavigationTab
 import com.biikkkuuuu.muzi.ui.theme.ColorSaver
 import com.biikkkuuuu.muzi.ui.theme.DefaultThemeColor
-import com.biikkkuuuu.muzi.ui.theme.echomusicTheme
+import com.biikkkuuuu.muzi.ui.theme.MuziTheme
 import com.biikkkuuuu.muzi.ui.theme.extractThemeColor
 import com.biikkkuuuu.muzi.ui.utils.appBarScrollBehavior
 import com.biikkkuuuu.muzi.ui.utils.resetHeightOffset
@@ -544,7 +544,7 @@ class MainActivity : ComponentActivity() {
         val view = LocalView.current
         var lastScrollHapticTime by remember { mutableStateOf(0L) }
 
-        echomusicTheme(
+        MuziTheme(
             darkTheme = useDarkTheme,
             pureBlack = pureBlack,
             themeColor = themeColor,

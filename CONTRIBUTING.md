@@ -95,8 +95,8 @@ If you want to test Firebase features:
 
 1. Create a Firebase project
 2. Add Android apps with package names:
-   - `biikkkuuuu.echo.music` (release)
-   - `biikkkuuuu.echo.music.debug` (debug)
+   - `biikkkuuuu.muzi` (release)
+   - `biikkkuuuu.muzi.debug` (debug)
 3. Copy the template and configure it with your Firebase credentials:
    ```bash
    cp app/google-services.json.template app/google-services.json
@@ -319,7 +319,7 @@ lyrics/         Lyrics orchestration
 models/         Shared data models
 playback/       Media3/ExoPlayer service, download manager, queueing, audio
 quicksettings/  Android quick settings tile
-recognition/    Music recognition (Echo Find) app-side logic
+recognition/    Music recognition (Muzi Find) app-side logic
 spotify/        Spotify API integration
 spotifyimport/  Import playlists/tracks from Spotify
 ui/
@@ -364,7 +364,7 @@ widget/         Home-screen widget
 ./gradlew test
 
 # Run specific test class
-./gradlew test --tests "biikkkuuuu.echo.MusicPlayerTest"
+./gradlew test --tests "biikkkuuuu.muzi.MusicPlayerTest"
 
 # Run tests with coverage
 ./gradlew testDebugUnitTestCoverage

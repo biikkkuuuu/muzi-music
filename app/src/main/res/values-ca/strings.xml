@@ -283,7 +283,7 @@
     <string name="use_login_for_browse">Utilitza iniciar sessió per cercar contingut</string>
     <string name="use_login_for_browse_desc">Això pot influenciar el contingut que veus i per exemple, mostra àlbums exclusius prèmium si la sessió està iniciada en un compte prèmium</string>
     <string name="disable_screenshot_desc">Quan aquesta opció és activada, les captures de pantalla i la visualització a \"recents\" són desactivades.</string>
-    <string name="discord_information">echomusic utilitza la biblioteca KizzyRPC per establir l\'estat del vostre compte de Discord. Això implica utilitzar la connexió Discord Gateway, la qual cosa es pot considerar una violació de les condicions del servei de Discord. No obstant això, no hi ha casos coneguts d\'usuaris que hagin estat suspesos pel motiu. L\'ús és sota la vostra responsabilitat.\n\nechomusic només extreu el vostre \"token\", i la resta es desa localment.</string>
+    <string name="discord_information">Muzi utilitza la biblioteca KizzyRPC per establir l\'estat del vostre compte de Discord. Això implica utilitzar la connexió Discord Gateway, la qual cosa es pot considerar una violació de les condicions del servei de Discord. No obstant això, no hi ha casos coneguts d\'usuaris que hagin estat suspesos pel motiu. L\'ús és sota la vostra responsabilitat.\n\nMuzi només extreu el vostre \"token\", i la resta es desa localment.</string>
     <string name="dismiss">Ignora</string>
     <string name="enable_discord_rpc">Activa \"Rich Presence\"</string>
     <string name="error_no_stream">Cap transmissió disponible</string>
@@ -351,7 +351,7 @@
     <string name="listen_together_smart_resync">Resincronització intel·ligent de xarxa</string>
     <string name="listen_together_smart_resync_desc">Posi’s al dia automàticament amb l’amfitrió després d’una caiguda de la connexió</string>
     <string name="spotify_import_title">Importa des de Spotify</string>
-    <string name="spotify_import_desc">Connecteu Spotify, trieu llistes de reproducció i copieu-les a les llistes locals d’Echo Music.</string>
+    <string name="spotify_import_desc">Connecteu Spotify, trieu llistes de reproducció i copieu-les a les llistes locals d’Muzi.</string>
     <string name="spotify_connect">Connecta Spotify</string>
     <string name="spotify_refresh">Actualitza la col·lecció de Spotify</string>
     <string name="spotify_select_sources">Selecciona les llistes de Spotify</string>
@@ -412,10 +412,10 @@
     <string name="recognition_notification_processing">S\'està identificant…</string>
     <string name="recognition_notification_no_match">No s\'ha trobat cap coincidència</string>
     <string name="recognition_notification_failed">Ha fallat el reconeixement</string>
-    <string name="listen_on_echo_music">Escolta-ho a Echo Music</string>
+    <string name="listen_on_echo_music">Escolta-ho a Muzi</string>
     <string name="qs_tile_music_recognizer">Reconeix música</string>
-    <string name="echo_brain_beta">Echo Brain (beta)</string>
-    <string name="echo_brain_enable">Activa Echo Brain</string>
+    <string name="echo_brain_beta">Muzi Brain (beta)</string>
+    <string name="echo_brain_enable">Activa Muzi Brain</string>
     <string name="echo_brain_enable_desc">Insereix automàticament recomanacions d\'IA basades en els vostres hàbits d\'escolta</string>
     <string name="echo_brain_profile_statistics">Estadístiques del perfil</string>
     <string name="echo_brain_learning_level">Nivell d\'aprenentatge</string>
@@ -442,9 +442,9 @@
     <string name="listenbrainz_scrobbling">Scrobbling de ListenBrainz</string>
     <string name="listenbrainz_scrobbling_description">Envia automàticament a ListenBrainz les peces que heu escoltat</string>
     <string name="set_listenbrainz_token">Defineix el testimoni de ListenBrainz</string>
-    <string name="youtube_decryption_settings">Echo Extractor</string>
+    <string name="youtube_decryption_settings">Muzi Extractor</string>
     <string name="youtube_decryption_desc">Configura els paràmetres de l\'extractor</string>
-    <string name="youtube_decryption_support">Echo Extractor</string>
+    <string name="youtube_decryption_support">Muzi Extractor</string>
     <string name="youtube_decryption_support_desc">Extreu automàticament les configuracions de reproducció de YouTube. Està bloquejat en l\'estat Actiu.</string>
     <string name="force_update_cipher">Força l\'actualització de les configuracions</string>
     <string name="force_update_cipher_desc">Baixa els mapatges de substitució més recents de l\'extractor. Limitat a 3 actualitzacions al dia.</string>
