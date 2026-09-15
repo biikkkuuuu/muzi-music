@@ -61,10 +61,6 @@ Muzi Music delivers a seamless, premium listening experience by leveraging YouTu
         <b>Music Library</b><br><br>
         <img src="Screenshots/sc_5.png" alt="Music Library" width="220" style="border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.2);"/>
       </td>
-      <td align="center" style="padding: 15px; border: none;">
-        <b>Muzi Find (Recognition)</b><br><br>
-        <img src="Screenshots/sc_6.png" alt="Muzi Find" width="220" style="border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.2);"/>
-      </td>
     </tr>
   </table>
 </div>
