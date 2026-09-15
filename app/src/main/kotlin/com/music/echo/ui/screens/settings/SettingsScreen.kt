@@ -139,27 +139,6 @@ highlightKey: String? = null) {
 
 
         val itemsList = buildList {
-            if (aiLyricsText.lowercase().contains(searchLower) || aiLyricsDesc.lowercase().contains(searchLower)) {
-                add(
-                    Material3SettingsItem(
-                        isHighlighted = (highlightKey == aiLyricsText),
-                        customIcon = {
-                            Text(
-                                text = "Ai",
-                                style = MaterialTheme.typography.titleMedium,
-                                fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
-                                color = if (highlightKey == aiLyricsText)
-                                    MaterialTheme.colorScheme.primary
-                                else
-                                    MaterialTheme.colorScheme.primary.copy(alpha = 0.9f)
-                            )
-                        },
-                        title = { Text(aiLyricsText) },
-                        description = { Text(aiLyricsDesc) },
-                        onClick = { navController.navigate("settings/ai") }
-                    )
-                )
-            }
 
 
             if (appearanceText.lowercase().contains(searchLower) || appearanceDesc.lowercase().contains(searchLower)) {
