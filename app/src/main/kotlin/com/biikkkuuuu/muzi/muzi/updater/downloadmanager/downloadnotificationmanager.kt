@@ -20,6 +20,9 @@ object DownloadNotificationManager {
     private const val CHANNEL_NAME = "Download Progress" 
     const val NOTIFICATION_ID = 5678
 
+    const val UPDATE_CHANNEL_ID = "app_updates_channel"
+    const val UPDATE_NOTIFICATION_ID = 5679
+
     fun initialize(context: Context) {
         appContext = context
         notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -37,6 +40,16 @@ object DownloadNotificationManager {
                 enableLights(false)
             }
             notificationManager.createNotificationChannel(channel)
+            
+            val updateChannel = NotificationChannel(
+                UPDATE_CHANNEL_ID,
+                "App Updates",
+                NotificationManager.IMPORTANCE_DEFAULT
+            ).apply {
+                description = "Notifications for new app updates"
+                setShowBadge(true)
+            }
+            notificationManager.createNotificationChannel(updateChannel)
         }
     }
 
@@ -313,5 +326,28 @@ object DownloadNotificationManager {
             .build()
 
         notificationManager.notify(NOTIFICATION_ID, notification)
+    }
+
+    fun showUpdateAvailableNotification(version: String) {
+        if (!this::notificationManager.isInitialized) return
+        
+        val intent = Intent(appContext, com.biikkkuuuu.muzi.MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        val pendingIntent = PendingIntent.getActivity(
+            appContext, 0, intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+        
+        val notification = NotificationCompat.Builder(appContext, UPDATE_CHANNEL_ID)
+            .setSmallIcon(R.drawable.ic_qs_echo_logo)
+            .setContentTitle("Update Available")
+            .setContentText("Muzi Music $version is ready to install!")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
+            .build()
+            
+        notificationManager.notify(UPDATE_NOTIFICATION_ID, notification)
     }
 }

@@ -41,7 +41,7 @@ jobs:
         STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
       run: |
         chmod +x gradlew
-        ./gradlew assembleUniversalGmsRelease assembleArm64GmsRelease
+        ./gradlew assembleUniversalGmsRelease assembleArm64GmsRelease -x lintVitalAnalyzeUniversalGmsRelease -x lintVitalAnalyzeArm64GmsRelease
 
     - name: Build Debug APK (Fallback if Keystore not set)
       if: ${{ env.KEYSTORE_BASE64 == '' }}

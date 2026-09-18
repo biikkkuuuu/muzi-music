@@ -639,6 +639,10 @@ class MainActivity : ComponentActivity() {
                                 startupUpdateVersion = tag
                                 startupChangelog = changelog
                                 showStartupUpdateDialog = true
+                                
+                                if (com.biikkkuuuu.muzi.muzi.updater.getUpdateNotificationsSetting(this@MainActivity)) {
+                                    com.biikkkuuuu.muzi.muzi.updater.downloadmanager.DownloadNotificationManager.showUpdateAvailableNotification(tag)
+                                }
                             }
                         },
                         onError = {}
