@@ -34,6 +34,12 @@ Muzi Music delivers a seamless, premium listening experience by leveraging YouTu
 
 ---
 
+## Releases
+
+Download the latest version of Muzi Music from the [Releases Page](https://github.com/biikkkuuuu/muzi-music/releases/latest).
+
+---
+
 ## Screenshots
 
 <div align="left">
@@ -232,7 +238,7 @@ Muzi Music stands on the shoulders of several excellent open-source projects. Si
 | **[Better Lyrics](https://better-lyrics.boidu.dev/)** | Lyrics enhancement and synchronization |
 | **[SimpMusic](https://github.com/maxrave-dev/SimpMusic)** | Lyrics implementation reference |
 | **[Music Recognizer](https://github.com/aleksey-saenko/MusicRecognizer)** | Audio recognition (Muzi Find) |
-| **[BravePipe](https://github.com/bravepipeproject/BravePipe)** | Decryption handling and backup playback engine |
+| **InnerTube** | Decryption handling and backup playback engine |
 
 ---
 
