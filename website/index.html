@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muzi Music — Unbox Music Worth Talking About</title>
+    <meta name="description" content="Join the music club that's anything but traditional. Stream millions of ad-free tracks with synced lyrics, custom wavy seekbars, and offline downloads.">
+
+    <!-- Google Fonts: Syne, Plus Jakarta Sans, Caveat (Handwritten) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Lenis Smooth Scroll, Three.js & GSAP -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.css">
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="#" class="header-logo">
+                <div class="logo-icon-svg">
+                    <svg viewBox="0 0 100 100" fill="none">
+                        <circle cx="50" cy="50" r="45" fill="#000"/>
+                        <circle cx="50" cy="50" r="20" fill="#F9EA57"/>
+                        <circle cx="50" cy="50" r="8" fill="#000"/>
+                    </svg>
+                </div>
+                <span class="logo-text">MUZI<span class="logo-sub">MUSIC</span></span>
+            </a>
+
+            <nav class="header-nav">
+                <a href="#hero" class="nav-btn">Overview</a>
+                <a href="#drops" class="nav-btn">Monthly Drops</a>
+                <a href="#wavy-player" class="nav-btn">Wavy Player</a>
+                <a href="#features" class="nav-btn">Features</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="https://github.com/biikkkuuuu/muzi-music/releases/latest" target="_blank" class="button-alt">
+                    <span class="button-alt__text">Log-in / Get App</span>
+                    <span class="button-alt__icon">
+                        <svg width="14" height="13" viewBox="0 0 14 13" fill="none">
+                            <path d="M13.58 5.66v.845l-5.994 5.66-1.71-2.063a61.427 61.427 0 0 1 4.265-2.988l-.02-.078c-1.828.196-4.107.294-6.387.294H0V4.835h3.734c2.28 0 4.56.098 6.387.294l.02-.059a67.638 67.638 0 0 1-4.265-3.006L7.586 0l5.994 5.66Z" fill="currentColor"/>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 1: HERO (Vibrant Aardvark Yellow #F9EA57) -->
+    <section id="hero" class="hero-section is-bg-yellow">
+        <!-- 3D Floating Vinyl WebGL Canvas Background -->
+        <div id="hero-3d-canvas"></div>
+
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Unbox stories <br>
+                    <span class="title-accent">worth listening to</span>
+                </h1>
+                
+                <p class="hero-paragraph">
+                    Join the music app that's anything but traditional. Stream millions of tracks ad-free with real-time synchronized lyrics, custom wavy seekbars, and offline downloads delivered right to your device.
+                </p>
+
+                <div class="hero-actions-row">
+                    <a href="https://github.com/biikkkuuuu/muzi-music/releases/latest" target="_blank" class="button-alt is-large">
+                        <span class="button-alt__text">Get Muzi Music Free</span>
+                        <span class="button-alt__icon">
+                            <svg width="14" height="13" viewBox="0 0 14 13" fill="none">
+                                <path d="M13.58 5.66v.845l-5.994 5.66-1.71-2.063a61.427 61.427 0 0 1 4.265-2.988l-.02-.078c-1.828.196-4.107.294-6.387.294H0V4.835h3.734c2.28 0 4.56.098 6.387.294l.02-.059a67.638 67.638 0 0 1-4.265-3.006L7.586 0l5.994 5.66Z" fill="currentColor"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="hero-handwritten-note">
+                    <span class="handwritten-text">Shipping 100% ad-free audio to music lovers worldwide</span>
+                </div>
+            </div>
+
+            <!-- Hero Visual Card Overlay -->
+            <div class="hero-visual-card">
+                <div class="visual-card-inner">
+                    <div class="card-status-dot"></div>
+                    <div class="card-song-info">
+                        <span class="card-song-title" id="hero-song-title">Barbaad (Movie: Saiyaara)</span>
+                        <span class="card-song-artist" id="hero-song-artist">Jubin Nautiyal • Muzi Original</span>
+                    </div>
+                    <button class="hero-play-button" id="hero-play-btn" aria-label="Play Music">
+                        <i data-lucide="play" id="hero-icon-state"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Wavy Transition Divider -->
+        <div class="section-divider-wave">
+            <svg viewBox="0 0 1440 120" fill="none" preserveAspectRatio="none">
+                <path d="M0 0C240 80 480 120 720 120C960 120 1200 80 1440 0V120H0V0Z" fill="#FFFFFF"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- SECTION 2: MONTHLY DROPS (Crisp White #FFFFFF) -->
+    <section id="drops" class="drops-section is-bg-white">
+        <div class="section-container">
+            <div class="drops-header">
+                <div class="drops-header-text">
+                    <h2 class="section-heading-l">Our Sept drops</h2>
+                    <p class="section-sub-l">We drop fresh hits & curated mixes on the 1st of every month. Call us creatures of habit.</p>
+                </div>
+                <div class="drops-handwritten">
+                    <span class="handwritten-text">Discover hidden gems and buzzy new releases</span>
+                </div>
+            </div>
+
+            <!-- Aardvark Style Ears Cards Grid -->
+            <div class="cards-grid">
+                
+                <!-- Card 1: Purple Theme -->
+                <div class="drop-card" data-color="#32225f">
+                    <div class="card-top-ears" style="background-color: #32225f;">
+                        <div class="card-ears-svg">
+                            <svg viewBox="0 0 44 45" fill="none" class="ear-left"><path d="M1.335.198c.671-.316 1.5-.254 2.186.187C27.678 16.847 39.839 36.953 44 45h-6.048c-2.382-1.604-6.964-3.674-15.652-4.814C2.999 37.666-.665 14.174.09 2.04.152 1.28.589.515 1.335.198Z" fill="#32225f"/></svg>
+                            <svg viewBox="0 0 29 80" fill="none" class="ear-right"><path d="M19.388.879c.667-.771 1.647-1.018 2.559-.807.912.21 1.682.956 1.926 1.861C34.595 38.09 25.79 69.237 21.823 80h-4.188c-.17-4.22-2.739-13.318-10.975-22.064-8.493-9.099-8.88-21.913-1.063-37.23C11.221 9.603 19.091 1.266 19.388.879Z" fill="#32225f"/></svg>
+                        </div>
+                    </div>
+                    <div class="card-content-box" style="background-color: #32225f;">
+                        <div class="card-cover-wrapper">
+                            <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=500&auto=format&fit=crop" alt="Barbaad Cover" class="card-cover-img">
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">Barbaad</h3>
+                            <p class="card-desc">A soulful, haunting melody following love and heartache in a modern cinematic saga.</p>
+                            <div class="card-tags">
+                                <span class="tag-pill" style="background:#ff9d00; color:#000;">Romantic</span>
+                                <span class="tag-pill" style="background:#e62701; color:#fff;">Trending #1</span>
+                            </div>
+                            <button class="button-alt is-small card-play-trigger" data-song-idx="0">
+                                <span class="button-alt__text">Play Now</span>
+                                <span class="button-alt__icon">
+                                    <svg width="14" height="13" viewBox="0 0 14 13" fill="none"><path d="M13.58 5.66v.845l-5.994 5.66-1.71-2.063a61.427 61.427 0 0 1 4.265-2.988l-.02-.078c-1.828.196-4.107.294-6.387.294H0V4.835h3.734c2.28 0 4.56.098 6.387.294l.02-.059a67.638 67.638 0 0 1-4.265-3.006L7.586 0l5.994 5.66Z" fill="currentColor"/></svg>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Green Theme -->
+                <div class="drop-card" data-color="#6abf4c">
+                    <div class="card-top-ears" style="background-color: #6abf4c;">
+                        <div class="card-ears-svg">
+                            <svg viewBox="0 0 44 45" fill="none" class="ear-left"><path d="M1.335.198c.671-.316 1.5-.254 2.186.187C27.678 16.847 39.839 36.953 44 45h-6.048c-2.382-1.604-6.964-3.674-15.652-4.814C2.999 37.666-.665 14.174.09 2.04.152 1.28.589.515 1.335.198Z" fill="#6abf4c"/></svg>
+                            <svg viewBox="0 0 29 80" fill="none" class="ear-right"><path d="M19.388.879c.667-.771 1.647-1.018 2.559-.807.912.21 1.682.956 1.926 1.861C34.595 38.09 25.79 69.237 21.823 80h-4.188c-.17-4.22-2.739-13.318-10.975-22.064-8.493-9.099-8.88-21.913-1.063-37.23C11.221 9.603 19.091 1.266 19.388.879Z" fill="#6abf4c"/></svg>
+                        </div>
+                    </div>
+                    <div class="card-content-box" style="background-color: #6abf4c;">
+                        <div class="card-cover-wrapper">
+                            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=500&auto=format&fit=crop" alt="Pardesiya Cover" class="card-cover-img">
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">Pardesiya</h3>
+                            <p class="card-desc">Electrifying dance anthem from Param Sundari featuring high-energy beats & rich vocals.</p>
+                            <div class="card-tags">
+                                <span class="tag-pill" style="background:#000; color:#fff;">Bollywood</span>
+                                <span class="tag-pill" style="background:#ff9d00; color:#000;">Dance Hits</span>
+                            </div>
+                            <button class="button-alt is-small card-play-trigger" data-song-idx="1">
+                                <span class="button-alt__text">Play Now</span>
+                                <span class="button-alt__icon">
+                                    <svg width="14" height="13" viewBox="0 0 14 13" fill="none"><path d="M13.58 5.66v.845l-5.994 5.66-1.71-2.063a61.427 61.427 0 0 1 4.265-2.988l-.02-.078c-1.828.196-4.107.294-6.387.294H0V4.835h3.734c2.28 0 4.56.098 6.387.294l.02-.059a67.638 67.638 0 0 1-4.265-3.006L7.586 0l5.994 5.66Z" fill="currentColor"/></svg>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Orange/Red Theme -->
+                <div class="drop-card" data-color="#c13a1f">
+                    <div class="card-top-ears" style="background-color: #c13a1f;">
+                        <div class="card-ears-svg">
+                            <svg viewBox="0 0 44 45" fill="none" class="ear-left"><path d="M1.335.198c.671-.316 1.5-.254 2.186.187C27.678 16.847 39.839 36.953 44 45h-6.048c-2.382-1.604-6.964-3.674-15.652-4.814C2.999 37.666-.665 14.174.09 2.04.152 1.28.589.515 1.335.198Z" fill="#c13a1f"/></svg>
+                            <svg viewBox="0 0 29 80" fill="none" class="ear-right"><path d="M19.388.879c.667-.771 1.647-1.018 2.559-.807.912.21 1.682.956 1.926 1.861C34.595 38.09 25.79 69.237 21.823 80h-4.188c-.17-4.22-2.739-13.318-10.975-22.064-8.493-9.099-8.88-21.913-1.063-37.23C11.221 9.603 19.091 1.266 19.388.879Z" fill="#c13a1f"/></svg>
+                        </div>
+                    </div>
+                    <div class="card-content-box" style="background-color: #c13a1f;">
+                        <div class="card-cover-wrapper">
+                            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=500&auto=format&fit=crop" alt="Midnight Chill Cover" class="card-cover-img">
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">Midnight Lo-Fi</h3>
+                            <p class="card-desc">Deep relaxing lo-fi beats designed for late night study, focus, and coding sessions.</p>
+                            <div class="card-tags">
+                                <span class="tag-pill" style="background:#b6beff; color:#000;">Lo-Fi Chill</span>
+                                <span class="tag-pill" style="background:#000; color:#fff;">Instrumental</span>
+                            </div>
+                            <button class="button-alt is-small card-play-trigger" data-song-idx="2">
+                                <span class="button-alt__text">Play Now</span>
+                                <span class="button-alt__icon">
+                                    <svg width="14" height="13" viewBox="0 0 14 13" fill="none"><path d="M13.58 5.66v.845l-5.994 5.66-1.71-2.063a61.427 61.427 0 0 1 4.265-2.988l-.02-.078c-1.828.196-4.107.294-6.387.294H0V4.835h3.734c2.28 0 4.56.098 6.387.294l.02-.059a67.638 67.638 0 0 1-4.265-3.006L7.586 0l5.994 5.66Z" fill="currentColor"/></svg>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Section Divider Wave -->
+        <div class="section-divider-wave inverted">
+            <svg viewBox="0 0 1440 120" fill="none" preserveAspectRatio="none">
+                <path d="M0 0C240 80 480 120 720 120C960 120 1200 80 1440 0V120H0V0Z" fill="#FF5E36"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- SECTION 3: WAVY PLAYER DEMO (Vibrant Coral Orange #FF5E36) -->
+    <section id="wavy-player" class="player-section is-bg-orange">
+        <div class="section-container">
+            <div class="player-hero-box">
+                <div class="player-top-tag">
+                    <span class="pill-tag">Material 3 Expressive UI</span>
+                    <span>Wavy Sine Wave Seekbar</span>
+                </div>
+
+                <div class="player-interactive-layout">
+                    <!-- Album Cover Art with 3D Tilt -->
+                    <div class="player-album-art" id="player-album-card">
+                        <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=600&auto=format&fit=crop" alt="Album Cover" class="album-img-active" id="live-cover">
+                    </div>
+
+                    <!-- Song Controls & Synced Lyrics -->
+                    <div class="player-controls-wrap">
+                        <div class="song-meta">
+                            <h2 class="song-meta-title" id="live-title">Barbaad (Movie: Saiyaara)</h2>
+                            <p class="song-meta-artist" id="live-artist">Jubin Nautiyal</p>
+                        </div>
+
+                        <!-- Real-time Synced Lyrics Box -->
+                        <div class="synced-lyrics-box">
+                            <span class="lyrics-live-tag">SYNCED LYRICS</span>
+                            <p class="lyric-line line-prev" id="lyric-prev">तुझ से दूर मैं एक ही वजह के लिए हूँ</p>
+                            <p class="lyric-line line-curr" id="lyric-curr">तुझे छू लूँ तो कुछ मुझे हो जाएगा</p>
+                            <p class="lyric-line line-next" id="lyric-next">जो मैं चाहता ना हो मुझ को</p>
+                        </div>
+
+                        <!-- Wavy Seekbar Custom Canvas -->
+                        <div class="wavy-seekbar-box">
+                            <div class="seekbar-timestamps">
+                                <span id="time-current">0:46</span>
+                                <span id="time-total">3:44</span>
+                            </div>
+                            <div class="wavy-track-container" id="wavy-track-click">
+                                <svg class="wavy-svg-element" viewBox="0 0 500 30" preserveAspectRatio="none">
+                                    <path id="wavy-active-path" class="wavy-path-active" d="M 0 15 Q 15 5, 30 15 T 60 15 T 90 15 T 120 15 T 150 15 T 180 15 T 210 15 L 210 15"></path>
+                                    <path id="wavy-inactive-path" class="wavy-path-inactive" d="M 210 15 L 500 15"></path>
+                                </svg>
+                                <div class="wavy-thumb-dot" id="wavy-thumb-dot" style="left: 42%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="player-actions">
+                            <button class="p-btn" id="p-shuffle"><i data-lucide="shuffle"></i></button>
+                            <button class="p-btn" id="p-prev"><i data-lucide="skip-back"></i></button>
+                            <button class="p-btn-play" id="p-play-toggle">
+                                <i data-lucide="play" id="p-play-icon"></i>
+                            </button>
+                            <button class="p-btn" id="p-next"><i data-lucide="skip-forward"></i></button>
+                            <button class="p-btn" id="p-repeat"><i data-lucide="repeat"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider-wave">
+            <svg viewBox="0 0 1440 120" fill="none" preserveAspectRatio="none">
+                <path d="M0 0C240 80 480 120 720 120C960 120 1200 80 1440 0V120H0V0Z" fill="#FBF9F4"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- SECTION 4: FEATURES GRID (Soft Cream #FBF9F4) -->
+    <section id="features" class="features-section is-bg-cream">
+        <div class="section-container">
+            <div class="features-header text-center">
+                <h2 class="section-heading-l text-black">Built for music lovers</h2>
+                <p class="section-sub-l text-gray">Everything you need for an uninterrupted, studio-grade listening experience.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="f-card">
+                    <div class="f-icon-box yellow"><i data-lucide="waves"></i></div>
+                    <h3>Wavy Sine Seekbar</h3>
+                    <p>Material 3 Expressive sine wave seekbar with smooth live animation.</p>
+                </div>
+
+                <div class="f-card">
+                    <div class="f-icon-box green"><i data-lucide="mic-2"></i></div>
+                    <h3>Synced Lyrics</h3>
+                    <p>Real-time per-word lyric scrolling powered by LrcLib & Paxsenix.</p>
+                </div>
+
+                <div class="f-card">
+                    <div class="f-icon-box purple"><i data-lucide="download"></i></div>
+                    <h3>Offline Manager</h3>
+                    <p>High-speed background downloader for tracks, albums, and playlists.</p>
+                </div>
+
+                <div class="f-card">
+                    <div class="f-icon-box red"><i data-lucide="sliders"></i></div>
+                    <h3>Axion Equalizer</h3>
+                    <p>Multi-band audio EQ with custom bass boost and loudness enhancer.</p>
+                </div>
+
+                <div class="f-card">
+                    <div class="f-icon-box blue"><i data-lucide="disc"></i></div>
+                    <h3>Muzi Find</h3>
+                    <p>Instant audio recognition to identify songs playing around you.</p>
+                </div>
+
+                <div class="f-card">
+                    <div class="f-icon-box black"><i data-lucide="shield-check"></i></div>
+                    <h3>100% Ad-Free</h3>
+                    <p>Zero audio ads, open-source codebase built for user privacy.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider-wave">
+            <svg viewBox="0 0 1440 120" fill="none" preserveAspectRatio="none">
+                <path d="M0 0C240 80 480 120 720 120C960 120 1200 80 1440 0V120H0V0Z" fill="#111827"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- SECTION 5: DOWNLOAD CTA BANNER (Deep Navy #111827) -->
+    <section class="cta-section is-bg-navy">
+        <div class="section-container text-center">
+            <h2 class="cta-heading">Ready to unbox ad-free music?</h2>
+            <p class="cta-sub">Download Muzi Music for Android today. Free, open source, and forever ad-free.</p>
+
+            <div class="cta-buttons-row">
+                <a href="https://github.com/biikkkuuuu/muzi-music/releases/latest" target="_blank" class="button-alt is-large">
+                    <span class="button-alt__text">Download GMS APK</span>
+                    <span class="button-alt__icon">
+                        <svg width="14" height="13" viewBox="0 0 14 13" fill="none"><path d="M13.58 5.66v.845l-5.994 5.66-1.71-2.063a61.427 61.427 0 0 1 4.265-2.988l-.02-.078c-1.828.196-4.107.294-6.387.294H0V4.835h3.734c2.28 0 4.56.098 6.387.294l.02-.059a67.638 67.638 0 0 1-4.265-3.006L7.586 0l5.994 5.66Z" fill="currentColor"/></svg>
+                    </span>
+                </a>
+
+                <a href="https://github.com/biikkkuuuu/muzi-music/releases/latest" target="_blank" class="button-alt is-large is-white">
+                    <span class="button-alt__text">Download FOSS APK</span>
+                    <span class="button-alt__icon">
+                        <svg width="14" height="13" viewBox="0 0 14 13" fill="none"><path d="M13.58 5.66v.845l-5.994 5.66-1.71-2.063a61.427 61.427 0 0 1 4.265-2.988l-.02-.078c-1.828.196-4.107.294-6.387.294H0V4.835h3.734c2.28 0 4.56.098 6.387.294l.02-.059a67.638 67.638 0 0 1-4.265-3.006L7.586 0l5.994 5.66Z" fill="currentColor"/></svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="logo-text text-white">MUZI<span class="logo-sub">MUSIC</span></span>
+                <p>Developed & Maintained by <a href="https://github.com/biikkkuuuu" target="_blank">@biikkkuuuu</a></p>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/biikkkuuuu/muzi-music" target="_blank"><i data-lucide="github"></i> GitHub</a>
+                <a href="https://t.me/biikkkuuuuu" target="_blank"><i data-lucide="send"></i> Telegram</a>
+                <a href="https://instagram.com/biikkkuuuu" target="_blank"><i data-lucide="instagram"></i> Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Audio Element for Demo Playback -->
+    <audio id="demo-audio-player" crossorigin="anonymous"></audio>
+
+    <script src="app.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Upstream InnerTune strings --><!-- Do not add new features here --><!-- Try to re-use strings here, but be careful on its usage e.g. verb vs noun --><!-- "InnerTune" is replaced with "echomusic" --><!-- Translators: Do not modify this file for translations, use InnerTune's Weblate instead. --><resources>
+<!-- Upstream InnerTune strings --><!-- Do not add new features here --><!-- Try to re-use strings here, but be careful on its usage e.g. verb vs noun --><!-- "InnerTune" is replaced with "muzi" --><!-- Translators: Do not modify this file for translations, use InnerTune's Weblate instead. --><resources>
     <!-- Bottom navigation -->
     <string name="home">خانه</string>
     <string name="music">موسیقی</string>
@@ -415,33 +415,33 @@
     <string name="recognition_notification_processing">در حال شناسایی…</string>
     <string name="recognition_notification_no_match">هیچ مورد منطبقی یافت نشد</string>
     <string name="recognition_notification_failed">تشخیص ناموفق بود</string>
-    <string name="listen_on_echo_music">در Muzi گوش دهید</string>
+    <string name="listen_on__music">در Muzi گوش دهید</string>
     <string name="qs_tile_music_recognizer">تشخیص موسیقی</string>
-    <string name="echo_brain_beta">Muzi Brain (بتا)</string>
-    <string name="echo_brain_enable">فعال‌سازی Muzi Brain</string>
-    <string name="echo_brain_enable_desc">پیشنهادهای هوش مصنوعی را بر اساس عادت‌های شنیداری شما به‌طور خودکار اضافه می‌کند</string>
-    <string name="echo_brain_profile_statistics">آمار نمایه</string>
-    <string name="echo_brain_learning_level">سطح یادگیری</string>
-    <string name="echo_brain_initiate">آغاز</string>
-    <string name="echo_brain_total_interactions">مجموع تعامل‌ها</string>
-    <string name="echo_brain_interactions_tracked">%1$d تعامل ثبت شده است</string>
-    <string name="echo_brain_discovered_genres">سبک‌های کشف‌شده</string>
-    <string name="echo_brain_distinct_genres_identified">%1$d سبک متمایز شناسایی شده است</string>
-    <string name="echo_brain_analyzed_artists">هنرمندان تحلیل‌شده</string>
-    <string name="echo_brain_artists_mapped">%1$d هنرمند نگاشت شده است</string>
-    <string name="echo_brain_data_management">مدیریت داده‌ها</string>
-    <string name="echo_brain_export_profile">برون‌بری نمایه</string>
-    <string name="echo_brain_export_profile_desc">نقشهٔ عصبی خود را در یک فایل ذخیره کنید</string>
-    <string name="echo_brain_import_profile">درون‌ریزی نمایه</string>
-    <string name="echo_brain_import_profile_desc">یک نقشهٔ عصبی ذخیره‌شده را بارگذاری کنید</string>
-    <string name="echo_brain_reset_profile">بازنشانی نمایه</string>
-    <string name="echo_brain_reset_profile_desc">تمام داده‌های آموخته‌شده را پاک کنید و از نو شروع کنید</string>
-    <string name="echo_brain_reset_neural_profile">بازنشانی نمایهٔ عصبی</string>
-    <string name="echo_brain_reset_neural_profile_desc">این کار تمام ترجیحات آموخته‌شده را برای همیشه حذف می‌کند. موتور یادگیری را از ابتدا آغاز خواهد کرد.</string>
-    <string name="echo_brain_profile_exported_successfully">نمایه با موفقیت برون‌بری شد</string>
-    <string name="echo_brain_export_failed">برون‌بری ناموفق بود</string>
-    <string name="echo_brain_profile_imported_successfully">نمایه با موفقیت درون‌ریزی شد</string>
-    <string name="echo_brain_import_failed_invalid_file">درون‌ریزی ناموفق بود، فایل نامعتبر است</string>
+    <string name="_brain_beta">Muzi Brain (بتا)</string>
+    <string name="_brain_enable">فعال‌سازی Muzi Brain</string>
+    <string name="_brain_enable_desc">پیشنهادهای هوش مصنوعی را بر اساس عادت‌های شنیداری شما به‌طور خودکار اضافه می‌کند</string>
+    <string name="_brain_profile_statistics">آمار نمایه</string>
+    <string name="_brain_learning_level">سطح یادگیری</string>
+    <string name="_brain_initiate">آغاز</string>
+    <string name="_brain_total_interactions">مجموع تعامل‌ها</string>
+    <string name="_brain_interactions_tracked">%1$d تعامل ثبت شده است</string>
+    <string name="_brain_discovered_genres">سبک‌های کشف‌شده</string>
+    <string name="_brain_distinct_genres_identified">%1$d سبک متمایز شناسایی شده است</string>
+    <string name="_brain_analyzed_artists">هنرمندان تحلیل‌شده</string>
+    <string name="_brain_artists_mapped">%1$d هنرمند نگاشت شده است</string>
+    <string name="_brain_data_management">مدیریت داده‌ها</string>
+    <string name="_brain_export_profile">برون‌بری نمایه</string>
+    <string name="_brain_export_profile_desc">نقشهٔ عصبی خود را در یک فایل ذخیره کنید</string>
+    <string name="_brain_import_profile">درون‌ریزی نمایه</string>
+    <string name="_brain_import_profile_desc">یک نقشهٔ عصبی ذخیره‌شده را بارگذاری کنید</string>
+    <string name="_brain_reset_profile">بازنشانی نمایه</string>
+    <string name="_brain_reset_profile_desc">تمام داده‌های آموخته‌شده را پاک کنید و از نو شروع کنید</string>
+    <string name="_brain_reset_neural_profile">بازنشانی نمایهٔ عصبی</string>
+    <string name="_brain_reset_neural_profile_desc">این کار تمام ترجیحات آموخته‌شده را برای همیشه حذف می‌کند. موتور یادگیری را از ابتدا آغاز خواهد کرد.</string>
+    <string name="_brain_profile_exported_successfully">نمایه با موفقیت برون‌بری شد</string>
+    <string name="_brain_export_failed">برون‌بری ناموفق بود</string>
+    <string name="_brain_profile_imported_successfully">نمایه با موفقیت درون‌ریزی شد</string>
+    <string name="_brain_import_failed_invalid_file">درون‌ریزی ناموفق بود، فایل نامعتبر است</string>
     <string name="listenbrainz_scrobbling">ثبت شنیده‌ها در ListenBrainz</string>
     <string name="listenbrainz_scrobbling_description">قطعه‌هایی را که گوش داده‌اید به‌طور خودکار به ListenBrainz ارسال کنید</string>
     <string name="set_listenbrainz_token">تنظیم توکن ListenBrainz</string>

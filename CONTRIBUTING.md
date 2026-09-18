@@ -296,7 +296,7 @@ We provide issue templates for:
 
 ### Code Organization
 
-Path: `app/src/main/kotlin/com/music/echo/`
+Path: `app/src/main/kotlin/com/music//`
 
 > **Note:** We are currently in Phase 1 of modularizing the application. The `lyrics` and `playback` code, along with shared `constants` and `models`, are actively being migrated out of `:app` into dedicated `:lyrics`, `:playback`, and `:core` Gradle modules. The structure below represents the legacy monolithic structure until migration is complete.
 
@@ -310,7 +310,7 @@ db/
   daos/         Room DAOs
 di/             Hilt modules (AppModule, NetworkModule, Qualifiers, entry points)
 discord/        Discord Rich Presence integration
-echomusic/      Core app-level classes
+muzi/      Core app-level classes
 eq/             Equalizer
 extensions/     Kotlin extension functions
 listentogether/ "Listen Together" synced group listening feature
@@ -340,7 +340,7 @@ widget/         Home-screen widget
 - **Functions**: camelCase (`playMusic()`)
 - **Variables**: camelCase (`currentSong`)
 - **Constants**: UPPER_SNAKE_CASE (`MAX_VOLUME`)
-- **Packages**: lowercase (`com.maxrave.echo.ui`)
+- **Packages**: lowercase (`com.maxrave..ui`)
 
 ## Testing
 

@@ -491,7 +491,7 @@
     <string name="recognition_notification_processing">Identifying…</string>
     <string name="recognition_notification_no_match">No match found</string>
     <string name="recognition_notification_failed">Recognition failed</string>
-    <string name="listen_on_echo_music">Listen on Muzi</string>
+    <string name="listen_on__music">Listen on Muzi</string>
     <string name="qs_tile_music_recognizer">Recognize music</string>
     <string name="listenbrainz_scrobbling">ListenBrainz scrobbling</string>
     <string name="listenbrainz_scrobbling_description">Automatically submit your listened tracks to ListenBrainz</string>
@@ -636,7 +636,7 @@
     <string name="display_density_desc">Manage Display density settings</string>
     <string name="download_quality_title_desc">Manage Download Quality settings</string>
     <string name="downloaded_songs_desc">Manage Downloaded songs settings</string>
-    <string name="echomusic_1_desc">Manage Vivi Music (Fluid) settings</string>
+    <string name="muzi_1_desc">Manage Vivi Music (Fluid) settings</string>
     <string name="enable_desc">Enable or disable</string>
     <string name="enable_authentication_desc">Enable or disable authentication</string>
     <string name="enable_dynamic_theme_desc">Enable or disable dynamic theme</string>
@@ -842,40 +842,40 @@
     <string name="listen_together_choose_server_desc">Manage Choose server settings</string>
 
     <!-- Muzi Brain -->
-    <string name="echo_brain_analyzed_artists">Analyzed Artists</string>
-    <plurals name="echo_brain_artists_mapped">
+    <string name="_brain_analyzed_artists">Analyzed Artists</string>
+    <plurals name="_brain_artists_mapped">
         <item quantity="one">%1$d artist mapped</item>
         <item quantity="other">%1$d artists mapped</item>
     </plurals>
-    <string name="echo_brain_beta">Muzi Brain (Beta)</string>
-    <string name="echo_brain_data_management">Data Management</string>
-    <string name="echo_brain_discovered_genres">Discovered Genres</string>
-    <plurals name="echo_brain_distinct_genres_identified">
+    <string name="_brain_beta">Muzi Brain (Beta)</string>
+    <string name="_brain_data_management">Data Management</string>
+    <string name="_brain_discovered_genres">Discovered Genres</string>
+    <plurals name="_brain_distinct_genres_identified">
         <item quantity="one">%1$d distinct genre identified</item>
         <item quantity="other">%1$d distinct genres identified</item>
     </plurals>
-    <string name="echo_brain_enable">Enable Muzi Brain</string>
-    <string name="echo_brain_enable_desc">Automatically add AI recommendations based on your listening habits</string>
-    <string name="echo_brain_export_failed">Export failed</string>
-    <string name="echo_brain_export_profile">Export Profile</string>
-    <string name="echo_brain_export_profile_desc">Save your neural map to a file</string>
-    <string name="echo_brain_import_failed_invalid_file">Import failed: invalid file</string>
-    <string name="echo_brain_import_profile">Import Profile</string>
-    <string name="echo_brain_import_profile_desc">Load a previously saved neural map</string>
-    <string name="echo_brain_initiate">Initiate</string>
-    <plurals name="echo_brain_interactions_tracked">
+    <string name="_brain_enable">Enable Muzi Brain</string>
+    <string name="_brain_enable_desc">Automatically add AI recommendations based on your listening habits</string>
+    <string name="_brain_export_failed">Export failed</string>
+    <string name="_brain_export_profile">Export Profile</string>
+    <string name="_brain_export_profile_desc">Save your neural map to a file</string>
+    <string name="_brain_import_failed_invalid_file">Import failed: invalid file</string>
+    <string name="_brain_import_profile">Import Profile</string>
+    <string name="_brain_import_profile_desc">Load a previously saved neural map</string>
+    <string name="_brain_initiate">Initiate</string>
+    <plurals name="_brain_interactions_tracked">
         <item quantity="one">%1$d interaction tracked</item>
         <item quantity="other">%1$d interactions tracked</item>
     </plurals>
-    <string name="echo_brain_learning_level">Learning Level</string>
-    <string name="echo_brain_profile_exported_successfully">Profile exported successfully</string>
-    <string name="echo_brain_profile_imported_successfully">Profile imported successfully</string>
-    <string name="echo_brain_profile_statistics">Profile Statistics</string>
-    <string name="echo_brain_reset_neural_profile">Reset Neural Profile</string>
-    <string name="echo_brain_reset_neural_profile_desc">This will permanently delete all learned preferences. The engine will start learning from scratch.</string>
-    <string name="echo_brain_reset_profile">Reset Profile</string>
-    <string name="echo_brain_reset_profile_desc">Erase all learned data and start over</string>
-    <string name="echo_brain_total_interactions">Total Interactions</string>
+    <string name="_brain_learning_level">Learning Level</string>
+    <string name="_brain_profile_exported_successfully">Profile exported successfully</string>
+    <string name="_brain_profile_imported_successfully">Profile imported successfully</string>
+    <string name="_brain_profile_statistics">Profile Statistics</string>
+    <string name="_brain_reset_neural_profile">Reset Neural Profile</string>
+    <string name="_brain_reset_neural_profile_desc">This will permanently delete all learned preferences. The engine will start learning from scratch.</string>
+    <string name="_brain_reset_profile">Reset Profile</string>
+    <string name="_brain_reset_profile_desc">Erase all learned data and start over</string>
+    <string name="_brain_total_interactions">Total Interactions</string>
 
     <!-- Missing translations - added to fix ExtraTranslation CI -->
     <string name="add_folder">Add folder</string>

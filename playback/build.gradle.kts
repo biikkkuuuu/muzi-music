@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.music.echo.playback"
+    namespace = "com.biikkkuuuu.muzi.playback"
     compileSdk = 36
     defaultConfig { minSdk = 26 }
     compileOptions {

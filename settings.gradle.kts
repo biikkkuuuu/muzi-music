@@ -29,7 +29,7 @@ include(
     ":shazamkit",
     ":artistvideo",
     ":canvas",
-    ":echomusiccanvas",
+    ":muzicanvas",
     ":applecanvas",
     ":unison",
     ":core",
@@ -39,7 +39,7 @@ include(
 
 
 // Use a local copy of BravePipe Extractor.
-// We assume, that echomusic and BravePipe Extractor have the same parent directory.
+// We assume, that muzi and BravePipe Extractor have the same parent directory.
 // If this is not the case, please change the path in includeBuild().
 //
 // For this to work you also need to change the implementation in innertube/build.gradle.kts

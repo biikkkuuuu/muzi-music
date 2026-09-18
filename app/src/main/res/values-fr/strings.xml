@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Upstream InnerTune strings --><!-- Do not add new features here --><!-- Try to re-use strings here, but be careful on its usage e.g. verb vs noun --><!-- "InnerTune" is replaced with "echomusic" --><!-- Translators: Do not modify this file for translations, use InnerTune's Weblate instead. --><resources>
+<!-- Upstream InnerTune strings --><!-- Do not add new features here --><!-- Try to re-use strings here, but be careful on its usage e.g. verb vs noun --><!-- "InnerTune" is replaced with "muzi" --><!-- Translators: Do not modify this file for translations, use InnerTune's Weblate instead. --><resources>
     <!-- Bottom navigation -->
     <string name="home">Accueil</string>
     <string name="songs">Titres</string>
@@ -428,33 +428,33 @@
     <string name="recognition_notification_processing">Identification…</string>
     <string name="recognition_notification_no_match">Aucun résultat trouvé</string>
     <string name="recognition_notification_failed">Échec de la reconnaissance</string>
-    <string name="listen_on_echo_music">Écoutez sur Muzi</string>
+    <string name="listen_on__music">Écoutez sur Muzi</string>
     <string name="qs_tile_music_recognizer">Reconnaître un morceau de musique</string>
-    <string name="echo_brain_beta">Muzi Brain (Bêta)</string>
-    <string name="echo_brain_enable">Activer Muzi Brain</string>
-    <string name="echo_brain_enable_desc">Intégrer automatiquement des recommandations générées par l\'IA en fonction de vos habitudes d\'écoute</string>
-    <string name="echo_brain_profile_statistics">Statistiques du profil</string>
-    <string name="echo_brain_learning_level">Niveau d\'apprentissage</string>
-    <string name="echo_brain_initiate">Initié</string>
-    <string name="echo_brain_total_interactions">Nombre total d\'interactions</string>
-    <string name="echo_brain_interactions_tracked">%1$d interactions enregistrées</string>
-    <string name="echo_brain_discovered_genres">Genres découverts</string>
-    <string name="echo_brain_distinct_genres_identified">%1$d genres distincts identifiés</string>
-    <string name="echo_brain_analyzed_artists">Artistes analysés</string>
-    <string name="echo_brain_artists_mapped">%1$d artistes répertoriés</string>
-    <string name="echo_brain_data_management">Gestion des données</string>
-    <string name="echo_brain_export_profile">Profil d\'exportation</string>
-    <string name="echo_brain_export_profile_desc">Enregistrez votre carte neuronale dans un fichier</string>
-    <string name="echo_brain_import_profile">Profil d\'importation</string>
-    <string name="echo_brain_import_profile_desc">Charger une carte neuronale précédemment enregistrée</string>
-    <string name="echo_brain_reset_profile">Réinitialiser le profil</string>
-    <string name="echo_brain_reset_profile_desc">Effacer toutes les données enregistrées et recommencer depuis le début</string>
-    <string name="echo_brain_reset_neural_profile">Réinitialiser le profil neuronal</string>
-    <string name="echo_brain_reset_neural_profile_desc">Cette opération supprimera définitivement toutes les préférences enregistrées. Le moteur recommencera l\'apprentissage depuis le début.</string>
-    <string name="echo_brain_profile_exported_successfully">Le profil a été exporté avec succès</string>
-    <string name="echo_brain_export_failed">Échec de l\'exportation</string>
-    <string name="echo_brain_profile_imported_successfully">Le profil a été importé avec succès</string>
-    <string name="echo_brain_import_failed_invalid_file">Échec de l\'importation — fichier non valide</string>
+    <string name="_brain_beta">Muzi Brain (Bêta)</string>
+    <string name="_brain_enable">Activer Muzi Brain</string>
+    <string name="_brain_enable_desc">Intégrer automatiquement des recommandations générées par l\'IA en fonction de vos habitudes d\'écoute</string>
+    <string name="_brain_profile_statistics">Statistiques du profil</string>
+    <string name="_brain_learning_level">Niveau d\'apprentissage</string>
+    <string name="_brain_initiate">Initié</string>
+    <string name="_brain_total_interactions">Nombre total d\'interactions</string>
+    <string name="_brain_interactions_tracked">%1$d interactions enregistrées</string>
+    <string name="_brain_discovered_genres">Genres découverts</string>
+    <string name="_brain_distinct_genres_identified">%1$d genres distincts identifiés</string>
+    <string name="_brain_analyzed_artists">Artistes analysés</string>
+    <string name="_brain_artists_mapped">%1$d artistes répertoriés</string>
+    <string name="_brain_data_management">Gestion des données</string>
+    <string name="_brain_export_profile">Profil d\'exportation</string>
+    <string name="_brain_export_profile_desc">Enregistrez votre carte neuronale dans un fichier</string>
+    <string name="_brain_import_profile">Profil d\'importation</string>
+    <string name="_brain_import_profile_desc">Charger une carte neuronale précédemment enregistrée</string>
+    <string name="_brain_reset_profile">Réinitialiser le profil</string>
+    <string name="_brain_reset_profile_desc">Effacer toutes les données enregistrées et recommencer depuis le début</string>
+    <string name="_brain_reset_neural_profile">Réinitialiser le profil neuronal</string>
+    <string name="_brain_reset_neural_profile_desc">Cette opération supprimera définitivement toutes les préférences enregistrées. Le moteur recommencera l\'apprentissage depuis le début.</string>
+    <string name="_brain_profile_exported_successfully">Le profil a été exporté avec succès</string>
+    <string name="_brain_export_failed">Échec de l\'exportation</string>
+    <string name="_brain_profile_imported_successfully">Le profil a été importé avec succès</string>
+    <string name="_brain_import_failed_invalid_file">Échec de l\'importation — fichier non valide</string>
     <string name="listenbrainz_scrobbling">Scrobbling sur ListenBrainz</string>
     <string name="listenbrainz_scrobbling_description">Envoyez automatiquement les titres que vous avez écoutés vers ListenBrainz</string>
     <string name="set_listenbrainz_token">Définir le jeton ListenBrainz</string>

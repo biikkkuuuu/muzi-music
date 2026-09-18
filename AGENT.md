@@ -98,7 +98,7 @@ If a new feature needs a UI pattern not covered in `DESIGN.md`, copy an existing
 
 ### Things to double check before assuming
 
-- Exact current contents of `com/music/echo/echomusic/` (contains core app-level initializers/application class) and `:unison` (cross-cutting/shared utilities and common base classes) — check source before editing.
+- Exact current contents of `com/music//muzi/` (contains core app-level initializers/application class) and `:unison` (cross-cutting/shared utilities and common base classes) — check source before editing.
 
 ## What this app is
 
@@ -155,7 +155,7 @@ mostly-independent feature/integration:
 | `:innertube` | YouTube Music InnerTube API client (the core music source) |
 | `:kugou`, `:lrclib`, `:betterlyrics`, `:youlyplus`, `:paxsenixlyrics`, `:simpmusic` | Individual lyrics source providers (each consumed by `:lyrics`) |
 | `:shazamkit` | Music recognition ("Muzi Find") |
-| `:canvas`, `:echomusiccanvas`, `:applecanvas` | Canvas-style looping video backgrounds for tracks (different providers) |
+| `:canvas`, `:muzicanvas`, `:applecanvas` | Canvas-style looping video backgrounds for tracks (different providers) |
 | `:artistvideo` | Artist video features |
 | `:unison` | Cross-cutting shared utility module (check source before editing) |
 
@@ -166,7 +166,7 @@ in `settings.gradle.kts`, add it as an `implementation(project(":name"))` in
 
 ## App module internal structure
 
-Path: `app/src/main/kotlin/com/music/echo/` (note: source dir is `kotlin/`,
+Path: `app/src/main/kotlin/com/music//` (note: source dir is `kotlin/`,
 not `java/` — despite what older internal docs may say).
 
 ```
@@ -179,7 +179,7 @@ db/
   daos/         Room DAOs
 di/             Hilt modules (AppModule, NetworkModule, Qualifiers, entry points)
 discord/        Discord Rich Presence integration
-echomusic/      Core app-level classes (Application class, core initializers)
+muzi/      Core app-level classes (Application class, core initializers)
 eq/             Equalizer
 extensions/     Kotlin extension functions
 listentogether/ "Listen Together" synced group listening feature

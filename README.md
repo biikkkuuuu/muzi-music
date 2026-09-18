@@ -173,7 +173,7 @@ Download the latest pre-compiled APK from the [Releases Page](https://github.com
    Create a `local.properties` file:
 
    ```bash
-   echo "sdk.dir=/path/to/your/android/sdk" > local.properties
+    "sdk.dir=/path/to/your/android/sdk" > local.properties
    ```
 
    _(For detailed paths on Windows/macOS/Linux, refer to [SETUP.md](SETUP.md))_

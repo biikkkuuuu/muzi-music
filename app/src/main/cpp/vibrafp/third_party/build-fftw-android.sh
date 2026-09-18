@@ -56,23 +56,23 @@ while [[ $# -gt 0 ]]; do
     --api) API="$2"; shift 2;;
     --archs) IFS=',' read -r -a ARCHS <<< "$2"; shift 2;;
     --help|-h) usage;;
-    *) echo "Unknown argument: $1"; usage;;
+    *)  "Unknown argument: $1"; usage;;
   esac
 done
 
-echo "FFTW version: ${FFTW_VERSION}"
-echo "FFTW URL: ${FFTW_URL}"
-echo "Output install root: ${OUT_BASE}"
-echo "Android API: ${API}"
-echo "Archs: ${ARCHS[*]}"
-echo
+ "FFTW version: ${FFTW_VERSION}"
+ "FFTW URL: ${FFTW_URL}"
+ "Output install root: ${OUT_BASE}"
+ "Android API: ${API}"
+ "Archs: ${ARCHS[*]}"
+
 
 # Validate NDK
 if [[ -z "${NDK_DIR}" ]]; then
   if [[ -n "${ANDROID_NDK_HOME:-}" ]]; then
     NDK_DIR="${ANDROID_NDK_HOME}"
   else
-    echo "ERROR: Android NDK not detected. Set ANDROID_NDK_HOME or pass --ndk /path/to/android-ndk"
+     "ERROR: Android NDK not detected. Set ANDROID_NDK_HOME or pass --ndk /path/to/android-ndk"
     exit 1
   fi
 fi
@@ -81,7 +81,7 @@ NDK_DIR="$(realpath "${NDK_DIR}")"
 PREBUILD="$NDK_DIR/toolchains/llvm/prebuilt/linux-x86_64"
 
 if [[ ! -d "$PREBUILD" ]]; then
-  echo "ERROR: NDK toolchain not found at $PREBUILD"
+   "ERROR: NDK toolchain not found at $PREBUILD"
   exit 1
 fi
 
@@ -98,21 +98,21 @@ MD5_PATH="${WORKDIR}/${FFTW_TARBALL}.md5sum"
 
 # Download tarball if absent
 if [[ -f "${TARBALL_PATH}" ]]; then
-  echo "Tarball already exists: ${TARBALL_PATH}"
+   "Tarball already exists: ${TARBALL_PATH}"
 else
-  echo "Downloading ${FFTW_URL} ..."
+   "Downloading ${FFTW_URL} ..."
   if command -v curl >/dev/null 2>&1; then
     curl -fSL -o "${TARBALL_PATH}" "${FFTW_URL}"
   elif command -v wget >/dev/null 2>&1; then
     wget -O "${TARBALL_PATH}" "${FFTW_URL}"
   else
-    echo "ERROR: need curl or wget to download sources"
+     "ERROR: need curl or wget to download sources"
     exit 1
   fi
 fi
 
 # Download md5sum
-echo "Downloading MD5 checksum from ${MD5_URL} ..."
+ "Downloading MD5 checksum from ${MD5_URL} ..."
 if command -v curl >/dev/null 2>&1; then
   curl -fSL -o "${MD5_PATH}" "${MD5_URL}"
 elif command -v wget >/dev/null 2>&1; then
@@ -120,41 +120,41 @@ elif command -v wget >/dev/null 2>&1; then
 fi
 
 if [[ ! -f "${MD5_PATH}" ]]; then
-  echo "ERROR: failed to download MD5 checksum from ${MD5_URL}"
+   "ERROR: failed to download MD5 checksum from ${MD5_URL}"
   exit 1
 fi
 
 # Parse MD5 from file
 EXPECTED_MD5="$(tr -d '\r\n' < "${MD5_PATH}" | sed -E 's/.*([a-fA-F0-9]{32}).*/\1/')"
 if [[ -z "${EXPECTED_MD5}" ]]; then
-  echo "ERROR: could not parse MD5 from ${MD5_PATH}"
+   "ERROR: could not parse MD5 from ${MD5_PATH}"
   exit 1
 fi
 
-echo "Expected MD5: ${EXPECTED_MD5}"
+ "Expected MD5: ${EXPECTED_MD5}"
 
 # Compute local MD5
 compute_md5() {
-  command -v md5sum >/dev/null 2>&1 || { echo "ERROR: md5sum not found" >&2; return 1; }
+  command -v md5sum >/dev/null 2>&1 || {  "ERROR: md5sum not found" >&2; return 1; }
   md5sum "$1" | awk '{print $1}'
 }
 
 LOCAL_MD5="$(compute_md5 "${TARBALL_PATH}")"
-echo "Local  MD5: ${LOCAL_MD5}"
+ "Local  MD5: ${LOCAL_MD5}"
 
 if [[ "${LOCAL_MD5,,}" != "${EXPECTED_MD5,,}" ]]; then
-  echo "ERROR: MD5 mismatch! Download may be corrupted."
+   "ERROR: MD5 mismatch! Download may be corrupted."
   rm -f "${TARBALL_PATH}"
   exit 1
 fi
-echo "MD5 verified OK."
+ "MD5 verified OK."
 
 # Extract
-echo "Extracting ${TARBALL_PATH}..."
+ "Extracting ${TARBALL_PATH}..."
 tar -xzf "${TARBALL_PATH}"
 SRC_DIR="${WORKDIR}/fftw-${FFTW_VERSION}"
 if [[ ! -d "${SRC_DIR}" ]]; then
-  echo "ERROR: expected source dir ${SRC_DIR} not found after extraction"
+   "ERROR: expected source dir ${SRC_DIR} not found after extraction"
   exit 1
 fi
 
@@ -178,21 +178,21 @@ AR="$PREBUILD/bin/llvm-ar"
 RANLIB="$PREBUILD/bin/llvm-ranlib"
 STRIP="$PREBUILD/bin/llvm-strip"
 
-CPU_COUNT="$(nproc || echo 1)"
+CPU_COUNT="$(nproc ||  1)"
 
-echo
-echo "=== Building FFTW for ABIs: ${ARCHS[*]} ==="
-echo
+
+ "=== Building FFTW for ABIs: ${ARCHS[*]} ==="
+
 
 for ARCH in "${ARCHS[@]}"; do
   if [[ -z "${TRIPLE_MAP[$ARCH]:-}" ]]; then
-    echo "Skipping unknown arch: ${ARCH}"
+     "Skipping unknown arch: ${ARCH}"
     continue
   fi
 
   TRIPLE="${TRIPLE_MAP[$ARCH]}"
   ANDROID_ABI="${ABI_MAP[$ARCH]}"
-  echo ">>> Building for ${ARCH} (ABI=${ANDROID_ABI}, triple=${TRIPLE}, API=${API})"
+   ">>> Building for ${ARCH} (ABI=${ANDROID_ABI}, triple=${TRIPLE}, API=${API})"
 
   TOOLCHAIN="$PREBUILD"
   SYSROOT="$TOOLCHAIN/sysroot"
@@ -234,14 +234,14 @@ for ARCH in "${ARCHS[@]}"; do
     --disable-debug
   )
 
-  echo "Configuring: ${CONFIG_CMD[*]}"
+   "Configuring: ${CONFIG_CMD[*]}"
   "${CONFIG_CMD[@]}"
 
-  echo "make -j${CPU_COUNT}"
+   "make -j${CPU_COUNT}"
   make -j"${CPU_COUNT}"
   make install
 
-  echo "Stripping static libs in ${INSTALL_DIR}/lib ..."
+   "Stripping static libs in ${INSTALL_DIR}/lib ..."
   set +e
   $STRIP --strip-unneeded "${INSTALL_DIR}/lib/"*.a 2>/dev/null || true
   set -e
@@ -251,8 +251,8 @@ for ARCH in "${ARCHS[@]}"; do
   # Cleanup build dir
   rm -rf "${BUILD_DIR}"
 
-  echo "Installed ABI ${ANDROID_ABI} -> ${INSTALL_DIR}"
-  echo
+   "Installed ABI ${ANDROID_ABI} -> ${INSTALL_DIR}"
+  
 done
 
 # Cleanup sources and tarball
@@ -261,4 +261,4 @@ rm -f "${TARBALL_PATH}" "${MD5_PATH}"
 # Remove workdir (it should be empty now)
 rmdir "${WORKDIR}" >/dev/null 2>&1 || true
 
-echo "FFTW compiled. Install root: ${OUT_BASE}"
+ "FFTW compiled. Install root: ${OUT_BASE}"

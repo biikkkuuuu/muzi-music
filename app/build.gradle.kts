@@ -33,8 +33,8 @@ android {
         applicationId = "com.biikkkuuuu.muzi"
         minSdk = 26
         targetSdk = 36
-        versionCode = 156
-        versionName = "1.2.6"
+        versionCode = 157
+        versionName = "1.2.6.5"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -334,7 +334,7 @@ dependencies {
     implementation(project(":shazamkit"))
     implementation(project(":artistvideo"))
     implementation(project(":applecanvas"))
-    implementation(project(":echomusiccanvas"))
+    implementation(project(":muzicanvas"))
     implementation(project(":paxsenixlyrics"))
     implementation(project(":unison"))
 

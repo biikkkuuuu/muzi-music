@@ -92,13 +92,13 @@ APP_HOME=$( cd -P "${APP_HOME:-./}" > /dev/null && printf '%s\n' "$PWD" ) || exi
 MAX_FD=maximum
 
 warn () {
-    echo "$*"
+     "$*"
 } >&2
 
 die () {
-    echo
-    echo "$*"
-    echo
+    
+     "$*"
+    
     exit 1
 } >&2
 

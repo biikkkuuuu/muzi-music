@@ -107,7 +107,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data android:scheme="https" />
-                <data android:host="echomusic-listen-together.onrender.com" />
+                <data android:host="muzi-listen-together.onrender.com" />
                 <data android:pathPrefix="/listen" />
             </intent-filter>
 
@@ -119,7 +119,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data android:scheme="muzi" />
-                <data android:scheme="echomusic" />
+                <data android:scheme="muzi" />
                 <data android:host="listen" />
             </intent-filter>
 
@@ -132,7 +132,7 @@
 
                 <data android:scheme="http" />
                 <data android:scheme="https" />
-                <data android:host="share.echomusic.fun" />
+                <data android:host="share.muzi.fun" />
                 <data android:pathPrefix="/" />
             </intent-filter>
 
@@ -406,7 +406,7 @@
         </receiver>
 
         <activity
-            android:name="com.music.echo.discord.DiscordOAuthCallbackActivity"
+            android:name="com.biikkkuuuu.muzi.discord.DiscordOAuthCallbackActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:noHistory="true">

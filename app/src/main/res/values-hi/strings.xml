@@ -434,7 +434,7 @@
     <string name="recognition_notification_processing">पहचान हो रही है…</string>
     <string name="recognition_notification_no_match">कोई मिलान नहीं मिला</string>
     <string name="recognition_notification_failed">पहचान विफल</string>
-    <string name="listen_on_echo_music">Muzi पर सुनें</string>
+    <string name="listen_on__music">Muzi पर सुनें</string>
     <string name="qs_tile_music_recognizer">संगीत पहचानें</string>
     <string name="listenbrainz_scrobbling">ListenBrainz स्क्रोब्लिंग</string>
     <string name="listenbrainz_scrobbling_description">अपने सुने गए ट्रैक स्वचालित रूप से ListenBrainz पर सबमिट करें</string>

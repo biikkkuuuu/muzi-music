@@ -72,7 +72,7 @@ internal enum class CastDeviceType(val icon: Int, val connectedIcon: Int) {
         )
         private val SPEAKER_KEYWORDS = listOf(
             "home", "nest", "speaker", "audio", "max", "mini",
-            "echo", "alexa", "sonos", "harman", "jabra",
+            "", "alexa", "sonos", "harman", "jabra",
             "bose", "bang", "olufsen", "marshall", "jbl",
             "soundbar", "sound bar", "subwoofer", "receiver",
             "amplifier", "amp", "hifi", "stereo"
@@ -100,7 +100,7 @@ internal enum class CastDeviceType(val icon: Int, val connectedIcon: Int) {
  *
  * Uses MediaRouter callbacks for real-time device discovery and connects
  * via MediaRouter.selectRoute() with fresh route references — same
- * mechanism the system MediaRouteChooserDialog uses internally.
+ * mechanism the system MediaRoutoserDialog uses internally.
  */
 @Composable
 fun CastDevicePickerSheet(

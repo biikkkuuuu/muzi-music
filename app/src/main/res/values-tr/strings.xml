@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Upstream InnerTune strings --><!-- Do not add new features here --><!-- Try to re-use strings here, but be careful on its usage e.g. verb vs noun --><!-- "InnerTune" is replaced with "echomusic" --><!-- Translators: Do not modify this file for translations, use InnerTune's Weblate instead. --><resources>
+<!-- Upstream InnerTune strings --><!-- Do not add new features here --><!-- Try to re-use strings here, but be careful on its usage e.g. verb vs noun --><!-- "InnerTune" is replaced with "muzi" --><!-- Translators: Do not modify this file for translations, use InnerTune's Weblate instead. --><resources>
     <!-- Bottom navigation -->
     <string name="home">Ana Sayfa</string>
     <string name="songs">Şarkılar</string>
@@ -421,33 +421,33 @@
     <string name="recognition_notification_processing">Tanımlanıyor…</string>
     <string name="recognition_notification_no_match">Eşleşme bulunamadı</string>
     <string name="recognition_notification_failed">Tanıma başarısız oldu</string>
-    <string name="listen_on_echo_music">Muzi\'te dinle</string>
+    <string name="listen_on__music">Muzi\'te dinle</string>
     <string name="qs_tile_music_recognizer">Müziği tanı</string>
-    <string name="echo_brain_beta">Muzi Brain (Beta)</string>
-    <string name="echo_brain_enable">Muzi Brain\'i etkinleştir</string>
-    <string name="echo_brain_enable_desc">Dinleme alışkanlıklarınıza göre yapay zekâ önerilerini otomatik olarak ekle</string>
-    <string name="echo_brain_profile_statistics">Profil İstatistikleri</string>
-    <string name="echo_brain_learning_level">Öğrenme Düzeyi</string>
-    <string name="echo_brain_initiate">Başlat</string>
-    <string name="echo_brain_total_interactions">Toplam Etkileşim</string>
-    <string name="echo_brain_interactions_tracked">%1$d etkileşim izlendi</string>
-    <string name="echo_brain_discovered_genres">Keşfedilen Türler</string>
-    <string name="echo_brain_distinct_genres_identified">%1$d farklı tür belirlendi</string>
-    <string name="echo_brain_analyzed_artists">Analiz Edilen Sanatçılar</string>
-    <string name="echo_brain_artists_mapped">%1$d sanatçı eşlendi</string>
-    <string name="echo_brain_data_management">Veri Yönetimi</string>
-    <string name="echo_brain_export_profile">Profili Dışa Aktar</string>
-    <string name="echo_brain_export_profile_desc">Sinirsel haritanızı bir dosyaya kaydedin</string>
-    <string name="echo_brain_import_profile">Profili İçe Aktar</string>
-    <string name="echo_brain_import_profile_desc">Önceden kaydedilmiş bir sinirsel haritayı yükleyin</string>
-    <string name="echo_brain_reset_profile">Profili Sıfırla</string>
-    <string name="echo_brain_reset_profile_desc">Öğrenilen tüm verileri sil ve baştan başla</string>
-    <string name="echo_brain_reset_neural_profile">Sinirsel Profili Sıfırla</string>
-    <string name="echo_brain_reset_neural_profile_desc">Bu işlem öğrenilen tüm tercihleri kalıcı olarak silecektir. Motor, öğrenmeye sıfırdan başlayacaktır.</string>
-    <string name="echo_brain_profile_exported_successfully">Profil başarıyla dışa aktarıldı</string>
-    <string name="echo_brain_export_failed">Dışa aktarma başarısız oldu</string>
-    <string name="echo_brain_profile_imported_successfully">Profil başarıyla içe aktarıldı</string>
-    <string name="echo_brain_import_failed_invalid_file">İçe aktarma başarısız oldu: geçersiz dosya</string>
+    <string name="_brain_beta">Muzi Brain (Beta)</string>
+    <string name="_brain_enable">Muzi Brain\'i etkinleştir</string>
+    <string name="_brain_enable_desc">Dinleme alışkanlıklarınıza göre yapay zekâ önerilerini otomatik olarak ekle</string>
+    <string name="_brain_profile_statistics">Profil İstatistikleri</string>
+    <string name="_brain_learning_level">Öğrenme Düzeyi</string>
+    <string name="_brain_initiate">Başlat</string>
+    <string name="_brain_total_interactions">Toplam Etkileşim</string>
+    <string name="_brain_interactions_tracked">%1$d etkileşim izlendi</string>
+    <string name="_brain_discovered_genres">Keşfedilen Türler</string>
+    <string name="_brain_distinct_genres_identified">%1$d farklı tür belirlendi</string>
+    <string name="_brain_analyzed_artists">Analiz Edilen Sanatçılar</string>
+    <string name="_brain_artists_mapped">%1$d sanatçı eşlendi</string>
+    <string name="_brain_data_management">Veri Yönetimi</string>
+    <string name="_brain_export_profile">Profili Dışa Aktar</string>
+    <string name="_brain_export_profile_desc">Sinirsel haritanızı bir dosyaya kaydedin</string>
+    <string name="_brain_import_profile">Profili İçe Aktar</string>
+    <string name="_brain_import_profile_desc">Önceden kaydedilmiş bir sinirsel haritayı yükleyin</string>
+    <string name="_brain_reset_profile">Profili Sıfırla</string>
+    <string name="_brain_reset_profile_desc">Öğrenilen tüm verileri sil ve baştan başla</string>
+    <string name="_brain_reset_neural_profile">Sinirsel Profili Sıfırla</string>
+    <string name="_brain_reset_neural_profile_desc">Bu işlem öğrenilen tüm tercihleri kalıcı olarak silecektir. Motor, öğrenmeye sıfırdan başlayacaktır.</string>
+    <string name="_brain_profile_exported_successfully">Profil başarıyla dışa aktarıldı</string>
+    <string name="_brain_export_failed">Dışa aktarma başarısız oldu</string>
+    <string name="_brain_profile_imported_successfully">Profil başarıyla içe aktarıldı</string>
+    <string name="_brain_import_failed_invalid_file">İçe aktarma başarısız oldu: geçersiz dosya</string>
     <string name="listenbrainz_scrobbling">ListenBrainz skroplama</string>
     <string name="listenbrainz_scrobbling_description">Dinlediğiniz parçaları ListenBrainz\'e otomatik olarak gönderin</string>
     <string name="set_listenbrainz_token">ListenBrainz Jetonunu Ayarla</string>

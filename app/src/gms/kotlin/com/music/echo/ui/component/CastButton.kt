@@ -38,7 +38,7 @@ import com.biikkkuuuu.muzi.utils.rememberPreference
  * Cast button that shows a custom [CastDevicePickerSheet] bottom sheet.
  *
  * The picker discovers Cast devices via MediaRouter callbacks and connects
- * using the same internal mechanism the system MediaRouteChooserDialog uses,
+ * using the same internal mechanism the system MediaRoutoserDialog uses,
  * avoiding the "Ignoring attempt to select removed route" crash on some OEM
  * MediaRouter implementations.
  */
