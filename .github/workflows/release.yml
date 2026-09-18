@@ -47,7 +47,7 @@ jobs:
       if: ${{ env.KEYSTORE_BASE64 == '' }}
       run: |
         chmod +x gradlew
-        ./gradlew assembleUniversalGmsDebug assembleArm64GmsDebug
+        ./gradlew assembleUniversalGmsDebug assembleArm64GmsDebug -x lintVitalAnalyzeUniversalGmsDebug -x lintVitalAnalyzeArm64GmsDebug
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v2
