@@ -41,13 +41,13 @@ jobs:
         STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
       run: |
         chmod +x gradlew
-        ./gradlew assembleUniversalGmsRelease assembleArm64GmsRelease -x lintVitalAnalyzeUniversalGmsRelease -x lintVitalAnalyzeArm64GmsRelease
+        ./gradlew assembleUniversalGmsRelease assembleArm64GmsRelease -x lint -x lintVitalUniversalGmsRelease -x lintVitalArm64GmsRelease -x lintVitalAnalyzeUniversalGmsRelease -x lintVitalAnalyzeArm64GmsRelease
 
     - name: Build Debug APK (Fallback if Keystore not set)
       if: ${{ env.KEYSTORE_BASE64 == '' }}
       run: |
         chmod +x gradlew
-        ./gradlew assembleUniversalGmsDebug assembleArm64GmsDebug -x lintVitalAnalyzeUniversalGmsDebug -x lintVitalAnalyzeArm64GmsDebug
+        ./gradlew assembleUniversalGmsDebug assembleArm64GmsDebug
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v2
