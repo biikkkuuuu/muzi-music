@@ -15,9 +15,11 @@ Muzi Music delivers a seamless, premium listening experience by leveraging YouTu
 
 ---
 
-- **Telegram**: [@biikkkuuuuu](https://t.me/biikkkuuuuu)
-- **Instagram**: [@biikkkuuuu](https://instagram.com/biikkkuuuu)
-- **GitHub**: [biikkkuuuu/muzi-music](https://github.com/biikkkuuuu/muzi-music)
+<div align="left">
+  <a href="https://t.me/biikkkuuuuu"><img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram"/></a>
+  <a href="https://instagram.com/biikkkuuuu"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram"/></a>
+  <a href="https://github.com/biikkkuuuu/muzi-music"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/></a>
+</div>
 
 ---
 
@@ -34,9 +36,18 @@ Muzi Music delivers a seamless, premium listening experience by leveraging YouTu
 
 ---
 
-## Releases
+## 🚀 Releases
 
-Download the latest version of Muzi Music from the [Releases Page](https://github.com/biikkkuuuu/muzi-music/releases/latest).
+<div align="center">
+  <a href="https://github.com/biikkkuuuu/muzi-music/releases/latest">
+    <img src="https://img.shields.io/github/v/release/biikkkuuuu/muzi-music?style=for-the-badge&logo=android&color=success" alt="Latest Release"/>
+  </a>
+  <a href="https://github.com/biikkkuuuu/muzi-music/releases/latest">
+    <img src="https://img.shields.io/github/downloads/biikkkuuuu/muzi-music/total?style=for-the-badge&color=blue" alt="Total Downloads"/>
+  </a>
+</div>
+
+Download the latest and most stable version of Muzi Music from the official GitHub releases page.
 
 ---
 
@@ -209,9 +220,11 @@ Download the latest pre-compiled APK from the [Releases Page](https://github.com
 
 If Muzi Music has been useful to you, star the repository and follow the developer!
 
-- **GitHub**: [biikkkuuuu](https://github.com/biikkkuuuu)
-- **Telegram**: [@biikkkuuuuu](https://t.me/biikkkuuuuu)
-- **Instagram**: [@biikkkuuuu](https://instagram.com/biikkkuuuu)
+<div align="left">
+  <a href="https://github.com/biikkkuuuu"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/></a>
+  <a href="https://t.me/biikkkuuuuu"><img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram"/></a>
+  <a href="https://instagram.com/biikkkuuuu"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram"/></a>
+</div>
 
 ---
 
