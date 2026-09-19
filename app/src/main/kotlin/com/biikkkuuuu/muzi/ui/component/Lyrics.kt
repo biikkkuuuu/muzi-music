@@ -922,7 +922,7 @@ fun Lyrics(
                     key = { index, item -> "$index-${item.time}" } 
                 ) { index, item ->
                     val isSelected = selectedIndices.contains(index)
-                    if (lyricsAnimationStyle == LyricsAnimationStyle.echomusic_1 && item.words?.isNotEmpty() == true) {
+                    if (lyricsAnimationStyle == LyricsAnimationStyle.echomusic_1) {
                         val currentLineTime = if (displayedCurrentLineIndex >= 0 && displayedCurrentLineIndex < lines.size) {
                             lines[displayedCurrentLineIndex].time
                         } else -1L

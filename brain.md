@@ -32,3 +32,7 @@ This file (`brain.md`) acts as the permanent memory and strict rulebook for all 
 
 ---
 *Agent Note: You are bound by these rules. Any deviation is considered a severe bug.*
+
+## 6. Active Tasks / Backlog
+- **Lyrics Animation:** Implement a "buttery smooth" word-by-word active glow animation (similar to Apple Music style as shown in the reference video `WhatsApp Video 2026-09-19 at 10.57.36 AM.mp4`). The words should fill with color smoothly as they are sung, rather than snapping.
+  - *Rule:* **DO NOT PUSH** any changes related to this until the user explicitly says "push".
