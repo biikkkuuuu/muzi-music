@@ -98,7 +98,7 @@ If a new feature needs a UI pattern not covered in `DESIGN.md`, copy an existing
 
 ### Things to double check before assuming
 
-- Exact current contents of `com/music/echo/echomusic/` (contains core app-level initializers/application class) and `:unison` (cross-cutting/shared utilities and common base classes) — check source before editing.
+- Exact current contents of `com/biikkkuuuu/muzi/echomusic/` (contains core app-level initializers/application class) and `:unison` (cross-cutting/shared utilities and common base classes) — check source before editing.
 
 ## What this app is
 
@@ -166,7 +166,7 @@ in `settings.gradle.kts`, add it as an `implementation(project(":name"))` in
 
 ## App module internal structure
 
-Path: `app/src/main/kotlin/com/music/echo/` (note: source dir is `kotlin/`,
+Path: `app/src/main/kotlin/com/biikkkuuuu/muzi/` (note: source dir is `kotlin/`,
 not `java/` — despite what older internal docs may say).
 
 ```

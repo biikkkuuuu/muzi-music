@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.music.echo.core"
+    namespace = "com.biikkkuuuu.muzi.core"
     compileSdk = 36
     defaultConfig { minSdk = 26 }
     compileOptions {

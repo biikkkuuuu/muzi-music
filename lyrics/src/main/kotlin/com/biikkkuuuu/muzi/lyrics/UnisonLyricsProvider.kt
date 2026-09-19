@@ -1,7 +1,7 @@
 package com.biikkkuuuu.muzi.lyrics
 
 import android.content.Context
-import com.music.echo.unison.Unison
+import com.biikkkuuuu.muzi.unison.Unison
 import com.biikkkuuuu.muzi.constants.UnisonLyricsEnabledKey
 import com.biikkkuuuu.muzi.utils.dataStore
 import com.biikkkuuuu.muzi.utils.get

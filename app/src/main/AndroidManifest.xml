@@ -405,7 +405,7 @@
         </receiver>
 
         <activity
-            android:name="com.music.echo.discord.DiscordOAuthCallbackActivity"
+            android:name="com.biikkkuuuu.muzi.discord.DiscordOAuthCallbackActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:noHistory="true">
