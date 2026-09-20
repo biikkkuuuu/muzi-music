@@ -199,6 +199,21 @@ fun UpdateSettings(
         Spacer(modifier = Modifier.height(16.dp))
 
         Material3SettingsGroup(scrollState = scrollState, 
+            title = stringResource(R.string.changelog),
+            items = listOf(
+                Material3SettingsItem(
+                    isHighlighted = (highlightKey == stringResource(R.string.changelog)),
+                    icon = painterResource(R.drawable.info),
+                    title = { Text(stringResource(R.string.changelog)) },
+                    description = { Text("View version release notes and updates") },
+                    onClick = { navController.navigate("settings/changelog") }
+                )
+            )
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Material3SettingsGroup(scrollState = scrollState, 
             title = stringResource(R.string.commits),
             items = listOf(
                 Material3SettingsItem(

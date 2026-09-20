@@ -42,6 +42,19 @@ fun WelcomeDialog(
 ) {
     val uriHandler = LocalUriHandler.current
 
+    var whatsNewInfo by remember { mutableStateOf<com.biikkkuuuu.muzi.echomusic.updater.WhatsNewInfo?>(null) }
+    var isLoadingWhatsNew by remember { mutableStateOf(true) }
+
+    LaunchedEffect(Unit) {
+        kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+            val info = com.biikkkuuuu.muzi.echomusic.updater.fetchChangelogForVersion(BuildConfig.VERSION_NAME)
+            kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.Main) {
+                whatsNewInfo = info
+                isLoadingWhatsNew = false
+            }
+        }
+    }
+
     Dialog(
         onDismissRequest = onDismissRequest,
         properties = DialogProperties(usePlatformDefaultWidth = false)
@@ -65,6 +78,49 @@ fun WelcomeDialog(
             ) {
                 // Main Header
                 WelcomeAppCard()
+
+                whatsNewInfo?.let { info ->
+                    WelcomeSectionCard(title = "What's New in v${BuildConfig.VERSION_NAME}") {
+                        info.description?.takeIf { it.isNotBlank() }?.let { desc ->
+                            Text(
+                                text = desc,
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                modifier = Modifier.padding(12.dp)
+                            )
+                        }
+                        info.changelog.forEach { section ->
+                            if (section.title.isNotBlank()) {
+                                Text(
+                                    text = section.title,
+                                    style = MaterialTheme.typography.titleSmall,
+                                    fontWeight = FontWeight.Bold,
+                                    color = MaterialTheme.colorScheme.primary,
+                                    modifier = Modifier.padding(start = 12.dp, end = 12.dp, top = 8.dp, bottom = 4.dp)
+                                )
+                            }
+                            section.items.forEach { item ->
+                                Row(
+                                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 4.dp),
+                                    verticalAlignment = Alignment.Top,
+                                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .padding(top = 6.dp)
+                                            .size(5.dp)
+                                            .background(MaterialTheme.colorScheme.primary, CircleShape)
+                                    )
+                                    Text(
+                                        text = item,
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = MaterialTheme.colorScheme.onSurface
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
 
                 WelcomeSectionCard(title = "Follow Developer") {
                     WelcomeActionRow(

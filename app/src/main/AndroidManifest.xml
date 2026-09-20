@@ -132,6 +132,7 @@
 
                 <data android:scheme="http" />
                 <data android:scheme="https" />
+                <data android:host="muzimusic.in" />
                 <data android:host="share.echomusic.fun" />
                 <data android:pathPrefix="/" />
             </intent-filter>

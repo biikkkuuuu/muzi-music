@@ -143,10 +143,9 @@ fun ChangelogScreen(
                         isLoading = false
                         showingCached = true
                     }
-                } else {
-                    val changelogUrl = URL("https://github.com/biikkkuuuu/muzo-music/releases/download/$tag/changelog.json")
+                    val changelogUrl = URL("https://github.com/biikkkuuuu/muzi-music/releases/download/$tag/changelog.json")
                     val connection = changelogUrl.openConnection() as HttpURLConnection
-                    connection.setRequestProperty("User-Agent", "echomusic-Changelog-App")
+                    connection.setRequestProperty("User-Agent", "Muzi-Changelog-App")
                     connection.setRequestProperty("Accept", "application/json")
                     
                     if (connection.responseCode == 200) {
@@ -175,7 +174,6 @@ fun ChangelogScreen(
                                         sections.add(ChangelogSection(title, items))
                                     }
                                 } else {
-                                    
                                     val item = changelogArray.optString(i, "")
                                     if (item.isNotBlank()) {
                                         if (sections.isEmpty() || sections[0].title.isNotBlank()) {
@@ -198,8 +196,61 @@ fun ChangelogScreen(
                             showingCached = false
                         }
                     } else {
-                        Log.e("ChangelogScreen", "HTTP Error ${connection.responseCode} for $tag")
-                        withContext(Dispatchers.Main) { hasError = true; isLoading = false }
+                        // Fallback: Fetch GitHub release body for this tag
+                        val releaseApiUrl = URL("https://api.github.com/repos/biikkkuuuu/muzi-music/releases/tags/$tag")
+                        val apiConnection = releaseApiUrl.openConnection() as HttpURLConnection
+                        apiConnection.setRequestProperty("User-Agent", "Muzi-Changelog-App")
+                        apiConnection.setRequestProperty("Accept", "application/vnd.github+json")
+                        
+                        if (apiConnection.responseCode in 200..299) {
+                            val releaseJson = apiConnection.inputStream.bufferedReader().use { it.readText() }
+                            val releaseObj = JSONObject(releaseJson)
+                            var body = releaseObj.optString("body", "")
+                            var imageUrl: String? = null
+                            
+                            val imageRegex = Regex("!\\[(.*?)\\]\\((.*?)\\)")
+                            imageRegex.find(body)?.let { match ->
+                                imageUrl = match.groupValues[2]
+                                body = body.replace(match.value, "").trim()
+                            }
+                            
+                            val sections = mutableListOf<ChangelogSection>()
+                            val lines = body.lines().map { it.trim() }.filter { it.isNotEmpty() }
+                            var currentSectionTitle = "Release Notes"
+                            val currentItems = mutableListOf<String>()
+                            
+                            for (line in lines) {
+                                if (line.startsWith("#")) {
+                                    if (currentItems.isNotEmpty()) {
+                                        sections.add(ChangelogSection(currentSectionTitle, currentItems.toList()))
+                                        currentItems.clear()
+                                    }
+                                    currentSectionTitle = line.trimStart('#').trim()
+                                } else if (line.startsWith("-") || line.startsWith("*")) {
+                                    val itemText = line.drop(1).trim()
+                                    if (itemText.isNotEmpty()) currentItems.add(itemText)
+                                } else {
+                                    currentItems.add(line)
+                                }
+                            }
+                            if (currentItems.isNotEmpty()) {
+                                sections.add(ChangelogSection(currentSectionTitle, currentItems.toList()))
+                            }
+                            
+                            saveChangelogToCache(context, tag, sections, imageUrl, body.takeIf { sections.isEmpty() }, null)
+                            withContext(Dispatchers.Main) {
+                                changelogSections = sections
+                                updateImage = imageUrl
+                                updateDescription = body.takeIf { sections.isEmpty() }
+                                updateWarning = null
+                                isLoading = false
+                                hasError = false
+                                showingCached = false
+                            }
+                        } else {
+                            Log.e("ChangelogScreen", "HTTP Error ${connection.responseCode} for $tag")
+                            withContext(Dispatchers.Main) { hasError = true; isLoading = false }
+                        }
                     }
                 }
             } catch (e: Exception) {
@@ -217,9 +268,9 @@ fun ChangelogScreen(
         isFetchingOldReleases = true
         coroutineScope.launch(Dispatchers.IO) {
             try {
-                val releasesUrl = URL("https://api.github.com/repos/biikkkuuuu/muzo-music/releases")
+                val releasesUrl = URL("https://api.github.com/repos/biikkkuuuu/muzi-music/releases")
                 val connection = releasesUrl.openConnection() as HttpURLConnection
-                connection.setRequestProperty("User-Agent", "echomusic-Changelog-App")
+                connection.setRequestProperty("User-Agent", "Muzi-Changelog-App")
                 connection.setRequestProperty("Accept", "application/vnd.github+json")
                 
                 if (connection.responseCode == 200) {
@@ -239,19 +290,7 @@ fun ChangelogScreen(
                         ZonedDateTime.parse(publishedAt).format(outputFormatter)
                     } catch (e: Exception) { publishedAt }
 
-                    val assets = obj.getJSONArray("assets")
-                    var changelogUrl: String? = null
-                    for (j in 0 until assets.length()) {
-                        val asset = assets.getJSONObject(j)
-                        if (asset.getString("name") == "changelog.json") {
-                            changelogUrl = asset.getString("browser_download_url")
-                            break
-                        }
-                    }
-
-                    if (changelogUrl != null) {
-                        list.add(ReleaseMetadata(tagName, name, formattedDate, null))
-                    }
+                    list.add(ReleaseMetadata(tagName, name, formattedDate, null))
                 }
                     withContext(Dispatchers.Main) {
                         val currentVersion = ReleaseMetadata(versionTag, versionTag, context.getString(R.string.current), null)

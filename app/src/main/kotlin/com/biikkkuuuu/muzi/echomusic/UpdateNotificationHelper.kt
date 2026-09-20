@@ -31,16 +31,18 @@ object UpdateNotificationHelper {
         }
 
         
-        val apkUrl = "https://echomusic.fun"
-        val intent = Intent(Intent.ACTION_VIEW, apkUrl.toUri())
+        val intent = Intent(context, com.biikkkuuuu.muzi.MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+            data = "https://muzimusic.in/settings/update".toUri()
+        }
 
         val flags = PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         val pending = PendingIntent.getActivity(context, NOTIFICATION_ID, intent, flags)
 
         val notif = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_launcher_nobg)
-            .setContentTitle(context.getString(R.string.update_available_title))
-            .setContentText(versionName)
+            .setContentTitle("New Update Available: $versionName")
+            .setContentText("Tap to see what's new and update")
             .setContentIntent(pending)
             .setAutoCancel(true)
             .build()

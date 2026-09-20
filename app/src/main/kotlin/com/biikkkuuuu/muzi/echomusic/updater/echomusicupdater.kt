@@ -206,6 +206,9 @@ fun UpdateScreen(navController: NavHostController) {
                 onSuccess = { tag, isAvailable, changelog, size, date, description, imageUrl, apkUrl ->
                     saveLastCheckedTime(context, LocalDateTime.now().format(DateTimeFormatter.ofPattern("d MMMM yyyy, h:mm a")))
                     saveUpdateAvailableState(context, isAvailable)
+                    if (isAvailable && getUpdateNotificationsSetting(context)) {
+                        com.biikkkuuuu.muzi.echomusic.UpdateNotificationHelper.showUpdateNotification(context, tag)
+                    }
                     status = if (isAvailable) {
                         EchoUpdateStatus.Available(
                             version = tag,
@@ -339,7 +342,7 @@ fun UpdateScreen(navController: NavHostController) {
                                                 ContextCompat.startActivity(context, installIntent, null)
                                             }
                                         } else {
-                                            val urlToDownload = currentStatus.apkUrl ?: "https://github.com/biikkkuuuu/muzo-music/releases/download/${currentStatus.version}/echomusic.apk"
+                                            val urlToDownload = currentStatus.apkUrl ?: "https://github.com/biikkkuuuu/muzi-music/releases/download/${currentStatus.version}/app-universal-gms-release.apk"
                                             
                                             val constraints = Constraints.Builder()
                                                 .setRequiredNetworkType(NetworkType.CONNECTED)
@@ -720,7 +723,30 @@ suspend fun checkForUpdate(
                         imageUrl = match.groupValues[2]
                         body = body.replace(match.value, "").trim()
                     }
-                    description = body
+                    
+                    val lines = body.lines().map { it.trim() }.filter { it.isNotEmpty() }
+                    var currentTitle = "What's New"
+                    val currentItems = mutableListOf<String>()
+                    for (line in lines) {
+                        if (line.startsWith("#")) {
+                            if (currentItems.isNotEmpty()) {
+                                changelogList.add(ChangelogSection(currentTitle, currentItems.toList()))
+                                currentItems.clear()
+                            }
+                            currentTitle = line.trimStart('#').trim()
+                        } else if (line.startsWith("-") || line.startsWith("*")) {
+                            val itemText = line.drop(1).trim()
+                            if (itemText.isNotEmpty()) currentItems.add(itemText)
+                        } else {
+                            currentItems.add(line)
+                        }
+                    }
+                    if (currentItems.isNotEmpty()) {
+                        changelogList.add(ChangelogSection(currentTitle, currentItems.toList()))
+                    }
+                    if (changelogList.isEmpty()) {
+                        description = body
+                    }
                 }
 
                 val publishedAt = targetRelease.optString("published_at", "")
@@ -794,7 +820,7 @@ private fun openTimedStream(url: String): java.io.InputStream =
 suspend fun fetchChangelogForVersion(currentVersion: String): WhatsNewInfo? = withContext(Dispatchers.IO) {
     try {
         val cleanCurrent = currentVersion.removePrefix("b").removePrefix("v").trim()
-        val releasesJson = openTimedStream("https://api.github.com/repos/biikkkuuuu/muzo-music/releases")
+        val releasesJson = openTimedStream("https://api.github.com/repos/biikkkuuuu/muzi-music/releases")
             .bufferedReader().use { it.readText() }
         val releases = JSONArray(releasesJson)
 
@@ -813,7 +839,7 @@ suspend fun fetchChangelogForVersion(currentVersion: String): WhatsNewInfo? = wi
         val changelogList = mutableListOf<ChangelogSection>()
         var description: String? = null
         try {
-            val changelogJson = openTimedStream("https://github.com/biikkkuuuu/muzo-music/releases/download/$tag/changelog.json")
+            val changelogJson = openTimedStream("https://github.com/biikkkuuuu/muzi-music/releases/download/$tag/changelog.json")
                 .bufferedReader().use { it.readText() }
             val changelogData = JSONObject(changelogJson)
             description = changelogData.optString("description").takeIf { it.isNotEmpty() }
@@ -832,7 +858,30 @@ suspend fun fetchChangelogForVersion(currentVersion: String): WhatsNewInfo? = wi
             var body = release.optString("body", "")
             val imageRegex = Regex("!\\[(.*?)\\]\\((.*?)\\)")
             imageRegex.find(body)?.let { match -> body = body.replace(match.value, "").trim() }
-            description = body.takeIf { it.isNotEmpty() }
+            
+            val lines = body.lines().map { it.trim() }.filter { it.isNotEmpty() }
+            var currentTitle = "What's New in $tag"
+            val currentItems = mutableListOf<String>()
+            for (line in lines) {
+                if (line.startsWith("#")) {
+                    if (currentItems.isNotEmpty()) {
+                        changelogList.add(ChangelogSection(currentTitle, currentItems.toList()))
+                        currentItems.clear()
+                    }
+                    currentTitle = line.trimStart('#').trim()
+                } else if (line.startsWith("-") || line.startsWith("*")) {
+                    val itemText = line.drop(1).trim()
+                    if (itemText.isNotEmpty()) currentItems.add(itemText)
+                } else {
+                    currentItems.add(line)
+                }
+            }
+            if (currentItems.isNotEmpty()) {
+                changelogList.add(ChangelogSection(currentTitle, currentItems.toList()))
+            }
+            if (changelogList.isEmpty()) {
+                description = body.takeIf { it.isNotEmpty() }
+            }
         }
 
         if (changelogList.isEmpty() && description.isNullOrBlank()) return@withContext null
