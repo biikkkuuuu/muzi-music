@@ -791,16 +791,7 @@ object YTPlayerUtils {
 
         val format = playerResponse.streamingData?.adaptiveFormats
             ?.filter { it.isAudio && it.isOriginal }
-            ?.let { formats ->
-                val useLowQuality = audioQuality == AudioQuality.LOW || (audioQuality == AudioQuality.AUTO && connectivityManager.isActiveNetworkMetered)
-                if (useLowQuality) {
-                    formats.minByOrNull { it.bitrate }
-                } else {
-                    formats.maxByOrNull {
-                        it.bitrate * 1 + (if (it.mimeType.startsWith("audio/webm")) 10240 else 0)
-                    }
-                }
-            }
+            ?.maxByOrNull { it.bitrate }
 
         if (format != null) {
             Timber.tag(logTag).d("Selected format: ${format.mimeType}, bitrate: ${format.bitrate}")

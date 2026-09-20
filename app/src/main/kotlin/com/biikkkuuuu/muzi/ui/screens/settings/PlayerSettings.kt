@@ -444,24 +444,7 @@ highlightKey: String? = null) {
         Material3SettingsGroup(scrollState = scrollState, 
             title = stringResource(R.string.player),
             items = buildList {
-                add(Material3SettingsItem(
-    isHighlighted = (highlightKey == stringResource(R.string.audio_quality)),
-                    icon = painterResource(R.drawable.graphic_eq),
-                    title = { Text(stringResource(R.string.audio_quality)) },
-                    description = {
-                        Text(
-                            when (audioQuality) {
-                                AudioQuality.AUTO -> "Auto"
-                                AudioQuality.HIGH -> "High"
-                                AudioQuality.LOW -> "Low"
-                                AudioQuality.OPUS -> "Opus"
-                                else -> "Auto"
-                            }
-                        )
-                    },
-                    onClick = null
-                ))
-                
+
                 add(Material3SettingsItem(
     isHighlighted = (highlightKey == stringResource(R.string.download_quality_title)),
                     icon = painterResource(R.drawable.download),
