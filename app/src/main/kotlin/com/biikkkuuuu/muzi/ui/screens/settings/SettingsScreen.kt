@@ -71,7 +71,6 @@ highlightKey: String? = null) {
     val playerText = stringResource(R.string.player_and_audio)
     val listenTogetherText = stringResource(R.string.listen_together)
     val contentText = stringResource(R.string.content)
-    val aiLyricsText = stringResource(R.string.ai_lyrics_translation)
     val privacyText = stringResource(R.string.privacy)
     val storageText = stringResource(R.string.storage)
     val backupText = stringResource(R.string.backup_restore)
@@ -81,7 +80,6 @@ highlightKey: String? = null) {
     val playerDesc = stringResource(R.string.setting_desc_player)
     val listenTogetherDesc = stringResource(R.string.setting_desc_listen_together)
     val contentDesc = stringResource(R.string.setting_desc_content)
-    val aiLyricsDesc = stringResource(R.string.setting_desc_ai)
     val privacyDesc = stringResource(R.string.setting_desc_privacy)
     val storageDesc = stringResource(R.string.setting_desc_storage)
     val backupDesc = stringResource(R.string.setting_desc_backup)
@@ -139,27 +137,6 @@ highlightKey: String? = null) {
 
 
         val itemsList = buildList {
-            if (aiLyricsText.lowercase().contains(searchLower) || aiLyricsDesc.lowercase().contains(searchLower)) {
-                add(
-                    Material3SettingsItem(
-                        isHighlighted = (highlightKey == aiLyricsText),
-                        customIcon = {
-                            Text(
-                                text = "Ai",
-                                style = MaterialTheme.typography.titleMedium,
-                                fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
-                                color = if (highlightKey == aiLyricsText)
-                                    MaterialTheme.colorScheme.primary
-                                else
-                                    MaterialTheme.colorScheme.primary.copy(alpha = 0.9f)
-                            )
-                        },
-                        title = { Text(aiLyricsText) },
-                        description = { Text(aiLyricsDesc) },
-                        onClick = { navController.navigate("settings/ai") }
-                    )
-                )
-            }
 
 
             if (appearanceText.lowercase().contains(searchLower) || appearanceDesc.lowercase().contains(searchLower)) {

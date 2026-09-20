@@ -90,16 +90,13 @@ fun AppNavigationRail(
     onShuffleClick: (() -> Unit)? = null,
     shuffleEnabled: Boolean = false,
     shuffleIconRes: Int? = null,
-    shuffleContentDescription: String = "",
-    onAiHubClick: (() -> Unit)? = null,
-    aiHubIconRes: Int? = null,
-    aiHubContentDescription: String = ""
+    shuffleContentDescription: String = ""
 ) {
     val containerColor = if (pureBlack) Color.Black else MaterialTheme.colorScheme.surfaceContainer
     val haptics = LocalHapticFeedback.current
     val viewConfiguration = LocalViewConfiguration.current
     var showMoreOptionsSheet by rememberSaveable { mutableStateOf(false) }
-    val hasMoreOptions = (onShuffleClick != null && shuffleIconRes != null) || onAiHubClick != null
+    val hasMoreOptions = onShuffleClick != null && shuffleIconRes != null
 
     NavigationRail(
         modifier = modifier,
@@ -231,19 +228,6 @@ fun AppNavigationRail(
                                         )
                                     },
                                     onClick = onShuffleClick
-                                )
-                            )
-                        }
-
-                        if (onAiHubClick != null && aiHubIconRes != null) {
-                            add(
-                                Material3SettingsItem(
-                                    title = { Text(aiHubContentDescription) },
-                                    icon = painterResource(aiHubIconRes),
-                                    onClick = {
-                                        showMoreOptionsSheet = false
-                                        onAiHubClick()
-                                    }
                                 )
                             )
                         }

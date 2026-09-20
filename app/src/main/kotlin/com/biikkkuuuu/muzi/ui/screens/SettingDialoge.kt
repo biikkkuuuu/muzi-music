@@ -52,22 +52,6 @@ fun SettingDialoge(
                 compact = true,
                 items = listOf(
                     Material3SettingsItem(
-                        title = { Text(androidx.compose.ui.res.stringResource(R.string.ai_lyrics_translation)) },
-                        description = { Text(androidx.compose.ui.res.stringResource(R.string.setting_desc_ai)) },
-                        customIcon = {
-                            Text(
-                                text = "Ai",
-                                style = MaterialTheme.typography.titleMedium,
-                                fontWeight = FontWeight.Bold,
-                                color = MaterialTheme.colorScheme.primary.copy(alpha = 0.9f)
-                            )
-                        },
-                        onClick = {
-                            onDismissRequest()
-                            onNavigate("settings/ai")
-                        }
-                    ),
-                    Material3SettingsItem(
                         title = { Text(androidx.compose.ui.res.stringResource(R.string.settings)) },
                         description = { Text(androidx.compose.ui.res.stringResource(R.string.setting_desc_settings_main)) },
                         icon = painterResource(R.drawable.settings),

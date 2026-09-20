@@ -1114,13 +1114,6 @@ class MainActivity : ComponentActivity() {
                                                 shuffleContentDescription = stringResource(R.string.shuffle),
                                                 onMusicRecognitionClick = onMusicRecognitionClick,
                                                 musicRecognitionContentDescription = stringResource(R.string.recognition),
-                                                onAiHubClick = { 
-                                                    navController.navigate("settings/ai") {
-                                                        launchSingleTop = true
-                                                    }
-                                                },
-                                                aiHubIconRes = R.drawable.sparks,
-                                                aiHubContentDescription = stringResource(R.string.ai_lyrics_translation),
                                                 isSelected = { screen ->
                                                     currentRoute == screen.route || currentRoute?.startsWith("${screen.route}/") == true
                                                 },
@@ -1228,14 +1221,7 @@ class MainActivity : ComponentActivity() {
                                     onShuffleClick = onShuffleClick,
                                     shuffleEnabled = shuffleEnabled,
                                     shuffleIconRes = R.drawable.shuffle,
-                                    shuffleContentDescription = stringResource(R.string.shuffle),
-                                    onAiHubClick = {
-                                        navController.navigate("settings/ai") {
-                                            launchSingleTop = true
-                                        }
-                                    },
-                                    aiHubIconRes = R.drawable.sparks,
-                                    aiHubContentDescription = stringResource(R.string.ai_lyrics_translation)
+                                    shuffleContentDescription = stringResource(R.string.shuffle)
                                 )
                             }
                             Box(Modifier.weight(1f)) {

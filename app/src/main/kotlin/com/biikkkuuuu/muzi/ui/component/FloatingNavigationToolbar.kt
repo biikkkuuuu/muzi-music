@@ -98,9 +98,6 @@ fun FloatingNavigationToolbar(
     shuffleContentDescription: String = "",
     onMusicRecognitionClick: (() -> Unit)? = null,
     musicRecognitionContentDescription: String = "",
-    onAiHubClick: (() -> Unit)? = null,
-    aiHubIconRes: Int? = null,
-    aiHubContentDescription: String = "",
     scrollBehavior: FloatingToolbarScrollBehavior? = null,
     isSelected: (Screens) -> Boolean,
     onItemClick: (Screens, Boolean) -> Unit,
@@ -127,9 +124,6 @@ fun FloatingNavigationToolbar(
                         onShuffleClick = onShuffleClick,
                         shuffleEnabled = shuffleEnabled,
                         shuffleIconRes = shuffleIconRes,
-                        onAiHubClick = onAiHubClick,
-                        aiHubIconRes = aiHubIconRes,
-                        aiHubContentDescription = aiHubContentDescription,
                     )
                 },
                 modifier = Modifier.widthIn(max = 480.dp),
@@ -281,9 +275,6 @@ fun FloatingToolbarOverflowMenuButton(
     onShuffleClick: (() -> Unit)?,
     shuffleEnabled: Boolean,
     shuffleIconRes: Int?,
-    onAiHubClick: (() -> Unit)?,
-    aiHubIconRes: Int?,
-    aiHubContentDescription: String,
 ) {
     var showSheet by rememberSaveable { mutableStateOf(false) }
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
@@ -345,23 +336,6 @@ fun FloatingToolbarOverflowMenuButton(
                                         },
                                         onClick = {
                                             onShuffleClick()
-                                        }
-                                    )
-                                )
-                            }
-
-                            if (onAiHubClick != null && aiHubIconRes != null) {
-                                add(
-                                    Material3SettingsItem(
-                                        title = { Text(aiHubContentDescription) },
-                                        icon = painterResource(aiHubIconRes),
-                                        onClick = {
-                                            scope.launch { sheetState.hide() }.invokeOnCompletion {
-                                                if (!sheetState.isVisible) {
-                                                    showSheet = false
-                                                    onAiHubClick()
-                                                }
-                                            }
                                         }
                                     )
                                 )
