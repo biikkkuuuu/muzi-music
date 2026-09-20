@@ -117,7 +117,8 @@ constructor(
                     val result = channel.receive()
                     responses++
                     if (result != null) {
-                        val isSynced = result.lyrics?.trimStart()?.startsWith("[") == true
+                        val lyrics = result.lyrics
+                        val isSynced = if (lyrics != null) isValidSync(lyrics, mediaMetadata.duration) else false
                         if (isSynced) {
                             coroutineContext.cancelChildren()
                             return@coroutineScope result
@@ -149,7 +150,7 @@ constructor(
                 for (provider in providers) {
                     val result = deferreds[provider]?.await()
                     if (result != null && result != LYRICS_NOT_FOUND && result.isNotBlank()) {
-                        val isSynced = result.trimStart().startsWith("[")
+                        val isSynced = isValidSync(result, mediaMetadata.duration)
                         if (isSynced) {
                             coroutineContext.cancelChildren()
                             return@coroutineScope LyricsWithProvider(result, provider.name)
@@ -219,6 +220,17 @@ constructor(
     fun cancelCurrentLyricsJob() {
         currentLyricsJob?.cancel()
         currentLyricsJob = null
+    }
+
+    private fun isValidSync(lyrics: String, expectedDurationSec: Int): Boolean {
+        if (!lyrics.trimStart().startsWith("[")) return false
+        if (expectedDurationSec <= 0) return true
+        val parsed = LyricsUtils.parseLyrics(lyrics)
+        val lastTimeMs = parsed.lastOrNull()?.time ?: return false
+        val lyricsDurationSec = (lastTimeMs / 1000).toInt()
+        val diff = lyricsDurationSec - expectedDurationSec
+        // Lyrics can end up to 90 seconds early (long outro) or 40 seconds late
+        return diff in -90..40
     }
 
     companion object {
