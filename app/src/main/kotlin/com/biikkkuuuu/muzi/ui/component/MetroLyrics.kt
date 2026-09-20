@@ -27,7 +27,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
@@ -73,7 +78,16 @@ private data class MetroWordTimestamp(
     val text: String,
     val startTime: Double,
     val endTime: Double,
-    val hasTrailingSpace: Boolean
+    val hasTrailingSpace: Boolean = false
+)
+
+private data class ActiveWordSegment(
+    val left: Float,
+    val top: Float,
+    val right: Float,
+    val bottom: Float,
+    val progress: Float,
+    val isRtl: Boolean
 )
 
 
@@ -398,6 +412,23 @@ private fun WordLevelCanvasLyrics(
                 softWrap = true
             )
         }
+        val glowStyle = remember(lyricStyle, expressiveAccent) {
+            lyricStyle.copy(
+                shadow = Shadow(
+                    color = expressiveAccent.copy(alpha = 0.75f),
+                    blurRadius = 24f,
+                    offset = Offset.Zero
+                )
+            )
+        }
+        val glowLayoutResult = remember(mainText, maxWidthPx, glowStyle) {
+            textMeasurer.measure(
+                text = mainText,
+                style = glowStyle,
+                constraints = Constraints(minWidth = maxWidthPx, maxWidth = maxWidthPx),
+                softWrap = true
+            )
+        }
         
         Canvas(modifier = Modifier
             .fillMaxWidth()
@@ -410,7 +441,9 @@ private fun WordLevelCanvasLyrics(
             } else {
                 drawText(layoutResult, color = expressiveAccent.copy(alpha = focusedAlpha))
 
-                val activePath = androidx.compose.ui.graphics.Path()
+                val completedPath = Path()
+                var hasCompleted = false
+                val activeSegments = mutableListOf<ActiveWordSegment>()
                 
                 val wordIdxMap = IntArray(mainText.length) { -1 }
                 var currentPos = 0
@@ -471,9 +504,12 @@ private fun WordLevelCanvasLyrics(
                             
                             if (line != currentLineIdx) {
                                 if (progress >= 1f) {
-                                    activePath.addRect(androidx.compose.ui.geometry.Rect(lineStartLeft, lineStartTop, lineEndRight, lineEndBottom))
+                                    completedPath.addRect(Rect(lineStartLeft, lineStartTop, lineEndRight, lineEndBottom))
+                                    hasCompleted = true
                                 } else {
-                                    activePath.addRect(androidx.compose.ui.geometry.Rect(lineStartLeft, lineStartTop, lineEndRight, lineEndBottom))
+                                    activeSegments.add(
+                                        ActiveWordSegment(lineStartLeft, lineStartTop, lineEndRight, lineEndBottom, progress, isRtl)
+                                    )
                                 }
                                 currentLineIdx = line
                                 lineStartLeft = Float.MAX_VALUE
@@ -489,20 +525,95 @@ private fun WordLevelCanvasLyrics(
                         }
                         
                         if (progress >= 1f) {
-                            activePath.addRect(androidx.compose.ui.geometry.Rect(lineStartLeft, lineStartTop, lineEndRight, lineEndBottom))
+                            completedPath.addRect(Rect(lineStartLeft, lineStartTop, lineEndRight, lineEndBottom))
+                            hasCompleted = true
                         } else {
-                            val fillWidth = (lineEndRight - lineStartLeft) * progress
-                            if (isRtl) {
-                                activePath.addRect(androidx.compose.ui.geometry.Rect(lineEndRight - fillWidth, lineStartTop, lineEndRight, lineEndBottom))
-                            } else {
-                                activePath.addRect(androidx.compose.ui.geometry.Rect(lineStartLeft, lineStartTop, lineStartLeft + fillWidth, lineEndBottom))
-                            }
+                            activeSegments.add(
+                                ActiveWordSegment(lineStartLeft, lineStartTop, lineEndRight, lineEndBottom, progress, isRtl)
+                            )
                         }
                     }
                 }
 
-                clipPath(activePath) {
-                    drawText(layoutResult, color = expressiveAccent)
+                if (hasCompleted) {
+                    clipPath(completedPath) {
+                        drawText(layoutResult, color = expressiveAccent)
+                    }
+                }
+
+                activeSegments.forEach { seg ->
+                    val segWidth = (seg.right - seg.left).coerceAtLeast(1f)
+                    val fillWidth = segWidth * seg.progress
+                    val headX = if (seg.isRtl) seg.right - fillWidth else seg.left + fillWidth
+                    val centerY = (seg.top + seg.bottom) / 2f
+                    val glowRadius = (seg.bottom - seg.top) * 1.6f
+
+                    // 1. Apple Music Ambient Bloom Glow (soft radial bloom traveling with singer)
+                    drawCircle(
+                        brush = Brush.radialGradient(
+                            colors = listOf(
+                                expressiveAccent.copy(alpha = 0.35f),
+                                expressiveAccent.copy(alpha = 0.12f),
+                                Color.Transparent
+                            ),
+                            center = Offset(headX, centerY),
+                            radius = glowRadius
+                        ),
+                        radius = glowRadius,
+                        center = Offset(headX, centerY)
+                    )
+
+                    // 2. Glowing shadow text for the singing portion
+                    clipRect(
+                        left = if (seg.isRtl) headX else seg.left - 8f,
+                        top = seg.top - 8f,
+                        right = if (seg.isRtl) seg.right + 8f else headX,
+                        bottom = seg.bottom + 8f
+                    ) {
+                        drawText(glowLayoutResult, color = expressiveAccent)
+                    }
+
+                    // 3. Feathered gradient fill for crisp text (butter-smooth leading edge)
+                    val featherPx = 18f
+                    val brush = if (!seg.isRtl) {
+                        val stop0 = ((headX - featherPx - seg.left) / segWidth).coerceIn(0f, 1f)
+                        val stop1 = ((headX + 2f - seg.left) / segWidth).coerceIn(0f, 1f)
+                        if (stop1 > stop0 && stop0 < 1f && stop1 > 0f) {
+                            Brush.horizontalGradient(
+                                colorStops = arrayOf(
+                                    0f to expressiveAccent,
+                                    stop0 to expressiveAccent,
+                                    stop1 to expressiveAccent.copy(alpha = focusedAlpha),
+                                    1f to expressiveAccent.copy(alpha = focusedAlpha)
+                                ),
+                                startX = seg.left,
+                                endX = seg.right
+                            )
+                        } else {
+                            SolidColor(expressiveAccent)
+                        }
+                    } else {
+                        val stop0 = ((headX - 2f - seg.left) / segWidth).coerceIn(0f, 1f)
+                        val stop1 = ((headX + featherPx - seg.left) / segWidth).coerceIn(0f, 1f)
+                        if (stop1 > stop0 && stop0 < 1f && stop1 > 0f) {
+                            Brush.horizontalGradient(
+                                colorStops = arrayOf(
+                                    0f to expressiveAccent.copy(alpha = focusedAlpha),
+                                    stop0 to expressiveAccent.copy(alpha = focusedAlpha),
+                                    stop1 to expressiveAccent,
+                                    1f to expressiveAccent
+                                ),
+                                startX = seg.left,
+                                endX = seg.right
+                            )
+                        } else {
+                            SolidColor(expressiveAccent)
+                        }
+                    }
+
+                    clipRect(left = seg.left, top = seg.top, right = seg.right, bottom = seg.bottom) {
+                        drawText(layoutResult, brush = brush)
+                    }
                 }
             }
         }

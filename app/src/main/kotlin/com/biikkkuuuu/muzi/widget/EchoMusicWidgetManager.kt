@@ -56,7 +56,9 @@ class EchoMusicWidgetManager @Inject constructor(
         isPlaying: Boolean,
         isLiked: Boolean,
         duration: Long = 0,
-        currentPosition: Long = 0
+        currentPosition: Long = 0,
+        currentLine: String? = null,
+        nextLine: String? = null
     ) {
         val appWidgetManager = AppWidgetManager.getInstance(context)
 
@@ -109,6 +111,16 @@ class EchoMusicWidgetManager @Inject constructor(
                 appWidgetManager.updateAppWidget(widgetId, turntableViews)
             }
         }
+
+        // Update lyrics widgets
+        updateLyricsWidgets(
+            title = title,
+            artist = artist,
+            circularAlbumArt = circularAlbumArt,
+            isPlaying = isPlaying,
+            currentLine = currentLine,
+            nextLine = nextLine
+        )
 
         playlistWidgetManager.updateWidgets(
             title = title,
@@ -445,6 +457,88 @@ class EchoMusicWidgetManager @Inject constructor(
         return PendingIntent.getBroadcast(
             context,
             5,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+    }
+
+    private fun updateLyricsWidgets(
+        title: String,
+        artist: String,
+        circularAlbumArt: Bitmap?,
+        isPlaying: Boolean,
+        currentLine: String?,
+        nextLine: String?
+    ) {
+        val appWidgetManager = AppWidgetManager.getInstance(context)
+        val componentName = ComponentName(context, LyricsWidgetReceiver::class.java)
+        val widgetIds = appWidgetManager.getAppWidgetIds(componentName)
+        if (widgetIds.isEmpty()) return
+
+        val views = RemoteViews(context.packageName, R.layout.widget_lyrics).apply {
+            setTextViewText(R.id.widget_lyrics_title, title)
+            setTextViewText(R.id.widget_lyrics_artist, artist)
+
+            if (circularAlbumArt != null) {
+                setImageViewBitmap(R.id.widget_lyrics_album_art, circularAlbumArt)
+            } else {
+                setImageViewResource(R.id.widget_lyrics_album_art, R.mipmap.ic_launcher)
+            }
+
+            setImageViewResource(
+                R.id.widget_lyrics_play_pause,
+                if (isPlaying) R.drawable.ic_widget_pause else R.drawable.ic_widget_play
+            )
+
+            setTextViewText(
+                R.id.widget_lyrics_current_line,
+                if (!currentLine.isNullOrBlank()) currentLine else context.getString(R.string.no_lyrics_available)
+            )
+
+            if (!nextLine.isNullOrBlank()) {
+                setViewVisibility(R.id.widget_lyrics_next_line, android.view.View.VISIBLE)
+                setTextViewText(R.id.widget_lyrics_next_line, nextLine)
+            } else {
+                setViewVisibility(R.id.widget_lyrics_next_line, android.view.View.GONE)
+            }
+
+            setOnClickPendingIntent(
+                R.id.widget_lyrics_play_pause,
+                getLyricsWidgetIntent(LyricsWidgetReceiver.ACTION_LYRICS_PLAY_PAUSE, 701)
+            )
+            setOnClickPendingIntent(
+                R.id.widget_lyrics_next,
+                getLyricsWidgetIntent(LyricsWidgetReceiver.ACTION_LYRICS_NEXT, 702)
+            )
+            setOnClickPendingIntent(
+                R.id.widget_lyrics_prev,
+                getLyricsWidgetIntent(LyricsWidgetReceiver.ACTION_LYRICS_PREVIOUS, 703)
+            )
+
+            val appIntent = Intent(context, MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+            }
+            val pendingAppIntent = PendingIntent.getActivity(
+                context,
+                704,
+                appIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+            setOnClickPendingIntent(R.id.widget_lyrics_root, pendingAppIntent)
+        }
+
+        widgetIds.forEach { widgetId ->
+            appWidgetManager.updateAppWidget(widgetId, views)
+        }
+    }
+
+    private fun getLyricsWidgetIntent(actionName: String, requestCode: Int): PendingIntent {
+        val intent = Intent(context, LyricsWidgetReceiver::class.java).apply {
+            action = actionName
+        }
+        return PendingIntent.getBroadcast(
+            context,
+            requestCode,
             intent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )

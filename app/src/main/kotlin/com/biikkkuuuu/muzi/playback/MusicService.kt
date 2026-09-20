@@ -181,6 +181,8 @@ import com.biikkkuuuu.muzi.utils.get
 import com.biikkkuuuu.muzi.utils.reportException
 import com.biikkkuuuu.muzi.widget.EchoMusicWidgetManager
 import com.biikkkuuuu.muzi.widget.MusicWidgetReceiver
+import com.biikkkuuuu.muzi.widget.LyricsWidgetReceiver
+import com.biikkkuuuu.muzi.lyrics.LyricsUtils
 import dagger.hilt.android.AndroidEntryPoint
 import com.biikkkuuuu.muzi.utils.isLocalMediaId
 import kotlinx.coroutines.CoroutineScope
@@ -3369,7 +3371,8 @@ class MusicService :
                 player.seekToPrevious()
                 updateWidgetUI(player.isPlaying)
             }
-            MusicWidgetReceiver.ACTION_UPDATE_WIDGET -> {
+            MusicWidgetReceiver.ACTION_UPDATE_WIDGET,
+            LyricsWidgetReceiver.ACTION_UPDATE_LYRICS_WIDGET -> {
                 updateWidgetUI(player.isPlaying)
             }
             "com.biikkkuuuu.muzi.ACTION_CLEAR_SONG_CACHE" -> {
@@ -3395,6 +3398,31 @@ class MusicService :
                 val artistName = songData?.artists?.joinToString(", ") { it.name } ?: getString(R.string.tap_to_open)
                 val isLiked = songData?.song?.liked == true
 
+                var currentLyricLine: String? = null
+                var nextLyricLine: String? = null
+                val mediaId = song?.id
+                if (mediaId != null) {
+                    try {
+                        val dbLyrics = database.lyrics(mediaId).firstOrNull()?.lyrics
+                        if (!dbLyrics.isNullOrBlank()) {
+                            val parsedLines = LyricsUtils.parseLyrics(dbLyrics)
+                            if (parsedLines.isNotEmpty()) {
+                                val currentPos = player.currentPosition
+                                val activeIdx = parsedLines.indexOfLast { it.time <= currentPos }
+                                if (activeIdx >= 0) {
+                                    currentLyricLine = parsedLines[activeIdx].text
+                                    nextLyricLine = parsedLines.getOrNull(activeIdx + 1)?.text
+                                } else {
+                                    currentLyricLine = parsedLines.firstOrNull()?.text
+                                    nextLyricLine = parsedLines.getOrNull(1)?.text
+                                }
+                            }
+                        }
+                    } catch (e: Exception) {
+                        // Ignore
+                    }
+                }
+
                 widgetManager.updateWidgets(
                     title = songTitle,
                     artist = artistName,
@@ -3402,7 +3430,9 @@ class MusicService :
                     isPlaying = isPlaying,
                     isLiked = isLiked,
                     duration = if (player.duration != C.TIME_UNSET) player.duration else 0,
-                    currentPosition = player.currentPosition
+                    currentPosition = player.currentPosition,
+                    currentLine = currentLyricLine,
+                    nextLine = nextLyricLine
                 )
             } catch (e: Exception) {
                 

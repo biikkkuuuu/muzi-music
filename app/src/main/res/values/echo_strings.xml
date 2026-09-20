@@ -595,6 +595,9 @@
     <string name="turntable_widget_description">Circular music widget with play and like controls</string>
     <string name="widget_music_player">Music Player</string>
     <string name="widget_turntable">Turntable</string>
+    <string name="widget_lyrics_player">Lyrics Player</string>
+    <string name="lyrics_widget_description">Live synced lyrics widget with playback controls</string>
+    <string name="no_lyrics_available">No lyrics available</string>
 
     <!-- Player Client Settings -->
     <string name="player_client">Player client</string>

@@ -361,20 +361,21 @@
             android:name="com.google.android.gms.cast.framework.ReconnectionService"
             android:exported="false"
             android:process=":reconnection_service" />
-        <!-- Music Widget -->
+        <!-- Lyrics Widget -->
         <receiver
-            android:name=".widget.MusicWidgetReceiver"
+            android:name=".widget.LyricsWidgetReceiver"
             android:exported="true"
-            android:label="@string/widget_music_player">
+            android:label="@string/widget_lyrics_player">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.biikkkuuuu.muzi.widget.PLAY_PAUSE" />
-                <action android:name="com.biikkkuuuu.muzi.widget.LIKE" />
-                <action android:name="com.biikkkuuuu.muzi.widget.UPDATE_WIDGET" />
+                <action android:name="com.biikkkuuuu.muzi.widget.LYRICS_PLAY_PAUSE" />
+                <action android:name="com.biikkkuuuu.muzi.widget.LYRICS_NEXT" />
+                <action android:name="com.biikkkuuuu.muzi.widget.LYRICS_PREVIOUS" />
+                <action android:name="com.biikkkuuuu.muzi.widget.UPDATE_LYRICS_WIDGET" />
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/music_widget_info" />
+                android:resource="@xml/lyrics_widget_info" />
         </receiver>
 
         <!-- Playlist Widget -->
