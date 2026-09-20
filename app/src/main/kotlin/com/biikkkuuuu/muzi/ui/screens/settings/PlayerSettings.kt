@@ -92,10 +92,9 @@ fun PlayerSettings(
     scrollBehavior: TopAppBarScrollBehavior,
 highlightKey: String? = null) {
     val scrollState = androidx.compose.foundation.rememberScrollState()
-
     val (audioQuality, onAudioQualityChange) = rememberEnumPreference(
         AudioQualityKey,
-        defaultValue = AudioQuality.OPUS
+        defaultValue = AudioQuality.AUTO
     )
 
     val (crossfadeEnabled, onCrossfadeEnabledChange) = rememberPreference(
@@ -272,9 +271,12 @@ highlightKey: String? = null) {
             },
             title = stringResource(R.string.audio_quality),
             current = audioQuality,
-            values = listOf(AudioQuality.OPUS),
+            values = listOf(AudioQuality.AUTO, AudioQuality.HIGH, AudioQuality.LOW, AudioQuality.OPUS),
             valueText = {
                 when (it) {
+                    AudioQuality.AUTO -> "Auto"
+                    AudioQuality.HIGH -> "High"
+                    AudioQuality.LOW -> "Low"
                     AudioQuality.OPUS -> "Opus"
                     else -> ""
                 }
@@ -449,8 +451,11 @@ highlightKey: String? = null) {
                     description = {
                         Text(
                             when (audioQuality) {
+                                AudioQuality.AUTO -> "Auto"
+                                AudioQuality.HIGH -> "High"
+                                AudioQuality.LOW -> "Low"
                                 AudioQuality.OPUS -> "Opus"
-                                else -> "Opus"
+                                else -> "Auto"
                             }
                         )
                     },

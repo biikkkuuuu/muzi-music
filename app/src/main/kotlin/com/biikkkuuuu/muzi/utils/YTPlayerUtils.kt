@@ -791,8 +791,15 @@ object YTPlayerUtils {
 
         val format = playerResponse.streamingData?.adaptiveFormats
             ?.filter { it.isAudio && it.isOriginal }
-            ?.maxByOrNull {
-                it.bitrate * 1 + (if (it.mimeType.startsWith("audio/webm")) 10240 else 0)
+            ?.let { formats ->
+                val useLowQuality = audioQuality == AudioQuality.LOW || (audioQuality == AudioQuality.AUTO && connectivityManager.isActiveNetworkMetered)
+                if (useLowQuality) {
+                    formats.minByOrNull { it.bitrate }
+                } else {
+                    formats.maxByOrNull {
+                        it.bitrate * 1 + (if (it.mimeType.startsWith("audio/webm")) 10240 else 0)
+                    }
+                }
             }
 
         if (format != null) {
