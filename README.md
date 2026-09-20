@@ -3,7 +3,15 @@
 
   <h1>Muzi Music</h1>
 
-  <p><b>A modern Android music app with ad-free streaming, synced lyrics, offline playback, and an intuitive user experience.</b></p>
+  <p><b>The official open-source Android music streaming app with ad-free playback, live synchronized lyrics, offline downloads, and an intuitive Material 3 experience.</b></p>
+  
+  <p>
+    <a href="https://github.com/biikkkuuuu/muzi-music/releases/latest"><img src="https://img.shields.io/badge/Download-Latest%20APK%20(v1.2.6.5)-brightgreen?style=for-the-badge&logo=android" alt="Download APK"/></a>
+    <a href="https://muzimusic.in"><img src="https://img.shields.io/badge/Official%20Website-muzimusic.in-orange?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Website"/></a>
+    <a href="https://t.me/biikkkuuuuu"><img src="https://img.shields.io/badge/Telegram-Channel-blue?style=for-the-badge&logo=telegram" alt="Telegram"/></a>
+    <a href="https://github.com/biikkkuuuu/muzi-music/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-GPL--3.0-green?style=for-the-badge" alt="License"/></a>
+  </p>
+
   <p>Developed & Maintained by <a href="https://github.com/biikkkuuuu">@biikkkuuuu</a></p>
 </div>
 
@@ -11,13 +19,14 @@
 
 ## Overview
 
-Muzi Music delivers a seamless, premium listening experience by leveraging YouTube Music's vast library — without the ads. It adds powerful extras including offline downloads, real-time synchronized lyrics, audio equalization, and environment-aware music recognition.
+**Muzi Music** delivers a seamless, premium listening experience by leveraging YouTube Music's vast library — completely free and without ads. It adds powerful features including offline downloads, real-time synchronized Apple Music-style lyrics, dynamic homescreen widgets, audio equalization, and environment-aware music recognition.
 
 ---
 
-- **Telegram**: [@biikkkuuuuu](https://t.me/biikkkuuuuu)
+- **Official Website**: [muzimusic.in](https://muzimusic.in)
+- **Telegram Channel**: [@biikkkuuuuu](https://t.me/biikkkuuuuu)
 - **Instagram**: [@biikkkuuuu](https://instagram.com/biikkkuuuu)
-- **GitHub**: [biikkkuuuu/muzi-music](https://github.com/biikkkuuuu/muzi-music)
+- **GitHub Repository**: [biikkkuuuu/muzi-music](https://github.com/biikkkuuuu/muzi-music)
 
 ---
 
@@ -263,6 +272,12 @@ We do not host, upload, distribute, or store any audio, video, or copyrighted me
 The software is provided "AS IS", without warranty of any kind. The developers of Muzi Music do not encourage or condone piracy. Users are solely responsible for ensuring their usage of this app complies with their local copyright laws and the Terms of Service of the platforms they access.
 
 Because we do not host any media files, we cannot process DMCA takedown requests for audio or video content. For inquiries regarding the open-source code itself, please contact via GitHub: [biikkkuuuu](https://github.com/biikkkuuuu).
+
+---
+
+## Keywords & Search Index
+
+`muzi` • `muzi music` • `muzi music apk` • `muzi apk download` • `muzi android` • `muzi music github` • `biikkkuuuu muzi` • `ad-free music streaming` • `youtube music client android` • `synced lyrics music player` • `apple music lyrics android` • `material you music player` • `offline music downloader` • `android music player open source`
 
 ---
 
