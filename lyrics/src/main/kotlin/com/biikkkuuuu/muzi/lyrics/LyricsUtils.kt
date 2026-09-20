@@ -355,19 +355,41 @@ object LyricsUtils {
         
         val decodedLyrics = decodeHtmlEntities(unescapedLyrics)
         
+        // Parse [offset: +/-ms] tag if present (LRC standard: positive offset means lyrics play earlier, negative means later)
+        val offsetRegex = "\\[offset:\\s*([+-]?\\d+)\\]".toRegex(RegexOption.IGNORE_CASE)
+        val fileOffsetMs = decodedLyrics.lines()
+            .firstNotNullOfOrNull { line ->
+                offsetRegex.find(line.trim())?.groupValues?.get(1)?.toLongOrNull()
+            } ?: 0L
+
         val lines = decodedLyrics.lines()
-            .filter { it.isNotBlank() && !it.trim().startsWith("[offset:") }
-        
+            .filter { it.isNotBlank() && !it.trim().startsWith("[offset:", ignoreCase = true) }
         
         val isRichSync = lines.any { line ->
             RICH_SYNC_LINE_REGEX.matches(line.trim()) && 
             RICH_SYNC_WORD_REGEX.containsMatchIn(line)
         }
         
-        return if (isRichSync) {
+        val parsed = if (isRichSync) {
             parseRichSyncLyrics(lines)
         } else {
             parseStandardLyrics(lines)
+        }
+
+        return if (fileOffsetMs != 0L) {
+            parsed.map { entry ->
+                val adjustedTime = (entry.time + fileOffsetMs).coerceAtLeast(0L)
+                val adjustedWords = entry.words?.map { word ->
+                    val offsetSec = fileOffsetMs / 1000.0
+                    word.copy(
+                        startTime = (word.startTime + offsetSec).coerceAtLeast(0.0),
+                        endTime = (word.endTime + offsetSec).coerceAtLeast(0.0)
+                    )
+                }
+                entry.copy(time = adjustedTime, words = adjustedWords)
+            }
+        } else {
+            parsed
         }
     }
     
@@ -561,12 +583,8 @@ object LyricsUtils {
         lines: List<LyricsEntry>,
         position: Long,
     ): Int {
-        for (index in lines.indices) {
-            if (lines[index].time >= position + 300L) {
-                return index - 1
-            }
-        }
-        return lines.lastIndex
+        val index = lines.indexOfLast { it.time <= position }
+        return if (index >= 0) index else 0
     }
 
     

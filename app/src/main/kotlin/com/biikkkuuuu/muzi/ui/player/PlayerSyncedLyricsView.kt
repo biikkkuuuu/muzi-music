@@ -16,8 +16,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.withFrameMillis
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -37,6 +40,7 @@ import com.biikkkuuuu.muzi.ui.component.shimmer.TextPlaceholder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 @Composable
@@ -98,11 +102,20 @@ fun PlayerSyncedLyricsView(
         } else if (lines.isEmpty()) {
             // No synced lyrics found - just empty state, show nothing
         } else {
-            val effectivePosition = positionProvider()
-            val currentLineIndex = remember(effectivePosition, lines) {
-                val index = lines.indexOfLast { it.time <= effectivePosition }
-                if (index >= 0) index else 0
+            var currentLineIndex by remember { mutableIntStateOf(0) }
+
+            LaunchedEffect(lines) {
+                while (isActive) {
+                    withFrameMillis { }
+                    val currentPos = positionProvider()
+                    val index = lines.indexOfLast { it.time <= currentPos }
+                    val newIndex = if (index >= 0) index else 0
+                    if (currentLineIndex != newIndex) {
+                        currentLineIndex = newIndex
+                    }
+                }
             }
+
             val currentLine = lines.getOrNull(currentLineIndex)?.text ?: ""
 
             AnimatedContent(
