@@ -7,7 +7,6 @@
   
   <p>
     <a href="https://github.com/biikkkuuuu/muzi-music/releases/latest"><img src="https://img.shields.io/badge/Download-Latest%20APK%20(v1.2.6.5)-brightgreen?style=for-the-badge&logo=android" alt="Download APK"/></a>
-    <a href="https://muzimusic.in"><img src="https://img.shields.io/badge/Official%20Website-muzimusic.in-orange?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Website"/></a>
     <a href="https://t.me/biikkkuuuuu"><img src="https://img.shields.io/badge/Telegram-Channel-blue?style=for-the-badge&logo=telegram" alt="Telegram"/></a>
     <a href="https://github.com/biikkkuuuu/muzi-music/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-GPL--3.0-green?style=for-the-badge" alt="License"/></a>
   </p>
@@ -23,7 +22,6 @@
 
 ---
 
-- **Official Website**: [muzimusic.in](https://muzimusic.in)
 - **Telegram Channel**: [@biikkkuuuuu](https://t.me/biikkkuuuuu)
 - **Instagram**: [@biikkkuuuu](https://instagram.com/biikkkuuuu)
 - **GitHub Repository**: [biikkkuuuu/muzi-music](https://github.com/biikkkuuuu/muzi-music)
