@@ -44,3 +44,4 @@ This file (`brain.md`) acts as the permanent memory and strict rulebook for all 
 - **Ghost Notification:** Fixed 'Music Player is running' empty notification on app launch by removing manual startForeground from MusicService.onCreate(). Media3 handles this automatically.
 - **UI Cleanups:** Removed 'Create Playlist with AI' and 'Import from Spotify Account'. Streamlined dropdown menu options.
 - **YouTube Mix Import:** Fixed importer bug for YouTube Mixes (RD... playlists). The app now uses YouTube.queue API instead of YouTube.playlist for RD links.
+- **Update Mechanism Trap:** If a repository has a historically higher version tag (e.g. `v1.4.0`), releasing a lower version (like `v1.2.7`) will cause the app's update checker to trap users in an infinite update loop. Always ensure the `versionName` is strictly greater than the highest existing GitHub Release tag (fixed by bumping to `v1.4.1`).
