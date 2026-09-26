@@ -213,7 +213,7 @@ fun CommunityPlaylistCard(
         MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
     }
 
-    val dbPlaylist by database.playlistByBrowseId(item.playlist.id).collectAsState(initial = null)
+    val dbPlaylist by remember(item.playlist.id) { database.playlistByBrowseId(item.playlist.id) }.collectAsState(initial = null, context = kotlinx.coroutines.Dispatchers.IO)
     val isBookmarked = dbPlaylist?.playlist?.bookmarkedAt != null
 
     Card(
@@ -244,7 +244,7 @@ fun CommunityPlaylistCard(
                     Column(modifier = Modifier.fillMaxSize()) {
                         Row(modifier = Modifier.weight(1f)) {
                             AsyncImage(
-                                model = item.songs.getOrNull(0)?.thumbnail?.resize(544, 544),
+                                model = item.songs.getOrNull(0)?.thumbnail?.resize(120, 120),
                                 contentDescription = null,
                                 contentScale = ContentScale.Crop,
                                 modifier = Modifier
@@ -252,7 +252,7 @@ fun CommunityPlaylistCard(
                                     .fillMaxSize()
                             )
                             AsyncImage(
-                                model = item.songs.getOrNull(1)?.thumbnail?.resize(544, 544),
+                                model = item.songs.getOrNull(1)?.thumbnail?.resize(120, 120),
                                 contentDescription = null,
                                 contentScale = ContentScale.Crop,
                                 modifier = Modifier
@@ -262,7 +262,7 @@ fun CommunityPlaylistCard(
                         }
                         Row(modifier = Modifier.weight(1f)) {
                             AsyncImage(
-                                model = item.songs.getOrNull(2)?.thumbnail?.resize(544, 544),
+                                model = item.songs.getOrNull(2)?.thumbnail?.resize(120, 120),
                                 contentDescription = null,
                                 contentScale = ContentScale.Crop,
                                 modifier = Modifier
@@ -270,7 +270,7 @@ fun CommunityPlaylistCard(
                                     .fillMaxSize()
                             )
                             AsyncImage(
-                                model = item.songs.getOrNull(3)?.thumbnail?.resize(544, 544),
+                                model = item.songs.getOrNull(3)?.thumbnail?.resize(120, 120),
                                 contentDescription = null,
                                 contentScale = ContentScale.Crop,
                                 modifier = Modifier
@@ -318,7 +318,7 @@ fun CommunityPlaylistCard(
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
                         AsyncImage(
-                            model = song.thumbnail.resize(544, 544),
+                            model = song.thumbnail.resize(120, 120),
                             contentDescription = null,
                             modifier = Modifier
                                 .size(56.dp)
@@ -451,7 +451,7 @@ fun DailyDiscoverCard(
     modifier: Modifier = Modifier
 ) {
     val database = LocalDatabase.current
-    val playCount by database.getLifetimePlayCount(dailyDiscover.recommendation.id).collectAsState(initial = 0)
+    val playCount by remember(dailyDiscover.recommendation.id) { database.getLifetimePlayCount(dailyDiscover.recommendation.id) }.collectAsState(initial = 0, context = kotlinx.coroutines.Dispatchers.IO)
     val menuState = LocalMenuState.current
     val haptic = LocalHapticFeedback.current
 
@@ -1070,7 +1070,7 @@ fun HomeScreen(
                                                                 }
                                                             } else if (itemIndex < pageItems.size) {
                                                                 val item = pageItems[itemIndex]
-                                                                val isPinned by database.speedDialDao.isPinned(item.id).collectAsState(initial = false)
+                                                                val isPinned by remember(item.id) { database.speedDialDao.isPinned(item.id) }.collectAsState(initial = false, context = kotlinx.coroutines.Dispatchers.IO)
 
                                                                 Box(
                                                                     modifier = Modifier
@@ -1211,8 +1211,8 @@ fun HomeScreen(
                                             .animateItem()
                                     ) { index ->
                                         val originalSong = distinctQuickPicks[index]
-                                        val song by database.song(originalSong.id)
-                                            .collectAsState(initial = originalSong)
+                                        val song by remember(originalSong.id) { database.song(originalSong.id) }
+                                            .collectAsState(initial = originalSong, context = kotlinx.coroutines.Dispatchers.IO)
                                         val isActive = song!!.id == mediaMetadata?.id
 
                                         Box(
@@ -1247,7 +1247,7 @@ fun HomeScreen(
                                             AsyncImage(
                                                 model = coil3.request.ImageRequest.Builder(LocalContext.current)
                                                     .data(song!!.thumbnailUrl)
-                                                    .crossfade(true)
+                                                    .size(600)
                                                     .build(),
                                                 contentDescription = null,
                                                 contentScale = ContentScale.Crop,
@@ -1536,8 +1536,8 @@ fun HomeScreen(
                                             items = forgottenFavorites.distinctBy { it.id },
                                             key = { _, it -> it.id }
                                         ) { index, originalSong ->
-                                            val song by database.song(originalSong.id)
-                                                .collectAsState(initial = originalSong)
+                                            val song by remember(originalSong.id) { database.song(originalSong.id) }
+                                                .collectAsState(initial = originalSong, context = kotlinx.coroutines.Dispatchers.IO)
 
                                             SongListItem(
                                                 song = song!!,

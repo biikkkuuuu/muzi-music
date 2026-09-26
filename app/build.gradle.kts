@@ -144,7 +144,7 @@ android {
             isShrinkResources = true
             isCrunchPngs = false
             isDebuggable = false
-            signingConfig = signingConfigs.getByName("release")
+            signingConfig = signingConfigs.findByName("release")?.takeIf { it.storeFile?.exists() == true } ?: signingConfigs.getByName("debug")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
