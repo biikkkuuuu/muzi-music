@@ -27,7 +27,7 @@ data class echomusicCanvasItem(
 )
 
 object echomusicCanvasProvider {
-    private const val BASE_URL = "https://canvas.echomusic.fun/canvas.json"
+    private const val BASE_URL = "https://canvas.muzi.fun/canvas.json"
 
     private val json = Json {
         ignoreUnknownKeys = true

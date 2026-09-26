@@ -185,10 +185,10 @@ import com.biikkkuuuu.muzi.extensions.toggleRepeatMode
 import com.biikkkuuuu.muzi.listentogether.RoomRole
 import com.biikkkuuuu.muzi.models.MediaMetadata
 import com.biikkkuuuu.muzi.playback.ExoDownloadService
-import com.biikkkuuuu.muzi.echomusic.getConnectedBluetoothDeviceName
-import com.biikkkuuuu.muzi.echomusic.isBuds
-import com.biikkkuuuu.muzi.echomusic.isSpeaker
-import com.biikkkuuuu.muzi.echomusic.AudioDeviceBottomSheet
+import com.biikkkuuuu.muzi.muzi.getConnectedBluetoothDeviceName
+import com.biikkkuuuu.muzi.muzi.isBuds
+import com.biikkkuuuu.muzi.muzi.isSpeaker
+import com.biikkkuuuu.muzi.muzi.AudioDeviceBottomSheet
 import com.biikkkuuuu.muzi.ui.component.BottomSheet
 import com.biikkkuuuu.muzi.ui.component.BottomSheetState
 import com.biikkkuuuu.muzi.ui.component.CastButton

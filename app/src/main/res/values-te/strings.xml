@@ -342,7 +342,7 @@
     <string name="listen_together_smart_resync">స్మార్ట్ నెట్‌వర్క్ రీసింక్</string>
     <string name="listen_together_smart_resync_desc">కనెక్షన్ పడిపోయిన తర్వాత హోస్ట్‌తో స్వయంచాలకంగా అనుగుణంగా ఉండండి</string>
     <string name="spotify_import_title">Spotify నుండి దిగుమతి చేయండి</string>
-    <string name="spotify_import_desc">Spotify ను కనెక్ట్ చేయండి, ప్లేలిస్ట్‌లను ఎంచుకోండి మరియు వాటిని స్థానిక Echo Music ప్లేలిస్ట్‌లలో ప్రతిబింబించండి.</string>
+    <string name="spotify_import_desc">Spotify ను కనెక్ట్ చేయండి, ప్లేలిస్ట్‌లను ఎంచుకోండి మరియు వాటిని స్థానిక Muzi Music ప్లేలిస్ట్‌లలో ప్రతిబింబించండి.</string>
     <string name="spotify_connect">Spotify ను కనెక్ట్ చేయి</string>
     <string name="spotify_refresh">Spotify లైబ్రరీని రిఫ్రెష్ చేయి</string>
     <string name="spotify_select_sources">Spotify ప్లేలిస్ట్‌లను ఎంచుకోండి</string>
@@ -402,10 +402,10 @@
     <string name="recognition_notification_processing">గుర్తిస్తోంది…</string>
     <string name="recognition_notification_no_match">సరిపోలిక కనుగొనబడలేదు</string>
     <string name="recognition_notification_failed">గుర్తింపు విఫలమైంది</string>
-    <string name="listen_on_echo_music">Echo Musicలో వినండి</string>
+    <string name="listen_on_echo_music">Muzi Musicలో వినండి</string>
     <string name="qs_tile_music_recognizer">సంగీతాన్ని గుర్తించండి</string>
-    <string name="echo_brain_beta">Echo Brain (బీటా)</string>
-    <string name="echo_brain_enable">Echo Brainను ప్రారంభించండి</string>
+    <string name="echo_brain_beta">Muzi Brain (బీటా)</string>
+    <string name="echo_brain_enable">Muzi Brainను ప్రారంభించండి</string>
     <string name="echo_brain_enable_desc">మీ వినికిడి అలవాట్ల ఆధారంగా AI సిఫార్సులను స్వయంచాలకంగా చేర్చండి</string>
     <string name="echo_brain_profile_statistics">ప్రొఫైల్ గణాంకాలు</string>
     <string name="echo_brain_learning_level">అభ్యాస స్థాయి</string>
@@ -432,9 +432,9 @@
     <string name="listenbrainz_scrobbling">ListenBrainz స్క్రాబ్లింగ్</string>
     <string name="listenbrainz_scrobbling_description">మీరు విన్న ట్రాక్‌లను ListenBrainzకు స్వయంచాలకంగా సమర్పించండి</string>
     <string name="set_listenbrainz_token">ListenBrainz టోకెన్‌ను సెట్ చేయండి</string>
-    <string name="youtube_decryption_settings">Echo Extractor</string>
+    <string name="youtube_decryption_settings">Muzi Extractor</string>
     <string name="youtube_decryption_desc">ఎక్స్‌ట్రాక్టర్ సెట్టింగ్‌లను కాన్ఫిగర్ చేయండి</string>
-    <string name="youtube_decryption_support">Echo Extractor</string>
+    <string name="youtube_decryption_support">Muzi Extractor</string>
     <string name="youtube_decryption_support_desc">YouTube ప్లేబ్యాక్ కాన్ఫిగరేషన్‌లను స్వయంచాలకంగా సంగ్రహిస్తుంది. సక్రియ స్థితికి లాక్ చేయబడింది.</string>
     <string name="force_update_cipher">కాన్ఫిగరేషన్‌లను బలవంతంగా నవీకరించండి</string>
     <string name="force_update_cipher_desc">తాజా ఎక్స్‌ట్రాక్టర్ ఓవర్‌రైడ్ మ్యాపింగ్‌లను డౌన్‌లోడ్ చేయండి. రోజుకు 3 నవీకరణలకు పరిమితం.</string>

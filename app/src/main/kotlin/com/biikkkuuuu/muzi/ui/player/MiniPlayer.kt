@@ -130,12 +130,12 @@ import com.biikkkuuuu.muzi.ui.component.liquidGlass
 import com.biikkkuuuu.muzi.ui.theme.PlayerColorExtractor
 import com.biikkkuuuu.muzi.utils.rememberEnumPreference
 import com.biikkkuuuu.muzi.utils.rememberPreference
-import com.biikkkuuuu.muzi.echomusic.AudioDeviceBottomSheet
+import com.biikkkuuuu.muzi.muzi.AudioDeviceBottomSheet
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.math.roundToInt
-import com.biikkkuuuu.muzi.echomusic.isBluetoothHeadphoneConnected
+import com.biikkkuuuu.muzi.muzi.isBluetoothHeadphoneConnected
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Headphones
 import androidx.compose.material.icons.filled.Speaker

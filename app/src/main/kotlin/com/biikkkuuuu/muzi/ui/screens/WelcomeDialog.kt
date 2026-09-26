@@ -42,12 +42,12 @@ fun WelcomeDialog(
 ) {
     val uriHandler = LocalUriHandler.current
 
-    var whatsNewInfo by remember { mutableStateOf<com.biikkkuuuu.muzi.echomusic.updater.WhatsNewInfo?>(null) }
+    var whatsNewInfo by remember { mutableStateOf<com.biikkkuuuu.muzi.muzi.updater.WhatsNewInfo?>(null) }
     var isLoadingWhatsNew by remember { mutableStateOf(true) }
 
     LaunchedEffect(Unit) {
         kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
-            val info = com.biikkkuuuu.muzi.echomusic.updater.fetchChangelogForVersion(BuildConfig.VERSION_NAME)
+            val info = com.biikkkuuuu.muzi.muzi.updater.fetchChangelogForVersion(BuildConfig.VERSION_NAME)
             kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.Main) {
                 whatsNewInfo = info
                 isLoadingWhatsNew = false

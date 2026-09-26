@@ -1273,7 +1273,7 @@ fun LocalPlaylistHeader(
 
     val overrideThumbnail = remember {mutableStateOf<String?>(null)}
     var isCustomThumbnail: Boolean = playlist.thumbnails.firstOrNull()?.let {
-        it.contains("studio_square_thumbnail") || it.contains("content://com.echomusic.music")
+        it.contains("studio_square_thumbnail") || it.contains("content://com.muzi.music")
     } ?: false
 
 

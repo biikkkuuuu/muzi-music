@@ -72,7 +72,7 @@ internal enum class CastDeviceType(val icon: Int, val connectedIcon: Int) {
         )
         private val SPEAKER_KEYWORDS = listOf(
             "home", "nest", "speaker", "audio", "max", "mini",
-            "echo", "alexa", "sonos", "harman", "jabra",
+            "muzi", "alexa", "sonos", "harman", "jabra",
             "bose", "bang", "olufsen", "marshall", "jbl",
             "soundbar", "sound bar", "subwoofer", "receiver",
             "amplifier", "amp", "hifi", "stereo"

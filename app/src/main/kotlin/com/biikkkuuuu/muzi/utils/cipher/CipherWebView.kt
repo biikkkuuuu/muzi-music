@@ -39,7 +39,7 @@ class CipherWebView private constructor(
 
     /**
      * Single-shot continuation slot with an id-checked take. arm() returns the request id the
-     * JS call must echo back; takeIfCurrent(id) ignores late callbacks from superseded
+     * JS call must muzi back; takeIfCurrent(id) ignores late callbacks from superseded
      * requests (the stale-result guard); takeAny() is for renderer-gone/timeout paths, which
      * must clear whatever is pending. Synchronized because JS-bridge callbacks arrive on a
      * WebView-internal thread while onRenderProcessGone/timeouts run on the main thread.

@@ -188,7 +188,7 @@ fun LibraryScreen(navController: NavController) {
                             leadingIcon = { Icon(painter = painterResource(R.drawable.add), contentDescription = null) },
                             onClick = {
                                 showFabMenu = false
-                                showCreatePlaylistOptionsDialog = true
+                                showCreatePlaylistDialog = true
                             }
                         )
                         DropdownMenuItem(
@@ -206,7 +206,7 @@ fun LibraryScreen(navController: NavController) {
                         onDismissRequest = { showImportMenu = false }
                     ) {
                         DropdownMenuItem(
-                            text = { Text(stringResource(R.string.import_playlist)) },
+                            text = { Text(stringResource(R.string.import_from_yt_link)) },
                             leadingIcon = { Icon(painter = painterResource(R.drawable.link), contentDescription = null) },
                             onClick = {
                                 showImportMenu = false
@@ -214,13 +214,14 @@ fun LibraryScreen(navController: NavController) {
                             }
                         )
                         DropdownMenuItem(
-                            text = { Text(stringResource(R.string.import_from_spotify)) },
+                            text = { Text(stringResource(R.string.import_from_spotify_link)) },
                             leadingIcon = { Icon(painter = painterResource(R.drawable.ic_spotify), contentDescription = null) },
                             onClick = {
                                 showImportMenu = false
-                                navController.navigate("settings/spotify_import")
+                                showUniversalImportDialog = true
                             }
                         )
+
                     }
                 }
             }
@@ -324,104 +325,6 @@ fun LibraryScreen(navController: NavController) {
         )
     }
 
-    if (showCreatePlaylistOptionsDialog) {
-        DefaultDialog(
-            onDismiss = { showCreatePlaylistOptionsDialog = false },
-            title = { Text(stringResource(R.string.create_playlist)) },
-        ) {
-            Row(
-                modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp),
-                horizontalArrangement = Arrangement.SpaceEvenly
-            ) {
-                // Normally
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .weight(1f)
-                        .padding(horizontal = 8.dp)
-                        .border(
-                            width = 1.dp,
-                            color = MaterialTheme.colorScheme.outlineVariant,
-                            shape = RoundedCornerShape(28.dp)
-                        )
-                        .clip(RoundedCornerShape(28.dp))
-                        .clickable {
-                            showCreatePlaylistOptionsDialog = false
-                            showCreatePlaylistDialog = true
-                        }
-                        .padding(vertical = 20.dp, horizontal = 8.dp)
-                ) {
-                    Surface(
-                        shape = CircleShape,
-                        color = MaterialTheme.colorScheme.surfaceContainerHigh,
-                        modifier = Modifier.size(56.dp)
-                    ) {
-                        Box(contentAlignment = Alignment.Center) {
-                            Icon(
-                                painter = painterResource(R.drawable.add),
-                                contentDescription = null,
-                                modifier = Modifier.size(28.dp)
-                            )
-                        }
-                    }
-                    Spacer(Modifier.height(12.dp))
-                    Text(
-                        text = stringResource(R.string.create_playlist_normally),
-                        style = MaterialTheme.typography.labelLarge,
-                        textAlign = TextAlign.Center
-                    )
-                }
-
-                // Create with AI
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .weight(1f)
-                        .padding(horizontal = 8.dp)
-                        .border(
-                            width = 1.dp,
-                            color = MaterialTheme.colorScheme.primary.copy(alpha = 0.3f),
-                            shape = RoundedCornerShape(28.dp)
-                        )
-                        .clip(RoundedCornerShape(28.dp))
-                        .clickable {
-                            showCreatePlaylistOptionsDialog = false
-                            showAiPlaylistDialog = true
-                        }
-                        .padding(vertical = 20.dp, horizontal = 8.dp)
-                ) {
-                    Surface(
-                        shape = CircleShape,
-                        color = MaterialTheme.colorScheme.primaryContainer,
-                        modifier = Modifier.size(56.dp)
-                    ) {
-                        Box(contentAlignment = Alignment.Center) {
-                            Icon(
-                                painter = painterResource(R.drawable.sparks),
-                                contentDescription = null,
-                                modifier = Modifier.size(28.dp),
-                                tint = MaterialTheme.colorScheme.primary
-                            )
-                        }
-                    }
-                    Spacer(Modifier.height(12.dp))
-                    Text(
-                        text = stringResource(R.string.create_playlist_with_ai),
-                        style = MaterialTheme.typography.labelLarge,
-                        textAlign = TextAlign.Center
-                    )
-                }
-            }
-        }
-    }
-
-    if (showAiPlaylistDialog) {
-        com.biikkkuuuu.muzi.ui.component.CreateAiPlaylistDialog(
-            onDismiss = { showAiPlaylistDialog = false },
-            onPlaylistCreated = { playlistId ->
-                showAiPlaylistDialog = false
-                navController.navigate("local_playlist/$playlistId")
-            }
-        )
-    }
 }
+
+

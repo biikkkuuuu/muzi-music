@@ -353,7 +353,7 @@
     <string name="backup_create_failed">Varnostne kopije ni bilo mogoče ustvariti</string>
     <string name="restore_failed">Obnova varnostne kopije ni uspela</string>
     <string name="discord_integration">Integracija z Discordom</string>
-    <string name="discord_information">echomusic uporablja knjižnico KizzyRPC za nastavitev stanja vašega Discord računa. To vključuje uporabo povezave Discord Gateway, kar se lahko šteje za kršitev pogojev uporabe Discord. Vendar ni znanih primerov, da bi bili uporabniški računi zaradi tega suspendirani. Uporabljate na lastno odgovornost.\n\nechomusic bo izluščil samo vaš žeton, vse ostalo pa je shranjeno lokalno.</string>
+    <string name="discord_information">muzi uporablja knjižnico KizzyRPC za nastavitev stanja vašega Discord računa. To vključuje uporabo povezave Discord Gateway, kar se lahko šteje za kršitev pogojev uporabe Discord. Vendar ni znanih primerov, da bi bili uporabniški računi zaradi tega suspendirani. Uporabljate na lastno odgovornost.\n\nechomusic bo izluščil samo vaš žeton, vse ostalo pa je shranjeno lokalno.</string>
     <string name="dismiss">Opusti</string>
     <string name="options">Možnosti</string>
     <string name="preview">Predogled</string>
@@ -379,7 +379,7 @@
     <string name="listen_together_smart_resync">Pametna ponovna sinhronizacija omrežja</string>
     <string name="listen_together_smart_resync_desc">Po prekinitvi povezave samodejno sledite gostitelju</string>
     <string name="spotify_import_title">Uvozi iz Spotifyja</string>
-    <string name="spotify_import_desc">Povežite Spotify, izberite sezname predvajanja in jih preslikajte v lokalne sezname Echo Music.</string>
+    <string name="spotify_import_desc">Povežite Spotify, izberite sezname predvajanja in jih preslikajte v lokalne sezname Muzi Music.</string>
     <string name="spotify_connect">Poveži Spotify</string>
     <string name="spotify_refresh">Osveži knjižnico Spotify</string>
     <string name="spotify_select_sources">Izberite sezname predvajanja Spotify</string>
@@ -441,10 +441,10 @@
     <string name="recognition_notification_processing">Prepoznavanje …</string>
     <string name="recognition_notification_no_match">Ni najdenih zadetkov</string>
     <string name="recognition_notification_failed">Prepoznavanje ni uspelo</string>
-    <string name="listen_on_echo_music">Poslušaj v aplikaciji Echo Music</string>
+    <string name="listen_on_echo_music">Poslušaj v aplikaciji Muzi Music</string>
     <string name="qs_tile_music_recognizer">Prepoznaj glasbo</string>
-    <string name="echo_brain_beta">Echo Brain (beta)</string>
-    <string name="echo_brain_enable">Omogoči Echo Brain</string>
+    <string name="echo_brain_beta">Muzi Brain (beta)</string>
+    <string name="echo_brain_enable">Omogoči Muzi Brain</string>
     <string name="echo_brain_enable_desc">Samodejno vključi priporočila umetne inteligence na podlagi vaših navad poslušanja</string>
     <string name="echo_brain_profile_statistics">Statistika profila</string>
     <string name="echo_brain_learning_level">Raven učenja</string>
@@ -471,9 +471,9 @@
     <string name="listenbrainz_scrobbling">Beleženje poslušanja v ListenBrainz</string>
     <string name="listenbrainz_scrobbling_description">Samodejno pošiljajte poslušane skladbe v ListenBrainz</string>
     <string name="set_listenbrainz_token">Nastavi žeton ListenBrainz</string>
-    <string name="youtube_decryption_settings">Echo Extractor</string>
+    <string name="youtube_decryption_settings">Muzi Extractor</string>
     <string name="youtube_decryption_desc">Konfigurirajte nastavitve ekstraktorja</string>
-    <string name="youtube_decryption_support">Echo Extractor</string>
+    <string name="youtube_decryption_support">Muzi Extractor</string>
     <string name="youtube_decryption_support_desc">Samodejno pridobi konfiguracije predvajanja YouTube. Zaklenjeno na možnost »Aktivno«.</string>
     <string name="force_update_cipher">Vsili posodobitev konfiguracij</string>
     <string name="force_update_cipher_desc">Prenesite najnovejše nadomestne preslikave ekstraktorja. Omejeno na 3 posodobitve na dan.</string>

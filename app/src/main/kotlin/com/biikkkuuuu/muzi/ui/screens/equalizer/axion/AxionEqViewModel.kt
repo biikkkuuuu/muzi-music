@@ -150,7 +150,7 @@ class AxionEqViewModel @Inject constructor(
             
             val profile = SavedEQProfile(
                 id = "echo_tuning",
-                name = "Echo Tuning",
+                name = "Muzi Tuning",
                 deviceModel = "Equalizer",
                 bands = bands,
                 preamp = 0.0,

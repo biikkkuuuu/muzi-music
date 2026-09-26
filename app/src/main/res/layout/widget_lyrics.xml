@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="@drawable/widget_background"
     android:padding="14dp"
-    android:theme="@style/Theme.Widget.echomusic">
+    android:theme="@style/Theme.Widget.muzi">
 
     <!-- Top Row: Song Info + Controls -->
     <LinearLayout

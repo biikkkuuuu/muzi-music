@@ -55,8 +55,8 @@ import com.biikkkuuuu.muzi.ui.screens.recognition.RecognitionScreen
 import com.biikkkuuuu.muzi.ui.screens.recognition.RecognitionHistoryScreen
 import com.biikkkuuuu.muzi.utils.rememberEnumPreference
 import com.biikkkuuuu.muzi.utils.rememberPreference
-import com.biikkkuuuu.muzi.echomusic.changelog.ChangelogScreen
-import com.biikkkuuuu.muzi.echomusic.commitscreen.CommitScreen
+import com.biikkkuuuu.muzi.muzi.changelog.ChangelogScreen
+import com.biikkkuuuu.muzi.muzi.commitscreen.CommitScreen
 import com.biikkkuuuu.muzi.ui.screens.equalizer.axion.AxionEqScreen
 import com.biikkkuuuu.muzi.ui.screens.ambient.AmbientModeScreen
 
@@ -450,7 +450,7 @@ fun NavGraphBuilder.navigationBuilder(
         CommitScreen(navController, scrollBehavior)
     }
     composable("settings/update") {
-        com.biikkkuuuu.muzi.echomusic.updater.UpdateScreen(navController)
+        com.biikkkuuuu.muzi.muzi.updater.UpdateScreen(navController)
     }
     composable("settings/update_settings") {
         com.biikkkuuuu.muzi.ui.screens.settings.UpdateSettings(navController, scrollBehavior)

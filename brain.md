@@ -36,3 +36,11 @@ This file (`brain.md`) acts as the permanent memory and strict rulebook for all 
 ## 6. Active Tasks / Backlog
 - **Lyrics Animation:** Implement a "buttery smooth" word-by-word active glow animation (similar to Apple Music style as shown in the reference video `WhatsApp Video 2026-09-19 at 10.57.36 AM.mp4`). The words should fill with color smoothly as they are sung, rather than snapping.
   - *Rule:* **DO NOT PUSH** any changes related to this until the user explicitly says "push".
+
+
+## 7. Recent Updates (Sept 27, 2026)
+- **Branding & OOM:** Successfully migrated Echo to Muzi. Fixed R8 OOM crashes by setting gradle.properties heap to 3072m.
+- **Data Restore Crash:** Fixed crash on reinstall by disabling ndroid:allowBackup and ndroid:hasFragileUserData.
+- **Ghost Notification:** Fixed 'Music Player is running' empty notification on app launch by removing manual startForeground from MusicService.onCreate(). Media3 handles this automatically.
+- **UI Cleanups:** Removed 'Create Playlist with AI' and 'Import from Spotify Account'. Streamlined dropdown menu options.
+- **YouTube Mix Import:** Fixed importer bug for YouTube Mixes (RD... playlists). The app now uses YouTube.queue API instead of YouTube.playlist for RD links.

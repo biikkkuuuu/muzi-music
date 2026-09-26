@@ -250,7 +250,7 @@ highlightKey: String? = null) {
             }
             val updatesText = stringResource(R.string.app_updates_title)
             val updatesDesc = stringResource(R.string.check_for_update)
-            val isUpdateAvailable = com.biikkkuuuu.muzi.echomusic.updater.getUpdateAvailableState(context)
+            val isUpdateAvailable = com.biikkkuuuu.muzi.muzi.updater.getUpdateAvailableState(context)
             if (updatesText.lowercase().contains(searchLower) || updatesDesc.lowercase().contains(searchLower) || "update".contains(searchLower)) {
                 add(
                     Material3SettingsItem(

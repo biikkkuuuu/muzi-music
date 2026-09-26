@@ -269,7 +269,7 @@ fun DiscordSettings(
     val (button2Label) =
         rememberPreference(
             key = DiscordActivityButton2LabelKey,
-            defaultValue = "Go to Echo Music",
+            defaultValue = "Go to Muzi Music",
         )
     val (button2Enabled) =
         rememberPreference(
@@ -1183,7 +1183,7 @@ fun RichPresence(
     button1Enabled: Boolean = true,
     button1UrlSource: String = "songurl",
     button1CustomUrl: String = "",
-    button2Label: String = "Go to Echo Music",
+    button2Label: String = "Go to Muzi Music",
     button2Enabled: Boolean = true,
     button2UrlSource: String = "custom",
     button2CustomUrl: String = "https://github.com/biikkkuuuu/muzo-music",

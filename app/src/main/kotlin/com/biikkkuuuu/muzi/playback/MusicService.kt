@@ -157,7 +157,7 @@ import com.biikkkuuuu.muzi.extensions.toEnum
 import com.biikkkuuuu.muzi.extensions.toMediaItem
 import com.biikkkuuuu.muzi.playback.toPersistQueue
 import com.biikkkuuuu.muzi.playback.toQueue
-import com.biikkkuuuu.muzi.echomusic.updater.downloadmanager.EchoNotificationProvider
+import com.biikkkuuuu.muzi.muzi.updater.downloadmanager.EchoNotificationProvider
 import com.biikkkuuuu.muzi.lyrics.LyricsHelper
 import com.biikkkuuuu.muzi.models.PersistPlayerState
 import com.biikkkuuuu.muzi.models.PersistQueue
@@ -179,7 +179,7 @@ import com.biikkkuuuu.muzi.utils.YTPlayerUtils
 import com.biikkkuuuu.muzi.utils.dataStore
 import com.biikkkuuuu.muzi.utils.get
 import com.biikkkuuuu.muzi.utils.reportException
-import com.biikkkuuuu.muzi.widget.EchoMusicWidgetManager
+import com.biikkkuuuu.muzi.widget.MuziWidgetManager
 import com.biikkkuuuu.muzi.widget.MusicWidgetReceiver
 import com.biikkkuuuu.muzi.widget.LyricsWidgetReceiver
 import com.biikkkuuuu.muzi.lyrics.LyricsUtils
@@ -247,7 +247,7 @@ class MusicService :
     lateinit var eqProfileRepository: EQProfileRepository
 
     @Inject
-    lateinit var widgetManager: com.biikkkuuuu.muzi.widget.EchoMusicWidgetManager
+    lateinit var widgetManager: com.biikkkuuuu.muzi.widget.MuziWidgetManager
 
     @Inject
     lateinit var listenTogetherManager: com.biikkkuuuu.muzi.listentogether.ListenTogetherManager
@@ -604,23 +604,8 @@ class MusicService :
                     NotificationManager.IMPORTANCE_LOW
                 )
             )
-            val pending = PendingIntent.getActivity(
-                this,
-                0,
-                Intent(this, MainActivity::class.java),
-                PendingIntent.FLAG_IMMUTABLE
-            )
-            val notification: Notification = NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle(getString(R.string.music_player))
-                .setContentText("")
-                .setSmallIcon(R.drawable.ic_launcher_nobg)  
-                .setContentIntent(pending)
-                .setOngoing(true)
-                .build()
-            startForeground(NOTIFICATION_ID, notification)
         } catch (e: Exception) {
-            Timber.tag(TAG).e(e, "Failed to create foreground notification")
-            reportException(e)
+            Timber.tag(TAG).e(e, "Failed to create notification channel")
         }
 
         setMediaNotificationProvider(

@@ -148,8 +148,8 @@ import android.bluetooth.BluetoothDevice
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
-import com.biikkkuuuu.muzi.echomusic.isBluetoothHeadphoneConnected
-import com.biikkkuuuu.muzi.echomusic.AudioDeviceBottomSheet
+import com.biikkkuuuu.muzi.muzi.isBluetoothHeadphoneConnected
+import com.biikkkuuuu.muzi.muzi.AudioDeviceBottomSheet
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive

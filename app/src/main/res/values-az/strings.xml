@@ -383,10 +383,10 @@
     <string name="recognition_notification_processing">Musiqi emal edilir</string>
     <string name="recognition_notification_no_match">Uyğunluq tapılmadı</string>
     <string name="recognition_notification_failed">Musiqini tanımaq mümkün olmadı</string>
-    <string name="listen_on_echo_music">Echo Music-də dinlə</string>
+    <string name="listen_on_echo_music">Muzi Music-də dinlə</string>
     <string name="qs_tile_music_recognizer">Musiqi tanıyıcı</string>
-    <string name="echo_brain_beta">Echo Brain Beta</string>
-    <string name="echo_brain_enable">Echo Brain-i aktiv et</string>
+    <string name="echo_brain_beta">Muzi Brain Beta</string>
+    <string name="echo_brain_enable">Muzi Brain-i aktiv et</string>
     <string name="echo_brain_enable_desc">Fərdiləşdirilmiş musiqi profilinizi yaratmaq üçün dinləmə vərdişlərinizi öyrənir</string>
     <string name="echo_brain_profile_statistics">Profil statistikası</string>
     <string name="echo_brain_learning_level">Öyrənmə səviyyəsi</string>
@@ -399,9 +399,9 @@
     <string name="echo_brain_artists_mapped">Xəritələnən ifaçılar</string>
     <string name="echo_brain_data_management">Məlumatların idarə edilməsi</string>
     <string name="echo_brain_export_profile">Profili ixrac et</string>
-    <string name="echo_brain_export_profile_desc">Echo Brain profilinizi fayl kimi ixrac edin</string>
+    <string name="echo_brain_export_profile_desc">Muzi Brain profilinizi fayl kimi ixrac edin</string>
     <string name="echo_brain_import_profile">Profili idxal et</string>
-    <string name="echo_brain_import_profile_desc">Echo Brain profilini fayldan idxal edin</string>
+    <string name="echo_brain_import_profile_desc">Muzi Brain profilini fayldan idxal edin</string>
     <string name="echo_brain_reset_profile">Profili sıfırla</string>
     <string name="echo_brain_reset_profile_desc">Öyrənilmiş profil məlumatlarını sıfırlayın</string>
     <string name="echo_brain_reset_neural_profile">Neyron profili sıfırla</string>

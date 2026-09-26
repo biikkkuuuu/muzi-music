@@ -64,25 +64,40 @@ class UniversalPlaylistImporter @Inject constructor(
     ): PlaylistImportResult {
         onProgress(PlaylistImportProgress("YouTube Music", 0, 0, context.getString(R.string.loading)))
 
-        val page = YouTube.playlist(playlistId).getOrElse { error ->
-            if (error is CancellationException) throw error
-            return PlaylistImportResult.Error(error.message ?: "Failed to fetch YouTube playlist")
-        }
+        val allSongs = mutableListOf<SongItem>()
+        var title = "Imported Playlist"
+        var thumbnailUrl: String? = null
 
-        val allSongs = page.songs.toMutableList()
-        var continuation = page.songsContinuation
-        val seenContinuations = mutableSetOf<String>()
+        if (playlistId.startsWith("RD")) {
+            val songs = YouTube.queue(playlistId = playlistId).getOrElse { error ->
+                if (error is CancellationException) throw error
+                return PlaylistImportResult.Error(error.message ?: "Failed to fetch YouTube Mix")
+            }
+            allSongs.addAll(songs)
+            title = "YouTube Mix"
+            thumbnailUrl = allSongs.firstOrNull()?.thumbnail
+        } else {
+            val page = YouTube.playlist(playlistId).getOrElse { error ->
+                if (error is CancellationException) throw error
+                return PlaylistImportResult.Error(error.message ?: "Failed to fetch YouTube playlist")
+            }
+            title = page.playlist.title.ifBlank { "Imported Playlist" }
+            thumbnailUrl = page.playlist.thumbnail?.ifBlank { null }
+            allSongs.addAll(page.songs)
 
-        while (continuation != null && seenContinuations.add(continuation)) {
-            onProgress(PlaylistImportProgress(page.playlist.title, allSongs.size, allSongs.size, "Loading more tracks..."))
-            val contPage = YouTube.playlistContinuation(continuation).getOrNull() ?: break
-            allSongs.addAll(contPage.songs)
-            continuation = contPage.continuation
+            var continuation = page.songsContinuation
+            val seenContinuations = mutableSetOf<String>()
+
+            while (continuation != null && seenContinuations.add(continuation)) {
+                onProgress(PlaylistImportProgress(title, allSongs.size, allSongs.size, "Loading more tracks..."))
+                val contPage = YouTube.playlistContinuation(continuation).getOrNull() ?: break
+                allSongs.addAll(contPage.songs)
+                continuation = contPage.continuation
+            }
+            thumbnailUrl = thumbnailUrl ?: allSongs.firstOrNull()?.thumbnail
         }
 
         val localPlaylistId = "YT_PLAYLIST_$playlistId"
-        val title = page.playlist.title.ifBlank { "Imported Playlist" }
-        val thumbnailUrl = page.playlist.thumbnail?.ifBlank { null } ?: allSongs.firstOrNull()?.thumbnail
 
         database.withTransaction {
             val now = LocalDateTime.now()

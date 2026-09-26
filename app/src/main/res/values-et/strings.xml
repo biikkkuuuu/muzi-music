@@ -193,7 +193,7 @@
     <string name="enable_lrclib">Kasuta laulusõnade kuvamiseks teenusepakkujat LrcLib</string>
     <string name="dismiss">Loobu</string>
     <string name="preview">Eelvaade</string>
-    <string name="enable_discord_rpc">Näita oma tegevust echomusic rakenduses Discordi olekuteatena</string>
+    <string name="enable_discord_rpc">Näita oma tegevust muzi rakenduses Discordi olekuteatena</string>
     <string name="sort_by_create_date">Lisamise kuupäev</string>
     <string name="sort_by_name">Nime alusel</string>
     <string name="sort_by_artist">Esitaja järgi</string>
@@ -272,7 +272,7 @@
     <string name="backup_create_failed">Varukoopia tegemine ei õnnestunud</string>
     <string name="restore_failed">Varukoopiast taastamine ei õnnestunud</string>
     <string name="discord_integration">Lõiming Discordiga</string>
-    <string name="discord_information">echomusic kasutab Discordi kasutajakonto oleku kuvamiseks KizzyRPC teeki. See eeldab Discord Gateway ühenduse kasutamist ja seda loetakse Discordi kasutustingimuste rikkumiseks. Aga pole teada ühtegi juhust, kus kasutajakonto oleks sel põhjusel keelatud. Kasuta seda teenust omal vastutsusel.\n\nechomusic kasutab ainult sinu tunnusluba, kõike muud hoitakse kohalikus seadmes.</string>
+    <string name="discord_information">muzi kasutab Discordi kasutajakonto oleku kuvamiseks KizzyRPC teeki. See eeldab Discord Gateway ühenduse kasutamist ja seda loetakse Discordi kasutustingimuste rikkumiseks. Aga pole teada ühtegi juhust, kus kasutajakonto oleks sel põhjusel keelatud. Kasuta seda teenust omal vastutsusel.\n\nechomusic kasutab ainult sinu tunnusluba, kõike muud hoitakse kohalikus seadmes.</string>
     <string name="options">Valikud</string>
     <string name="action_logout">Logi välja</string>
     <string name="login_failed">Sisselogimine ei õnnestunud</string>
@@ -342,7 +342,7 @@
     <string name="listen_together_smart_resync">Nutikas võrgu uuesti sünkroonimine</string>
     <string name="listen_together_smart_resync_desc">Pärast ühenduse katkemist saavuta automaatselt uuesti hostiga kooskõla</string>
     <string name="spotify_import_title">Impordi Spotify-st</string>
-    <string name="spotify_import_desc">Ühenda Spotify, vali esitusloendid ja peegelda need kohalikesse Echo Music esitusloenditesse.</string>
+    <string name="spotify_import_desc">Ühenda Spotify, vali esitusloendid ja peegelda need kohalikesse Muzi Music esitusloenditesse.</string>
     <string name="spotify_connect">Ühenda Spotify</string>
     <string name="spotify_refresh">Värskenda Spotify muusikakogu</string>
     <string name="spotify_select_sources">Vali Spotify esitusloendid</string>
@@ -402,10 +402,10 @@
     <string name="recognition_notification_processing">Tuvastamine…</string>
     <string name="recognition_notification_no_match">Vastet ei leitud</string>
     <string name="recognition_notification_failed">Tuvastamine ebaõnnestus</string>
-    <string name="listen_on_echo_music">Kuula Echo Musicus</string>
+    <string name="listen_on_echo_music">Kuula Muzi Musicus</string>
     <string name="qs_tile_music_recognizer">Tuvasta muusika</string>
-    <string name="echo_brain_beta">Echo Brain (beeta)</string>
-    <string name="echo_brain_enable">Luba Echo Brain</string>
+    <string name="echo_brain_beta">Muzi Brain (beeta)</string>
+    <string name="echo_brain_enable">Luba Muzi Brain</string>
     <string name="echo_brain_enable_desc">Lisa automaatselt tehisintellekti soovitusi, lähtudes sinu kuulamisharjumustest</string>
     <string name="echo_brain_profile_statistics">Profiili statistika</string>
     <string name="echo_brain_learning_level">Õppetase</string>
@@ -432,9 +432,9 @@
     <string name="listenbrainz_scrobbling">ListenBrainz scrobbling</string>
     <string name="listenbrainz_scrobbling_description">Esita automaatselt kuulatud lood ListenBrainzile</string>
     <string name="set_listenbrainz_token">Määra ListenBrainz luba</string>
-    <string name="youtube_decryption_settings">Echo Extractor</string>
+    <string name="youtube_decryption_settings">Muzi Extractor</string>
     <string name="youtube_decryption_desc">Konfigureeri ekstraktori seaded</string>
-    <string name="youtube_decryption_support">Echo Extractor</string>
+    <string name="youtube_decryption_support">Muzi Extractor</string>
     <string name="youtube_decryption_support_desc">Ekstraktib automaatselt YouTube taasesituse konfiguratsioonid. Lukustatud kui aktiivne.</string>
     <string name="force_update_cipher">Sunni konfiguratsioonide värskendamine</string>
     <string name="force_update_cipher_desc">Laadi alla uusimad ekstraktori ülekirjutamise kaardistused. Piiratud 3 värskendusega päevas.</string>

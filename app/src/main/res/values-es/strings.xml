@@ -263,7 +263,7 @@
     <string name="backup_create_failed">No se ha podido crear la copia de seguridad</string>
     <string name="restore_failed">Error al restaurar la copia de seguridad</string>
     <string name="discord_integration">Integración con Discord</string>
-    <string name="discord_information">Echo Music utiliza la biblioteca KizzyRPC para establecer el estado de tu cuenta de Discord. Esto implica el uso de la conexión Discord Gateway, lo cual puede considerarse una violación de los términos de servicio de Discord. Sin embargo, no se conocen casos de cuentas de usuario suspendidas por este motivo. Utilízalo bajo tu propio riesgo.\nEcho Music solo extraerá tu token, y todo lo demás se almacenará localmente.</string>
+    <string name="discord_information">Muzi Music utiliza la biblioteca KizzyRPC para establecer el estado de tu cuenta de Discord. Esto implica el uso de la conexión Discord Gateway, lo cual puede considerarse una violación de los términos de servicio de Discord. Sin embargo, no se conocen casos de cuentas de usuario suspendidas por este motivo. Utilízalo bajo tu propio riesgo.\nEcho Music solo extraerá tu token, y todo lo demás se almacenará localmente.</string>
     <string name="dismiss">Descartar</string>
     <string name="options">Opciones</string>
     <string name="preview">Vista previa</string>
@@ -352,7 +352,7 @@
     <string name="listen_together_smart_resync">Resincronización inteligente de red</string>
     <string name="listen_together_smart_resync_desc">Ponte al día automáticamente con el anfitrión después de una caída de la conexión</string>
     <string name="spotify_import_title">Importar desde Spotify</string>
-    <string name="spotify_import_desc">Conecta Spotify, elige listas de reproducción y reprodúcelas en listas locales de Echo Music.</string>
+    <string name="spotify_import_desc">Conecta Spotify, elige listas de reproducción y reprodúcelas en listas locales de Muzi Music.</string>
     <string name="spotify_connect">Conectar Spotify</string>
     <string name="spotify_refresh">Actualizar biblioteca de Spotify</string>
     <string name="spotify_select_sources">Seleccionar listas de Spotify</string>
@@ -412,10 +412,10 @@
     <string name="recognition_notification_processing">Identificando…</string>
     <string name="recognition_notification_no_match">No se encontraron coincidencias</string>
     <string name="recognition_notification_failed">Error de reconocimiento</string>
-    <string name="listen_on_echo_music">Escuchar en Echo Music</string>
+    <string name="listen_on_echo_music">Escuchar en Muzi Music</string>
     <string name="qs_tile_music_recognizer">Reconocer música</string>
-    <string name="echo_brain_beta">Echo Brain (Beta)</string>
-    <string name="echo_brain_enable">Activar Echo Brain</string>
+    <string name="echo_brain_beta">Muzi Brain (Beta)</string>
+    <string name="echo_brain_enable">Activar Muzi Brain</string>
     <string name="echo_brain_enable_desc">Inyectar automáticamente recomendaciones de IA basadas en tus hábitos de escucha</string>
     <string name="echo_brain_profile_statistics">Estadísticas del perfil</string>
     <string name="echo_brain_learning_level">Nivel de aprendizaje</string>
@@ -442,9 +442,9 @@
     <string name="listenbrainz_scrobbling">Scrobbling de ListenBrainz</string>
     <string name="listenbrainz_scrobbling_description">Enviar automáticamente tus canciones escuchadas a ListenBrainz</string>
     <string name="set_listenbrainz_token">Ajustar token de ListenBrainz</string>
-    <string name="youtube_decryption_settings">Echo Extractor</string>
+    <string name="youtube_decryption_settings">Muzi Extractor</string>
     <string name="youtube_decryption_desc">Configurar los ajustes del extractor</string>
-    <string name="youtube_decryption_support">Echo Extractor</string>
+    <string name="youtube_decryption_support">Muzi Extractor</string>
     <string name="youtube_decryption_support_desc">Extrae automáticamente las configuraciones de reproducción de YouTube. Bloqueado en Activo.</string>
     <string name="force_update_cipher">Forzar la actualización de las configuraciones</string>
     <string name="force_update_cipher_desc">Descargue las últimas asignaciones de anulación del extractor. Limitado a 3 actualizaciones por día.</string>

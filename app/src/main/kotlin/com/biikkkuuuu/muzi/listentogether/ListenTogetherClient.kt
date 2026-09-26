@@ -555,7 +555,7 @@ class ListenTogetherClient @Inject constructor(
             val powerManager = context.getSystemService<PowerManager>()
             wakeLock = powerManager?.newWakeLock(
                 PowerManager.PARTIAL_WAKE_LOCK,
-                "echomusic:ListenTogether"
+                "muzi:ListenTogether"
             )
         }
         if (wakeLock?.isHeld == false) {
