@@ -33,8 +33,8 @@ android {
         applicationId = "com.biikkkuuuu.muzi"
         minSdk = 26
         targetSdk = 36
-        versionCode = 157
-        versionName = "1.2.6.5"
+        versionCode = 158
+        versionName = "1.2.7"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
