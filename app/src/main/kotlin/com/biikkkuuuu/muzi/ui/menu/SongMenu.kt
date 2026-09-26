@@ -114,10 +114,11 @@ fun SongMenu(
     val context = LocalContext.current
     val database = LocalDatabase.current
     val playerConnection = LocalPlayerConnection.current ?: return
-    val songState = database.song(originalSong.id).collectAsState(initial = originalSong)
+    val songState = remember(originalSong.id) { database.song(originalSong.id) }.collectAsState(initial = originalSong, context = kotlinx.coroutines.Dispatchers.IO)
     val song = songState.value ?: originalSong
-    val download by LocalDownloadUtil.current.getDownload(originalSong.id)
-        .collectAsState(initial = null)
+    val downloadUtil = LocalDownloadUtil.current
+    val download by remember(originalSong.id) { downloadUtil.getDownload(originalSong.id) }
+        .collectAsState(initial = null, context = kotlinx.coroutines.Dispatchers.IO)
     val coroutineScope = rememberCoroutineScope()
     val syncUtils = LocalSyncUtils.current
     val listenTogetherManager = LocalListenTogetherManager.current

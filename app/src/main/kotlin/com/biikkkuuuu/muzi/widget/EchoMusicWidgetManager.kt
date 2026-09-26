@@ -49,6 +49,19 @@ class EchoMusicWidgetManager @Inject constructor(
     private var cachedAlbumArt: Bitmap? = null
     private var cachedCircularAlbumArt: Bitmap? = null
 
+    fun hasAnyActiveWidgets(): Boolean {
+        val appWidgetManager = AppWidgetManager.getInstance(context)
+        return appWidgetManager.getAppWidgetIds(ComponentName(context, MusicWidgetReceiver::class.java)).isNotEmpty() ||
+                appWidgetManager.getAppWidgetIds(ComponentName(context, TurntableWidgetReceiver::class.java)).isNotEmpty() ||
+                appWidgetManager.getAppWidgetIds(ComponentName(context, LyricsWidgetReceiver::class.java)).isNotEmpty() ||
+                appWidgetManager.getAppWidgetIds(ComponentName(context, PlaylistWidgetReceiver::class.java)).isNotEmpty()
+    }
+
+    fun hasLyricsWidget(): Boolean {
+        val appWidgetManager = AppWidgetManager.getInstance(context)
+        return appWidgetManager.getAppWidgetIds(ComponentName(context, LyricsWidgetReceiver::class.java)).isNotEmpty()
+    }
+
     suspend fun updateWidgets(
         title: String,
         artist: String,
@@ -60,6 +73,8 @@ class EchoMusicWidgetManager @Inject constructor(
         currentLine: String? = null,
         nextLine: String? = null
     ) {
+        if (!hasAnyActiveWidgets()) return
+
         val appWidgetManager = AppWidgetManager.getInstance(context)
 
         // Use cached album art if URI hasn't changed, otherwise load new one

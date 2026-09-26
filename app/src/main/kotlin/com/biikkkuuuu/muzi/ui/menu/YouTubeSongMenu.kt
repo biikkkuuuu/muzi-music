@@ -104,13 +104,14 @@ fun YouTubeSongMenu(
     val context = LocalContext.current
     val database = LocalDatabase.current
     val playerConnection = LocalPlayerConnection.current ?: return
-    val librarySong by database.song(song.id).collectAsState(initial = null)
-    val download by LocalDownloadUtil.current.getDownload(song.id).collectAsState(initial = null)
+    val librarySong by remember(song.id) { database.song(song.id) }.collectAsState(initial = null, context = kotlinx.coroutines.Dispatchers.IO)
+    val downloadUtil = LocalDownloadUtil.current
+    val download by remember(song.id) { downloadUtil.getDownload(song.id) }.collectAsState(initial = null, context = kotlinx.coroutines.Dispatchers.IO)
     val coroutineScope = rememberCoroutineScope()
     val syncUtils = LocalSyncUtils.current
     val listenTogetherManager = LocalListenTogetherManager.current
     val ringtoneViewModel = com.biikkkuuuu.muzi.LocalRingtoneViewModel.current
-    val isPinned by database.speedDialDao.isPinned(song.id).collectAsState(initial = false)
+    val isPinned by remember(song.id) { database.speedDialDao.isPinned(song.id) }.collectAsState(initial = false, context = kotlinx.coroutines.Dispatchers.IO)
     val artists = remember {
         song.artists.mapNotNull {
             it.id?.let { artistId ->

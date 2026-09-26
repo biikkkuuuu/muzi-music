@@ -888,7 +888,7 @@ class MainActivity : ComponentActivity() {
 
 
                 val pauseListenHistory by rememberPreference(PauseListenHistoryKey, defaultValue = false)
-                val eventCount by database.eventCount().collectAsState(initial = 0)
+                val eventCount by remember { database.eventCount() }.collectAsState(initial = 0, context = kotlinx.coroutines.Dispatchers.IO)
                 val showHistoryButton = remember(pauseListenHistory, eventCount) {
                     !(pauseListenHistory && eventCount == 0)
                 }

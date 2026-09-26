@@ -151,11 +151,12 @@ fun PlayerMenu(
     val castVolume by castHandler?.castVolume?.collectAsState() ?: remember { mutableFloatStateOf(1f) }
     val castDeviceName by castHandler?.castDeviceName?.collectAsState() ?: remember { mutableStateOf<String?>(null) }
     
-    val librarySong by database.song(mediaMetadata.id).collectAsState(initial = null)
+    val librarySong by remember(mediaMetadata.id) { database.song(mediaMetadata.id) }.collectAsState(initial = null, context = kotlinx.coroutines.Dispatchers.IO)
     val coroutineScope = rememberCoroutineScope()
 
-    val download by LocalDownloadUtil.current.getDownload(mediaMetadata.id)
-        .collectAsState(initial = null)
+    val downloadUtil = LocalDownloadUtil.current
+    val download by remember(mediaMetadata.id) { downloadUtil.getDownload(mediaMetadata.id) }
+        .collectAsState(initial = null, context = kotlinx.coroutines.Dispatchers.IO)
 
 
 

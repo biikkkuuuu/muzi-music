@@ -1247,6 +1247,7 @@ fun HomeScreen(
                                             AsyncImage(
                                                 model = coil3.request.ImageRequest.Builder(LocalContext.current)
                                                     .data(song!!.thumbnailUrl)
+                                                    .crossfade(true)
                                                     .size(600)
                                                     .build(),
                                                 contentDescription = null,

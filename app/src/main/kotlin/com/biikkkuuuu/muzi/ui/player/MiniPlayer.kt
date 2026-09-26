@@ -967,7 +967,7 @@ private fun FavoriteButton(
 ) {
     val database = LocalDatabase.current
     val playerConnection = LocalPlayerConnection.current ?: return
-    val librarySong by database.song(songId).collectAsState(initial = null)
+    val librarySong by remember(songId) { database.song(songId) }.collectAsState(initial = null, context = kotlinx.coroutines.Dispatchers.IO)
     val isLiked = librarySong?.song?.liked == true
     
     Box(

@@ -405,7 +405,7 @@ fun BottomSheetPlayer(
         }
 
     val playbackState by playerConnection.playbackState.collectAsState()
-    val currentFormatEntity by database.format(mediaMetadata?.id).collectAsState(initial = null)
+    val currentFormatEntity by remember(mediaMetadata?.id) { database.format(mediaMetadata?.id) }.collectAsState(initial = null, context = kotlinx.coroutines.Dispatchers.IO)
     val currentSong by playerConnection.currentSong.collectAsState(initial = null)
     val automix by playerConnection.service.automixItems.collectAsState()
     val repeatMode by playerConnection.repeatMode.collectAsState()

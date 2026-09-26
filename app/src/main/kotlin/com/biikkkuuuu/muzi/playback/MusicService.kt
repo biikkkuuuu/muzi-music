@@ -3390,7 +3390,8 @@ class MusicService :
 
     
     private fun updateWidgetUI(isPlaying: Boolean) {
-        scope.launch {
+        if (!widgetManager.hasAnyActiveWidgets()) return
+        scope.launch(Dispatchers.IO) {
             try {
                 val songData = currentSong.value
                 val song = songData?.song
@@ -3401,7 +3402,7 @@ class MusicService :
                 var currentLyricLine: String? = null
                 var nextLyricLine: String? = null
                 val mediaId = song?.id
-                if (mediaId != null) {
+                if (mediaId != null && widgetManager.hasLyricsWidget()) {
                     try {
                         val dbLyrics = database.lyrics(mediaId).firstOrNull()?.lyrics
                         if (!dbLyrics.isNullOrBlank()) {
@@ -3444,16 +3445,12 @@ class MusicService :
 
     private fun startWidgetUpdates() {
         widgetUpdateJob?.cancel()
+        if (!widgetManager.hasAnyActiveWidgets()) return
         widgetUpdateJob = scope.launch {
             while (isActive) {
                 if (player.isPlaying) {
                     updateWidgetUI(true)
                 }
-                // Each tick fully rebuilds and re-sends the widget's RemoteViews (album art
-                // included) over binder IPC to the launcher. At 200ms that's 5 full widget
-                // rebuilds/sec, well past what the platform's RemoteViews update pipeline
-                // renders smoothly — the progress bar visibly stutters instead of animating.
-                // 1s keeps it live without saturating that pipeline.
                 delay(1000)
             }
         }
